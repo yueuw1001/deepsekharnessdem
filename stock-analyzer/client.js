@@ -2,7 +2,7 @@
  * 个股智能分析（Client half）
  *
  * 在 Web 界面注册「个股智能分析」主面板与侧边栏图标：输入股票代码 / 名称，
- * 由 Host 抓取同花顺行情与 Wind（若可用）数据，页面展示概览、技术面、资金面、
+ * 由 Host 抓取同花顺与东方财富数据，页面展示概览、技术面、资金面、
  * 行业与板块、基本面、消息面、热点与规则化投资建议。
  *
  * 数据来自 Host 的 GET /dsh-stock/analyze.json?q=...（refresh=1 强制刷新）；
@@ -30,7 +30,7 @@ window.__ModuleLoader__.load({
       zh: {
         panel: '个股分析',
         title: '个股智能分析',
-        subtitle: '同花顺 · Wind 双数据源',
+        subtitle: '同花顺 · 东方财富 双数据源',
         placeholder: '输入股票代码或名称，如 600519 / 贵州茅台',
         analyze: '分析',
         analyzing: '分析中…',
@@ -81,6 +81,9 @@ window.__ModuleLoader__.load({
         outerVol: '外盘',
         innerVol: '内盘',
         estimated: '估算',
+        em5: '东财近5日主力',
+        em10: '东财近10日主力',
+        em20: '东财近20日主力',
         industry: '行业与板块',
         industryName: '行业',
         swName: '申万行业',
@@ -135,12 +138,12 @@ window.__ModuleLoader__.load({
         target: '目标价',
         buyZone: '买入区间',
         noAdvice: '规则模型暂未给出建议',
-        footNote: '数据来源：同花顺公开接口（Wind 可用时覆盖 PE/PB/市值/申万行业）· 计算结果仅供参考，不构成投资建议',
+        footNote: '数据来源：同花顺 + 东方财富公开接口 · 计算结果仅供参考，不构成投资建议',
       },
       en: {
         panel: 'Stock Analysis',
         title: 'Stock Intelligence',
-        subtitle: 'Tonghuashun · Wind dual data source',
+        subtitle: 'Tonghuashun · Eastmoney dual data source',
         placeholder: 'Enter a code or name, e.g. 600519 / Kweichow Moutai',
         analyze: 'Analyze',
         analyzing: 'Analyzing…',
@@ -191,6 +194,9 @@ window.__ModuleLoader__.load({
         outerVol: 'Outer vol',
         innerVol: 'Inner vol',
         estimated: 'Est.',
+        em5: 'EM main 5d',
+        em10: 'EM main 10d',
+        em20: 'EM main 20d',
         industry: 'Industry & sectors',
         industryName: 'Industry',
         swName: 'SW industry',
@@ -245,7 +251,7 @@ window.__ModuleLoader__.load({
         target: 'Target',
         buyZone: 'Buy zone',
         noAdvice: 'The rule model did not produce a view',
-        footNote: 'Source: THS public APIs (Wind overrides PE/PB/cap/SW industry when available) · for reference only, not investment advice',
+        footNote: 'Source: Tonghuashun + Eastmoney public APIs · for reference only, not investment advice',
       },
     }
 
@@ -767,6 +773,8 @@ window.__ModuleLoader__.load({
       const max = Math.max(1, ...rows.map((row) => Math.abs(num(row.value) === null ? 0 : num(row.value))))
       const outer = num(funds.outerVol) === null ? quote.outerVol : funds.outerVol
       const inner = num(funds.innerVol) === null ? quote.innerVol : funds.innerVol
+      const em = funds.em ? funds.em : {}
+      const emValues = [num(em.main5), num(em.main10), num(em.main20)].some((value) => value !== null)
       const note = funds.estimated === true ? t('estimated') : null
       return h(
         Card,
@@ -785,6 +793,13 @@ window.__ModuleLoader__.load({
             { label: t('netRatio'), value: pctPlain(funds.netRatio), tone: toneOf(funds.netRatio) },
             { label: t('outerVol'), value: count(outer) },
             { label: t('innerVol'), value: count(inner) },
+            ...(emValues
+              ? [
+                  { label: t('em5'), value: money(em.main5, true), tone: toneOf(em.main5) },
+                  { label: t('em10'), value: money(em.main10, true), tone: toneOf(em.main10) },
+                  { label: t('em20'), value: money(em.main20, true), tone: toneOf(em.main20) },
+                ]
+              : []),
           ],
         }),
       )

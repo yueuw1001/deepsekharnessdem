@@ -1,5 +1,5 @@
 /**
- * 个股智能分析（Host half，同花顺 + Wind 数据源）
+ * 个股智能分析（Host half，同花顺 + 东方财富双数据源）
  *
  * 输入股票代码或名称，抓取：
  *   - 同花顺 realhead 行情 / 四档资金流 / 估值
@@ -8,7 +8,8 @@
  *   - 同花顺行业板块排行与成分股
  *   - 同花顺热榜（个股热度、热点原因）
  *   - 同花顺资讯（关键词匹配 + 公司公告）
- *   - Wind（若本机装有 Wind 终端 + WindPy，通过 Python 子进程查询，失败时降级）
+ *   - 东方财富：资金流历史（5/10/20 日主力净流入）、F10 主要财务指标、
+ *     公告与资讯搜索（作为第二数据源，补充同花顺缺失字段并交叉印证）
  *
  * 对外提供：
  *   GET /dsh-stock/analyze.json?q=600519[&refresh=1]  完整分析（页面与工具共用）
@@ -17,7 +18,6 @@
  *
  * 免责声明：数据来自公开接口，分析为规则化模型生成，仅供参考，不构成投资建议。
  */
-import { execFile } from 'node:child_process'
 import {
   parseF10Main,
   parseCompany,
@@ -64,9 +64,7 @@ const WAN = 1e4
 const DEFAULTS = {
   cacheMinutes: 5,
   f10CacheHours: 6,
-  windEnabled: true,
-  pythonPath: '',
-  windHome: '',
+  eastmoneyEnabled: true,
   requestTimeoutMs: 25000,
 }
 
@@ -262,9 +260,9 @@ function normaliseCode(raw) {
   return null
 }
 
-function windCodeOf(code, market) {
+function eastmoneySecid(code, market) {
   const upper = market ?? marketOf(code)
-  return `${code}.${upper}`
+  return `${upper === 'SH' ? 1 : 0}.${code}`
 }
 
 /* ------------------------------------------------------------------ */
@@ -796,157 +794,184 @@ function fmtNum(value) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Wind（可选）                                                        */
+/* 东方财富（第二数据源：资金流历史 / 财务指标 / 公告 / 资讯）          */
 /* ------------------------------------------------------------------ */
 
-const WIND_PROBE_SCRIPT = `
-import json
-def main():
-    try:
-        from WindPy import w
-    except Exception as error:
-        print(json.dumps({"ok": False, "reason": "未安装 WindPy：%s" % error}, ensure_ascii=False))
-        return
-    try:
-        result = w.start()
-        code = getattr(result, "ErrorCode", -1)
-        if code != 0:
-            print(json.dumps({"ok": False, "reason": "Wind 终端未启动或未登录（ErrorCode=%s）" % code}, ensure_ascii=False))
-            return
-        print(json.dumps({"ok": True, "reason": ""}, ensure_ascii=False))
-    except Exception as error:
-        print(json.dumps({"ok": False, "reason": "Wind 连接失败：%s" % error}, ensure_ascii=False))
-main()
-`
+const EM_FFLOW = 'https://push2his.eastmoney.com/api/qt/stock/fflow/daykline/get'
+const EM_FINANCE = 'https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/ZYZBAjaxNew'
+const EM_NOTICE = 'https://np-anotice-stock.eastmoney.com/api/security/ann'
+const EM_SEARCH = 'https://search-api-web.eastmoney.com/search/jsonp'
+const EM_REFERER = 'https://quote.eastmoney.com/'
+const EM_HEADERS = { ...THS_HEADERS, Referer: EM_REFERER }
 
-const WIND_QUERY_SCRIPT = `
-import json, sys
-def main():
-    code = sys.argv[1]
-    try:
-        from WindPy import w
-        from WindPy import w as wind
-    except Exception as error:
-        print(json.dumps({"ok": False, "reason": "未安装 WindPy：%s" % error}, ensure_ascii=False))
-        return
-    try:
-        result = w.start()
-        if getattr(result, "ErrorCode", -1) != 0:
-            print(json.dumps({"ok": False, "reason": "Wind 终端未启动或未登录（ErrorCode=%s）" % result.ErrorCode}, ensure_ascii=False))
-            return
-        fields = "sec_name,industry_sw,pe_ttm,pb_lf,total_mv,circ_mv,roe_ttm,eps_basic"
-        data = w.wss(code, fields, "unit=1")
-        if getattr(data, "ErrorCode", -1) != 0:
-            print(json.dumps({"ok": False, "reason": "w.wss 查询失败（ErrorCode=%s）" % data.ErrorCode}, ensure_ascii=False))
-            return
-        rows = []
-        for index, field in enumerate(data.Fields):
-            rows.append({"field": field, "value": data.Data[index][0] if data.Data[index] else None})
-        print(json.dumps({"ok": True, "rows": rows}, ensure_ascii=False, default=str))
-    except Exception as error:
-        print(json.dumps({"ok": False, "reason": "Wind 查询异常：%s" % error}, ensure_ascii=False))
-main()
-`
-
-function pythonCandidates(cfg) {
-  const list = []
-  if (cfg.pythonPath) list.push(cfg.pythonPath)
-  list.push('python', 'python3', 'py')
-  return [...new Set(list)]
+function stripEmTags(text) {
+  return String(text ?? '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/\s+/g, ' ')
+    .trim()
 }
 
-function runPython(script, args, cfg) {
-  return new Promise((resolve) => {
-    const candidates = pythonCandidates(cfg)
-    let index = 0
-    const env = { ...process.env }
-    if (cfg.windHome) {
-      const bin = String(cfg.windHome).replace(/[\\/]+$/, '') + '\\bin'
-      env.PATH = `${bin};${env.PATH ?? ''}`
-    }
-    const attempt = () => {
-      if (index >= candidates.length) {
-        resolve({ ok: false, reason: '未检测到可用的 Python 解释器（WindPy 需要 Wind 终端 + Python 环境）' })
-        return
-      }
-      const python = candidates[index]
-      index += 1
-      execFile(python, ['-c', script, ...args], { timeout: 25000, env, windowsHide: true }, (error, stdout, stderr) => {
-        const text = String(stdout ?? '').trim()
-        const lines = text.split(/\r?\n/).filter(Boolean)
-        const lastLine = lines[lines.length - 1] ?? ''
-        if (lastLine) {
-          try {
-            const parsed = JSON.parse(lastLine)
-            resolve(parsed)
-            return
-          } catch {
-            /* 不是 JSON，继续判断解释器是否可用 */
-          }
+async function fetchEastmoneyJson(url, timeoutMs) {
+  const text = await httpText(url, { referer: EM_REFERER, timeoutMs, headers: EM_HEADERS })
+  const trimmed = text.trim()
+  if (trimmed.startsWith('{') || trimmed.startsWith('[')) return JSON.parse(trimmed)
+  const start = trimmed.indexOf('(')
+  const end = trimmed.lastIndexOf(')')
+  if (start >= 0 && end > start) return JSON.parse(trimmed.slice(start + 1, end))
+  return JSON.parse(trimmed)
+}
+
+/** 东方财富资金流历史：主力 = 超大单 + 大单；小单 + 中单 = 散户。 */
+async function fetchEastmoneyFundFlow(code, market, timeoutMs) {
+  return cached(`em:flow:${code}`, 10 * 60_000, async () => {
+    const secid = eastmoneySecid(code, market)
+    const url = `${EM_FFLOW}?lmt=30&klt=101&secid=${secid}&fields1=f1,f2,f3,f7&fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61,f62,f63,f64,f65`
+    const parsed = await fetchEastmoneyJson(url, timeoutMs)
+    const klines = Array.isArray(parsed?.data?.klines) ? parsed.data.klines : []
+    const days = klines
+      .map((line) => {
+        const cells = String(line).split(',')
+        return {
+          date: cells[0] ?? null,
+          mainNet: num(cells[1]),
+          smallNet: num(cells[2]),
+          mediumNet: num(cells[3]),
+          largeNet: num(cells[4]),
+          superNet: num(cells[5]),
+          mainRatio: num(cells[6]),
+          close: num(cells[11]),
+          changePct: num(cells[12]),
         }
-        const detail = `${stderr ?? ''}\n${stdout ?? ''}\n${error?.message ?? ''}`
-        const missing =
-          error?.code === 'ENOENT' ||
-          error?.code === 9009 ||
-          /not recognized|不是内部或外部命令|Python was not found|WindowsApps|Microsoft Store/i.test(detail)
-        if (missing || !error) {
-          attempt()
-          return
-        }
-        const firstLine = String(stderr ?? '')
-          .split(/\r?\n/)
-          .map((line) => line.trim())
-          .find(Boolean)
-        resolve({ ok: false, reason: firstLine ? `Wind 查询失败：${truncate(firstLine, 120)}` : 'Wind 查询失败' })
       })
+      .filter((day) => day.date)
+    if (days.length === 0) return null
+    const sum = (count) => days.slice(-count).reduce((total, day) => total + (day.mainNet ?? 0), 0)
+    const latest = days[days.length - 1]
+    return {
+      days,
+      main5: round(sum(5), 2),
+      main10: round(sum(10), 2),
+      main20: round(sum(20), 2),
+      latestDate: latest.date,
+      latestMain: latest.mainNet ?? null,
     }
-    attempt()
   })
 }
 
-async function detectWind(cfg, state) {
-  if (!cfg.windEnabled) return { available: false, reason: 'Wind 数据源已在配置中关闭' }
-  const now = Date.now()
-  if (state.windProbe && now - state.windProbe.at < 10 * 60_000) return state.windProbe.value
-  const result = await runPython(WIND_PROBE_SCRIPT, [], cfg)
-  if (result.ok) {
-    const value = { available: true, reason: '' }
-    state.windProbe = { at: now, value }
-    return value
-  }
-  const value = { available: false, reason: result.reason || 'Wind 不可用' }
-  state.windProbe = { at: now, value }
-  return value
+/** 东方财富 F10 主要财务指标（最新一期 + 近 6 期）。 */
+async function fetchEastmoneyFinance(code, market, timeoutMs) {
+  return cached(`em:finance:${code}`, 6 * 60 * 60_000, async () => {
+    const upper = market ?? marketOf(code)
+    const prefix = upper === 'SH' ? 'SH' : upper === 'SZ' ? 'SZ' : 'BJ'
+    const url = `${EM_FINANCE}?type=0&code=${prefix}${code}`
+    const parsed = await fetchEastmoneyJson(url, timeoutMs)
+    const rows = Array.isArray(parsed?.data) ? parsed.data : []
+    const row = rows[0] ?? null
+    if (!row || !row.REPORT_DATE_NAME) return null
+    return {
+      report: row.REPORT_DATE_NAME ?? null,
+      eps: num(row.EPSJB),
+      bps: num(row.BPS),
+      revenue: num(row.TOTALOPERATEREVE),
+      grossProfit: num(row.MLR),
+      netProfit: num(row.PARENTNETPROFIT),
+      revenueYoY: num(row.TOTALOPERATEREVETZ),
+      netProfitYoY: num(row.PARENTNETPROFITTZ),
+      roe: num(row.ROEJQ),
+      roeDiluted: num(row.ROEKCJQ),
+      grossMargin: num(row.XSMLL),
+      netMargin: num(row.XSJLL),
+      debtRatio: num(row.ZCFZL),
+      cashPerShare: num(row.MGJYXJJE),
+      roic: num(row.ROIC),
+      reports: rows.slice(0, 6).map((item) => ({
+        report: item.REPORT_DATE_NAME ?? null,
+        eps: num(item.EPSJB),
+        roe: num(item.ROEJQ),
+        revenueYoY: num(item.TOTALOPERATEREVETZ),
+        netProfitYoY: num(item.PARENTNETPROFITTZ),
+      })),
+    }
+  })
 }
 
-async function queryWind(code, market, cfg, state) {
-  const probe = await detectWind(cfg, state)
-  if (!probe.available) return { available: false, reason: probe.reason, data: null }
-  const key = `wind:${code}`
-  const value = await cached(key, 10 * 60_000, async () => {
-    const result = await runPython(WIND_QUERY_SCRIPT, [windCodeOf(code, market)], cfg)
-    return result
+/** 东方财富公告列表。 */
+async function fetchEastmoneyNotices(code, timeoutMs) {
+  return cached(`em:notice:${code}`, 30 * 60_000, async () => {
+    const url = `${EM_NOTICE}?sr=-1&page_size=10&page_index=1&ann_type=A&client_source=web&stock_list=${code}`
+    const parsed = await fetchEastmoneyJson(url, timeoutMs)
+    const list = Array.isArray(parsed?.data?.list) ? parsed.data.list : []
+    return list
+      .map((item) => ({
+        title: stripEmTags(item.title_ch ?? item.title ?? ''),
+        url: item.art_code ? `https://data.eastmoney.com/notices/detail/${code}/${item.art_code}.html` : null,
+        time: String(item.notice_date ?? '').slice(0, 10) || null,
+        kind: 'notice',
+        source: '东方财富',
+      }))
+      .filter((item) => item.title)
   })
-  if (!value?.ok) return { available: false, reason: value?.reason ?? 'Wind 查询失败', data: null }
-  const fields = {}
-  for (const row of value.rows ?? []) {
-    if (row && row.field) fields[row.field] = row.value
+}
+
+/** 东方财富资讯搜索（按股票名/代码关键词）。 */
+async function fetchEastmoneyNews(keyword, timeoutMs) {
+  const query = String(keyword ?? '').trim()
+  if (!query) return []
+  return cached(`em:news:${query}`, 30 * 60_000, async () => {
+    const param = {
+      uid: '',
+      keyword: query,
+      type: ['cmsArticleWebOld'],
+      client: 'web',
+      clientType: 'web',
+      clientVersion: 'curr',
+      param: { cmsArticleWebOld: { searchScope: 'default', sort: 'default', pageIndex: 1, pageSize: 8 } },
+    }
+    const url = `${EM_SEARCH}?cb=cb&param=${encodeURIComponent(JSON.stringify(param))}`
+    const parsed = await fetchEastmoneyJson(url, timeoutMs)
+    const list = Array.isArray(parsed?.result?.cmsArticleWebOld) ? parsed.result.cmsArticleWebOld : []
+    return list
+      .map((item) => ({
+        title: stripEmTags(item.title),
+        url: item.url ?? null,
+        time: item.date ?? null,
+        kind: 'news',
+        source: String(item.mediaName ?? '东方财富').trim() || '东方财富',
+      }))
+      .filter((item) => item.title)
+  })
+}
+
+/** 聚合东方财富四个接口；任一可用即视为数据源可用。 */
+async function fetchEastmoney(code, market, name, timeoutMs, cfg) {
+  if (cfg.eastmoneyEnabled === false) {
+    return { available: false, reason: '东方财富数据源已在配置中关闭', data: null }
   }
-  const data = {
-    secName: fields.sec_name ?? null,
-    industry: fields.industry_sw ?? null,
-    peTTM: num(fields.pe_ttm),
-    pb: num(fields.pb_lf),
-    totalMv: num(fields.total_mv),
-    circMv: num(fields.circ_mv),
-    roeTTM: num(fields.roe_ttm),
-    epsBasic: num(fields.eps_basic),
-    rows: value.rows ?? [],
+  const settled = await Promise.allSettled([
+    fetchEastmoneyFundFlow(code, market, timeoutMs),
+    fetchEastmoneyFinance(code, market, timeoutMs),
+    fetchEastmoneyNotices(code, timeoutMs),
+    fetchEastmoneyNews(name || code, timeoutMs),
+  ])
+  const labels = ['资金流历史', '财务指标', '公告', '资讯']
+  const failures = []
+  settled.forEach((item, index) => {
+    if (item.status === 'rejected') failures.push(labels[index])
+  })
+  const fundFlow = settled[0].status === 'fulfilled' ? settled[0].value : null
+  const finance = settled[1].status === 'fulfilled' ? settled[1].value : null
+  const notices = settled[2].status === 'fulfilled' ? settled[2].value ?? [] : []
+  const news = settled[3].status === 'fulfilled' ? settled[3].value ?? [] : []
+  const available = Boolean(fundFlow) || Boolean(finance) || notices.length > 0 || news.length > 0
+  return {
+    available,
+    reason: available ? '' : `东方财富接口暂不可用${failures.length ? `（${failures.join('、')}）` : ''}`,
+    data: available ? { fundFlow: fundFlow ?? null, finance: finance ?? null, notices, news, failures } : null,
   }
-  const usable = [data.peTTM, data.pb, data.totalMv, data.industry].some((item) => item !== null && item !== undefined && item !== '')
-  return usable
-    ? { available: true, reason: '', data }
-    : { available: false, reason: 'Wind 已连接，但未返回可用字段', data: null }
 }
 
 /* ------------------------------------------------------------------ */
@@ -986,31 +1011,39 @@ function timeOf(text) {
   return null
 }
 
-function pickNews(feed, main, industryName) {
-  const items = []
-  const keywords = [main?.name, industryName].filter((item) => item && String(item).length >= 2)
-  for (const item of Array.isArray(feed) ? feed : []) {
-    const title = String(item?.title ?? '')
-    if (!title) continue
-    if (keywords.some((keyword) => title.includes(keyword) || String(item?.digest ?? '').includes(keyword))) {
-      items.push({ title, url: item.url ?? null, time: timeOf(item.time) ?? item.time ?? null, kind: 'news', source: '同花顺财经' })
-    }
-    if (items.length >= 6) break
-  }
-  const notices = (main?.notices ?? []).slice(0, 5).map((notice) => ({
+function pickNews(feed, main, industryName, eastmoney) {
+  const emNotices = (eastmoney?.data?.notices ?? []).slice(0, 4)
+  const emNews = (eastmoney?.data?.news ?? []).slice(0, 4)
+  const thsNotices = (main?.notices ?? []).slice(0, 4).map((notice) => ({
     title: notice.title,
     url: notice.url,
     time: timeOf(notice.time) ?? notice.time ?? null,
     kind: 'notice',
     source: '同花顺 F10',
   }))
-  const merged = [...notices, ...items]
+  const keywords = [main?.name, industryName].filter((item) => item && String(item).length >= 2)
+  const thsNews = []
+  for (const item of Array.isArray(feed) ? feed : []) {
+    const title = String(item?.title ?? '')
+    if (!title) continue
+    if (keywords.some((keyword) => title.includes(keyword) || String(item?.digest ?? '').includes(keyword))) {
+      thsNews.push({ title, url: item.url ?? null, time: timeOf(item.time) ?? item.time ?? null, kind: 'news', source: '同花顺财经' })
+    }
+    if (thsNews.length >= 4) break
+  }
+  const merged = []
+  const seen = new Set()
+  for (const item of [...emNotices, ...thsNotices, ...emNews, ...thsNews]) {
+    if (!item?.title || seen.has(item.title)) continue
+    seen.add(item.title)
+    merged.push(item)
+  }
   if (merged.length < 8) {
     for (const item of Array.isArray(feed) ? feed : []) {
       if (merged.length >= 8) break
       const title = String(item?.title ?? '')
-      if (!title) continue
-      if (merged.some((existing) => existing.title === title)) continue
+      if (!title || seen.has(title)) continue
+      seen.add(title)
       merged.push({ title, url: item.url ?? null, time: timeOf(item.time) ?? item.time ?? null, kind: 'news', source: '同花顺财经' })
     }
   }
@@ -1119,7 +1152,7 @@ function scoreSentiment(hot, hotItem) {
 }
 
 function buildAdvice(ctxData) {
-  const { quote, technical, funds, finance, industry, hot, hotItem } = ctxData
+  const { quote, technical, funds, finance, industry, hot, hotItem, eastmoney } = ctxData
   const techScore = technical?.score ?? 50
   const fundScore = scoreFunds(funds, quote?.amount)
   const valuationScore = scoreValuation(quote, finance)
@@ -1178,6 +1211,11 @@ function buildAdvice(ctxData) {
   if (Number.isFinite(finance?.profitYoY) && finance.profitYoY > 10) reasons.push(`净利润同比增长 ${finance.profitYoY}%`)
   if (Number.isFinite(industry?.changePct) && industry.changePct > 0) reasons.push(`所属行业「${industry.name}」上涨 ${industry.changePct}%`)
   if (hotItem && Number.isFinite(hotItem.rank) && hotItem.rank <= 30) reasons.push(`市场热榜第 ${hotItem.rank} 名，关注度较高`)
+  const emFlow = eastmoney?.data?.fundFlow
+  if (Number.isFinite(emFlow?.main5)) {
+    if (emFlow.main5 > 0) reasons.push(`东方财富口径近 5 日主力净流入 ${formatYi(emFlow.main5)}`)
+    else if (emFlow.main5 < 0) risks.push(`东方财富口径近 5 日主力净流出 ${formatYi(Math.abs(emFlow.main5))}`)
+  }
 
   if (Number.isFinite(quote?.peTTM) && quote.peTTM > 50) risks.push(`市盈率 ${quote.peTTM} 倍，估值偏高`)
   if (Number.isFinite(quote?.peTTM) && quote.peTTM <= 0) risks.push('公司处于亏损状态，市盈率为负')
@@ -1221,7 +1259,7 @@ function buildAdvice(ctxData) {
       buyZone: buyZoneLow !== null && buyZoneHigh !== null ? `${buyZoneLow} - ${buyZoneHigh}` : null,
     },
     scores: { technical: techScore, funds: fundScore, valuation: valuationScore, finance: financeScore, industry: industryScore, sentiment: sentimentScore },
-    disclaimer: '本分析由同花顺公开数据与 Wind（若可用）结合规则模型自动生成，仅供参考，不构成投资建议。股市有风险，投资需谨慎。',
+    disclaimer: '本分析由同花顺与东方财富公开数据结合规则模型自动生成，仅供参考，不构成投资建议。股市有风险，投资需谨慎。',
   }
 }
 
@@ -1446,6 +1484,11 @@ function formatReport(result, section = 'all') {
       lines.push(
         `中单 ${formatSignedYi(funds.mediumNet)}｜小单 ${formatSignedYi(funds.smallNet)}｜净流入 ${formatSignedYi(funds.netIn)}｜占成交额 ${fmtNum(funds.netRatio)}%`,
       )
+      if (funds.em && Number.isFinite(funds.em.main5)) {
+        lines.push(
+          `东方财富口径：近 5 日主力净流入 ${formatSignedYi(funds.em.main5)}｜近 10 日 ${formatSignedYi(funds.em.main10)}｜近 20 日 ${formatSignedYi(funds.em.main20)}`,
+        )
+      }
     } else if (key === 'industry') {
       lines.push('', '### 行业与板块')
       lines.push(
@@ -1508,7 +1551,6 @@ export function apply(ctx, config) {
 
   const state = {
     inflight: new Map(),
-    windProbe: null,
     lastError: null,
   }
 
@@ -1590,19 +1632,46 @@ export function apply(ctx, config) {
       }
       if (!hotItem) hot.reason = null
 
-      const news = pickNews(newsFeed, { ...(f10?.main ?? {}), name: quote.name }, industry.name)
-
-      const wind = await queryWind(resolved.code, quote.market, cfg, state)
-      if (wind.data) {
-        if (Number.isFinite(wind.data.peTTM) && wind.data.peTTM > 0) quote.peTTM = wind.data.peTTM
-        if (Number.isFinite(wind.data.pb) && wind.data.pb > 0) quote.pb = wind.data.pb
-        if (Number.isFinite(wind.data.totalMv)) quote.totalMv = wind.data.totalMv
-        if (Number.isFinite(wind.data.circMv)) quote.circMv = wind.data.circMv
-        if (wind.data.industry && !industry.swName) industry.swName = wind.data.industry
-        if (Number.isFinite(wind.data.epsBasic) && quote.eps === null) quote.eps = wind.data.epsBasic
-      } else if (cfg.windEnabled) {
-        warnings.push(`Wind：${wind.reason}`)
+      const eastmoney = await fetchEastmoney(resolved.code, quote.market, quote.name, timeoutMs, cfg)
+      if (!eastmoney.available) warnings.push(`东方财富：${eastmoney.reason}`)
+      if (eastmoney.data) {
+        const emFinance = eastmoney.data.finance
+        if (emFinance) {
+          const fill = (key, value) => {
+            if ((finance[key] === null || finance[key] === undefined) && value !== null && value !== undefined) {
+              finance[key] = value
+            }
+          }
+          fill('report', emFinance.report)
+          fill('eps', emFinance.eps)
+          fill('bps', emFinance.bps)
+          fill('revenue', emFinance.revenue)
+          fill('netProfit', emFinance.netProfit)
+          fill('revenueYoY', emFinance.revenueYoY)
+          fill('netProfitYoY', emFinance.netProfitYoY)
+          fill('roe', emFinance.roe)
+          fill('grossMargin', emFinance.grossMargin)
+          fill('netMargin', emFinance.netMargin)
+          fill('debtRatio', emFinance.debtRatio)
+          fill('cashPerShare', emFinance.cashPerShare)
+          finance.emReports = emFinance.reports
+          if (quote.eps === null && Number.isFinite(emFinance.eps)) quote.eps = emFinance.eps
+          if (quote.bvps === null && Number.isFinite(emFinance.bps)) quote.bvps = emFinance.bps
+        }
+        const flow = eastmoney.data.fundFlow
+        if (flow) {
+          funds.em = {
+            main5: flow.main5,
+            main10: flow.main10,
+            main20: flow.main20,
+            latestDate: flow.latestDate,
+            latestMain: flow.latestMain,
+            days: flow.days.slice(-10),
+          }
+        }
       }
+
+      const news = pickNews(newsFeed, { ...(f10?.main ?? {}), name: quote.name }, industry.name, eastmoney)
 
       const sources = [
         {
@@ -1613,10 +1682,24 @@ export function apply(ctx, config) {
             .filter(Boolean)
             .join('/'),
         },
-        { id: 'wind', label: 'Wind', ok: wind.available, note: wind.available ? 'WindPy 已连接' : wind.reason },
+        {
+          id: 'eastmoney',
+          label: '东方财富',
+          ok: eastmoney.available,
+          note: eastmoney.available
+            ? [
+                eastmoney.data?.fundFlow ? '资金流' : null,
+                eastmoney.data?.finance ? '财务' : null,
+                eastmoney.data?.notices?.length ? '公告' : null,
+                eastmoney.data?.news?.length ? '资讯' : null,
+              ]
+                .filter(Boolean)
+                .join('/')
+            : eastmoney.reason,
+        },
       ]
 
-      const advice = buildAdvice({ quote, technical, funds, finance, industry, hot, hotItem, sources })
+      const advice = buildAdvice({ quote, technical, funds, finance, industry, hot, hotItem, sources, eastmoney })
 
       const result = {
         ok: true,
@@ -1646,7 +1729,7 @@ export function apply(ctx, config) {
         news,
         hot,
         advice,
-        wind: { available: wind.available, reason: wind.reason, data: wind.data ?? null },
+        eastmoney: { available: eastmoney.available, reason: eastmoney.reason, data: eastmoney.data ?? null },
       }
       cacheSet(cacheKey, result, cfg.cacheMinutes * 60_000)
       return result
@@ -1724,7 +1807,7 @@ export function apply(ctx, config) {
       name: 'stock_analysis',
       description:
         '对单只 A 股做全维度分析：输入股票代码或名称，返回行情估值、技术指标（MA/MACD/KDJ/RSI/BOLL/ATR/量能）、四档资金流与主力动向、所属行业与板块排名、F10 财务诊断、个股公告与相关资讯、同花顺热榜热点，并给出规则化投资建议（评分、评级、操作、关键价位、风险）。' +
-        '数据源：同花顺公开接口 + Wind（若本机安装 Wind 终端/WindPy，自动叠加 PE/PB/市值/申万行业）。当用户询问某只股票的走势、指标、行业、消息、热点或投资建议时使用。',
+        '数据源：同花顺公开接口 + 东方财富（资金流历史、主要财务指标、公告与资讯）。当用户询问某只股票的走势、指标、行业、消息、热点或投资建议时使用。',
       parameters: {
         type: 'object',
         additionalProperties: false,
@@ -1760,10 +1843,5 @@ export function apply(ctx, config) {
     }),
   )
 
-  // 预热：插件激活时探测 Wind，失败不阻塞。
-  if (cfg.windEnabled) {
-    detectWind(cfg, state).catch(() => {})
-  }
-
-  ctx.logger?.info?.(`[stock-analyzer] 已启动：${API_PATH}（Wind ${cfg.windEnabled ? '启用探测' : '关闭'}）`)
+  ctx.logger?.info?.(`[stock-analyzer] 已启动：${API_PATH}（数据源：同花顺 + 东方财富${cfg.eastmoneyEnabled === false ? '，东方财富已关闭' : ''}）`)
 }

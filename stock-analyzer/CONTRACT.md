@@ -2,7 +2,7 @@
 
 插件包名：`dsh-stock-analyzer`（DSH Web 插件，Host + Client 两半）。
 
-- Host：`index.js`（同花顺抓取、Wind 适配、指标计算、规则化投资建议、HTTP 接口、Agent 工具）
+- Host：`index.js`（同花顺抓取、东方财富第二数据源、指标计算、规则化投资建议、HTTP 接口、Agent 工具）
 - 页面解析：`ths-pages.js`（纯函数，无网络）
 - Client：`client.js`（`window.__ModuleLoader__.load` 格式，注册 `main` 面板 + `sidebar.panellist` 图标）
 - 分析结果同时供 HTTP 接口与 Agent 工具 `stock_analysis` 使用。
@@ -26,7 +26,7 @@
 {
   "ok": true,
   "error": null,              // 顶层失败原因
-  "warnings": ["Wind 未检测到：..."],
+  "warnings": ["东方财富：资讯接口暂不可用"],
   "meta": {
     "generatedAt": "2026-10-18T08:10:00.000Z",
     "tradeDate": "2026-10-16",
@@ -36,7 +36,7 @@
     "elapsedMs": 3200,
     "sources": [
       { "id": "ths", "label": "同花顺", "ok": true, "note": "行情/资金/K线/F10/行业/热榜" },
-      { "id": "wind", "label": "Wind", "ok": false, "note": "未检测到 Wind 终端或 WindPy" }
+      { "id": "eastmoney", "label": "东方财富", "ok": true, "note": "资金流/财务/公告/资讯" }
     ]
   },
   "query": { "raw": "贵州茅台", "code": "600519", "name": "贵州茅台", "market": "SH", "board": "主板" },
@@ -118,10 +118,16 @@
     "disclaimer": "本分析由同花顺公开数据与规则模型自动生成，仅供参考，不构成投资建议。"
   },
 
-  "wind": {
-    "available": false,
-    "reason": "未检测到 Wind 终端或 WindPy（python 不可用）",
-    "data": null
+  "eastmoney": {
+    "available": true,
+    "reason": "",
+    "data": {
+      "fundFlow": { "main5": 1191318400, "main10": 1999731088, "main20": 622887934, "latestDate": "2026-10-16",
+        "days": [ { "date": "2026-10-16", "mainNet": 468661168, "superNet": 43617040, "largeNet": 425044128, "mediumNet": -468206560, "smallNet": -454626, "mainRatio": 9.23, "changePct": 1.22 } ] },
+      "finance": { "report": "2026中报", "eps": 35.57, "bps": 200.99, "revenue": 92278072083, "netProfit": 44516880421, "grossMargin": 89.56, "netMargin": 50.75, "roe": 16.75, "debtRatio": 15.19, "revenueYoY": 1.3, "netProfitYoY": -1.95 },
+      "notices": [ { "title": "…公告", "url": "https://data.eastmoney.com/notices/detail/600519/AN….html", "time": "2026-08-15", "kind": "notice", "source": "东方财富" } ],
+      "news": [ { "title": "…资讯", "url": "https://finance.eastmoney.com/a/….html", "time": "2026-10-18 05:30:46", "kind": "news", "source": "人民日报" } ]
+    }
   }
 }
 ```
@@ -153,7 +159,7 @@
 
 - `main` 槽，key：`stock-analyzer`；`sidebar.panellist` 图标 id：`stock-analyzer`，order：30。
 - 页面结构：
-  1. 标题区：「个股智能分析」+ 数据源徽标（同花顺 / Wind）。
+  1. 标题区：「个股智能分析」+ 数据源徽标（同花顺 / 东方财富）。
   2. 搜索框（代码或名称）+「分析」按钮 +「刷新」；支持 Enter 提交；最近查询 chips 可选。
   3. 加载 / 错误 / 空态。
   4. 概览卡：名称、代码、板块、现价、涨跌幅、涨跌额、成交额、换手、量比、振幅、PE/PB/市值、52 周区间。
@@ -172,10 +178,11 @@
 ## 数据源与边界
 
 - 同花顺公开接口：`d.10jqka.com.cn`（realhead / line / time）、`basic.10jqka.com.cn`（F10 页面，GBK）、`q.10jqka.com.cn`（行业板块）、`dq.10jqka.com.cn`（热榜）、`news.10jqka.com.cn`（资讯/公告）。
-- Wind：本机未安装 Wind 终端；插件通过 Python `WindPy` 探测（`w.start()` + `w.wss`），不可用时在 `wind.reason` 说明并在 UI 显示「Wind：未连接」。可用时用 `wss` 覆盖 PE/PB/市值/申万行业并写入 `wind.data`。
+- 东方财富公开接口：`push2his.eastmoney.com`（资金流历史）、`emweb.securities.eastmoney.com`（F10 主要财务指标）、`np-anotice-stock.eastmoney.com`（公告）、`search-api-web.eastmoney.com`（资讯搜索）；任一不可用时在 `eastmoney.reason` 说明并在 UI 显示「东方财富：…」。
+- 资金流口径差异：同花顺四档为逐笔成交金额（四档合计为净流入），东方财富主力 = 超大单 + 大单、四档合计恒为 0；两者分别展示、不互相覆盖，`funds.em` 为东方财富口径的 5/10/20 日主力净流入。
 - 同花顺 F10 页面反爬较弱但有频率限制：页面结果缓存 6 小时，行情缓存 5 分钟。
 
-## 实现补充（v1.0.0 实际返回的额外字段）
+## 实现补充（v1.1.0 实际返回的额外字段）
 
 在契约之上，Host 实际还会返回以下字段，客户端可选用：
 
@@ -187,5 +194,5 @@
 - `hot`：`conceptHeat` 来自 F10「概念行情贴合度」；`marketNews` 为市场要闻前 6。
 - `advice`：`scores`（技术/资金/估值/财务/行业/情绪六个子分）、`confidence` 为「高/中高/中」、`position`、`levels.buyZone`。
 - `meta.sources[].note` 人类可读说明；`meta.tradeDate` 取行情时间所在交易日（而非服务器当天）。
-- `wind.data.rows` 为 Wind 原始字段行（`field/value`）。
+- `eastmoney.data.fundFlow.days` 为东方财富近 30 个交易日的四档资金流明细；`finance.revenue`/`grossMargin` 等在同花顺缺失时由东财补位，补位不改变字段名。
 

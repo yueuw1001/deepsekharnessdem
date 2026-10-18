@@ -1,11 +1,9 @@
-# 个股智能分析：同花顺 + Wind 双数据源，输入代码/名称输出全维度分析与规则化投资建议。
+# 个股智能分析：同花顺 + 东方财富双数据源，输入代码/名称输出全维度分析与规则化投资建议。
 - insert:
     - id: stock-analyzer
       name: dsh-stock-analyzer
       config:
         cacheMinutes: 5
         f10CacheHours: 6
-        windEnabled: true
-        pythonPath: ''
-        windHome: ''
+        eastmoneyEnabled: true
         requestTimeoutMs: 25000

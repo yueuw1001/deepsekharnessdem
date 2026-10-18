@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "Stock Intelligence",
-    "description": "Enter a ticker or name to analyze quote, valuation, technical indicators, order-flow, industry, fundamentals, news and hot topics from Tonghuashun public data plus Wind when available, with a rule-based recommendation."
+    "description": "Enter a ticker or name to analyze quote, valuation, technical indicators, order-flow and fund-flow history, industry, fundamentals, news and hot topics from Tonghuashun and Eastmoney public data, with a rule-based recommendation."
   }
 }

@@ -34,7 +34,7 @@ const ctx = {
   logger: { info: (...args) => console.log('[info]', ...args), warn: (...args) => console.warn('[warn]', ...args) },
 }
 
-apply(ctx, { cacheMinutes: 5, windEnabled: false })
+apply(ctx, { cacheMinutes: 5 })
 
 const route = routes.get('/dsh-stock/analyze.json')
 if (!route) throw new Error('HTTP 路由未注册')
@@ -65,9 +65,20 @@ console.log('技术面:', technical.trend.label, technical.trend.score, '| 指�
 console.log('均线:', JSON.stringify(technical.ma))
 console.log('MACD:', JSON.stringify(technical.macd), 'KDJ:', JSON.stringify(technical.kdj), 'RSI:', JSON.stringify(technical.rsi))
 console.log('资金:', JSON.stringify({ mainNet: funds.mainNet, ratio: funds.mainNetRatio, estimated: funds.estimated }))
+console.log('东财资金流:', JSON.stringify(funds.em ? { main5: funds.em.main5, main10: funds.em.main10, main20: funds.em.main20, latest: funds.em.latestDate } : null))
 console.log('行业:', industry.name, '排名', industry.rank, '/', industry.total, '| 申万:', industry.swName, '| 同行:', industry.peers.length)
 console.log('财务:', JSON.stringify({ report: finance.report, eps: finance.eps, gross: finance.grossMargin, roe: finance.roe, debt: finance.debtRatio }))
-console.log('新闻条数:', news.length, '| 热点:', hot.rank, '| 概念:', hot.concepts.length, '| Wind:', data.wind.available, data.wind.reason)
+console.log(
+  '新闻条数:',
+  news.length,
+  '| 热点:',
+  hot.rank,
+  '| 概念:',
+  hot.concepts.length,
+  '| 东方财富:',
+  data.eastmoney.available,
+  data.eastmoney.reason || `资金流 ${data.eastmoney.data?.fundFlow?.days?.length ?? 0} 日 / 公告 ${data.eastmoney.data?.notices?.length ?? 0} 条 / 资讯 ${data.eastmoney.data?.news?.length ?? 0} 条`,
+)
 console.log('建议:', advice.rating, advice.score, '|', advice.action)
 console.log('理由:', advice.reasons)
 console.log('风险:', advice.risks)
@@ -89,6 +100,8 @@ const checks = [
   [Number.isFinite(technical.ma.ma20), 'technical.ma.ma20'],
   [technical.macd !== null, 'technical.macd'],
   [Number.isFinite(funds.mainNet), 'funds.mainNet'],
+  [data.eastmoney && data.eastmoney.available === true, 'eastmoney.available'],
+  [Number.isFinite(funds.em?.main5), 'funds.em.main5'],
   [Number.isFinite(advice.score) && typeof advice.rating === 'string', 'advice'],
   [Array.isArray(news), 'news'],
   [Array.isArray(advice.reasons) && advice.reasons.length > 0, 'advice.reasons'],
