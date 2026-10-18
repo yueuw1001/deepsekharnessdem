@@ -1,0 +1,1710 @@
+<!DOCTYPE HTML>
+<html>
+<head id="head">
+		    <title>贵州茅台(600519) 行业对比_F10_同花顺金融服务网</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7;IE=9"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+	<meta name="keywords" content="贵州茅台最新动态,贵州茅台公司概况,贵州茅台财务分析,贵州茅台股东研究,贵州茅台股本结构,贵州茅台公司大事,贵州茅台分红融资"/>
+	<meta name="description" content="暂无"/>
+	<!-- 券商url参数添加，落地只落broker-pcf10.html -->
+	
+	<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.1.13.min.1792310.js"></script> <script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1792310.js"></script> <script>
+    function getUrlParams(key, url) {
+        var href = url ? url : window.location.href;
+        if (href.indexOf("?") < 0 && href.indexOf("#") < 0) {
+            return false;
+        }
+        var hrefStr = href.replace(/#/g, "&");
+        hrefStr = hrefStr.replace(/\?/g, "&");
+        var paramsObj= {};
+        hrefStr.split("&").forEach(function(i) {
+            if (i.indexOf("=") > -1) {
+                paramsObj[i.split("=")[0]] = i.split("=")[1];
+            }
+        });
+        if (key) {
+            return paramsObj[key] || false;
+        } else {
+            return paramsObj;
+        }
+    }
+
+    function addParam(url, obj) {
+        var str = "",res;
+        for (var key in obj) {
+            str += (key + "=" + obj[key]);
+        }
+        if (url.indexOf("?") > -1) {
+            res = url.split('?').join('?' + str + '&');
+        } else if (url.indexOf("#") > -1) {
+            res = url.replace(/#/g, "?" + str + "#");
+        } else {
+            res = url + "?" + str;
+        }
+        return res;
+    }
+
+    var historyUrl = document.referrer;
+    if (historyUrl) {
+        var broker = getUrlParams('broker', historyUrl);
+        if (broker && window.history) {
+            var url = window.location.href;
+            url = addParam(url, broker ? {broker: broker} : {});
+            window.history.pushState('', '', url);
+        }
+    }
+</script>
+	<!-- f10工具箱，工具函数修改，落地只落utils.html -->
+	
+	<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1792310.js"></script> <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.4.8/f10-polyfill.js" crossorigin></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cd/kernel-thslc-component-materials-container/F10/static/css-vars-ponyfill.js" ></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.6.0/thsc-f10-utils.js" crossorigin></script>
+<script>
+    function isIEInClient(){
+        return !!(window.external && 'getUserPath' in window.external && 'createObject' in window.external);
+    }
+
+    function isInTongYiClient(){
+      return !!(window.external && 'createObject' in window.external);
+    }
+
+    function isInYuanHangClient(){
+        return !!(window.HevoCef && 'IsHevoCef' in window.HevoCef);
+    }
+    
+    function isInIEEnv(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        return ua.indexOf('msie') > -1 || ua.indexOf('trident/') > -1;
+    }
+
+    function isChromeOlderThan50(){
+        var userAgent = navigator.userAgent.toLowerCase();
+        var match = userAgent.match(/chrome\/(\d+)./);
+        if (match && parseInt(match[1]) <= 49) {
+           return true;
+        }
+        return false;
+    }
+
+</script>
+<style>
+.kamis-loading {
+	min-height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #437EB7;
+	background-color: rgba(255,255,255,0.8);
+	gap: 4px;
+	font-size: 14px;
+}
+.dark .kamis-loading, .black .kamis-loading {
+	background-color: #171D25;
+	color: #FEB302;
+}
+.kamis-loading svg {
+	width: 20px;
+	height: 20px;
+}
+.arco-icon-spin {
+  animation: spin 1s linear infinite;
+}
+.kamis-nodata {
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #333;
+  padding: 10px 14px;
+}
+.dark .kamis-nodata, .black .kamis-nodata {
+  color: #999;
+  background-color: #0b1016;
+  border-color:#1e2b38;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+		<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1792310.js"></script> <script src="//s.thsi.cn/js/m/common/bridge.js" type="text/javascript"  crossorigin></script>
+	<script type="text/javascript"  crossorigin  src="//s.thsi.cn/js/jquery-1.8.3.min.js"></script>
+	<script charset="utf-8" src="//s.thsi.cn/cb?webprivate/lib/axios.min.js;hxapp/m/base/js/vue.2.7.16.min.js" crossorigin="anonymous"></script>
+	<!-- kamis 渲染器 -->
+	<script charset="utf-8" src="//s.thsi.cn/hxapp/m/pkgs/amis-2c/sdk/v1-3/2c-sdk-register.1.3.6.js"></script>
+	<!-- 新版埋点cdn -->
+	<script crossorigin src="//s.thsi.cn/cb?cd/weblog/0.0.1-alpha.27/weblog.js"></script>
+		<script>
+		var xhrProto = XMLHttpRequest.prototype;
+		var origOpen = xhrProto.open;
+		xhrProto.open = function (method, url) {
+			if (location.host.indexOf('0033.cn') > -1 && arguments[1] !== undefined && arguments[1].indexOf('10jqka.com.cn') > -1) {
+				arguments[1] = arguments[1].replace('10jqka.com.cn', '0033.cn');
+			}
+			return origOpen.apply(this, arguments);
+		};
+	</script>
+	<script>
+		var originCreateElement =  document.createElement;
+		document.createElement = function(tagName){
+			const element = originCreateElement.apply(document,arguments);
+			if(tagName.toLowerCase() === 'script'){
+				element.setAttribute('charset','utf-8');
+			}
+			return element;
+		}
+	</script>
+	<script id="monitor-script" api_key="ths_f10" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.6.40/monitor.js" crossorigin></script>
+	<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/common/cefapi/1.5.5/cefApi.min.js;js/basic/stock/newPcJs/common.js"></script>
+	<script>
+		try{
+			feMonitor.setConfig(
+				{
+				slientDev:false,//开发环境(localhost)是否发送报错请求，默认不发送为true
+				sampleRate:0.1, //采样率,可设置0-1之间，越小采集的频率越低
+				isCollectPerformance:true, //是否采集性能
+				title:'pc-F10'
+				}
+			);
+		}catch(e){
+
+		}
+	</script>
+	<style>
+        .wencaibs{color:#008BFF!important;cursor:pointer;}
+        .wd-tb .ptxt { word-break: break-word;}
+        .comment-chart-head{color: #89a;}
+        .comment-chart-head span{float: right;}
+        .comment-chart-head span i{vertical-align: middle; display: inline-block; width: 20px; height: 20px;margin: 0 2px 0 6px; border-radius: 20px; overflow: hidden;}
+        .comment-chart-head .imp-news{background: #da2e1f;}
+        .comment-chart-head .yidong-news{background: #e3bf1a;}
+
+        #ckg_table1 tr td{text-align:center}
+        #ckg_table2 tr td{text-align:center}
+        #ckg_table3 tr td{text-align:center}
+        #ckg_table4 tr td{text-align:center}
+        #ckg_table5 tr td{text-align:center}
+		li{list-style-type:none;
+			list-style-position:outside;}
+		#jpjl-input:focus { outline: none; }
+		.black.inClient .clientJump {
+			cursor: pointer;
+			color: #0199fa;
+			text-decoration: underline;
+		}
+		.white.inClient .clientJump {
+			color: #07519a;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		.managelist .name a {    color: #0199fa;
+			margin: 0 3px 2px;
+			text-decoration: underline;
+			border-bottom: none !important;
+		}
+	</style>
+	<!--统计页面加载时间-->
+	<script type="text/javascript">
+		var loadTimer= new Date().getTime();
+	</script>
+    <style>
+        #search_cyter{
+            display: block !important;
+        }
+		#profile .tickLabels .tickLabel{
+			padding-right:12px;
+			box-sizing:border-box;
+		}
+	  .a_cursor {
+		pointer: cursor;
+	}
+    </style>
+</head>
+<script type="text/javascript">
+
+//cookie设置
+function setReviewJumpState(state) {
+	document.cookie = 'reviewJump='
+					+ state
+					+ ';path=/;domain='
+					+ window.location.host;
+}
+//取得对应名字cookie
+function getCookie(name) {
+	var cookieValue = "";
+	var search = name + "=";
+	if (document.cookie.length > 0) {
+	    offset = document.cookie.indexOf(search);
+	    if (offset != -1)    {
+	        offset += search.length;
+	        end = document.cookie.indexOf(";", offset);
+	        if (end == -1) end = document.cookie.length;
+	        cookieValue = unescape(document.cookie.substring(offset, end))
+	    }
+	}
+	return cookieValue;
+}
+//栏目提前跳转
+var reviewJumpState = getCookie('reviewJump');
+if (!!reviewJumpState && reviewJumpState != 'nojump') {
+	setReviewJumpState('nojump');
+	window.location.href = unescape(reviewJumpState);
+} else {
+	setReviewJumpState('nojump');
+}
+//动态添加link-同步-会阻塞
+function addCssByLink(url){
+    document.write('<link rel="stylesheet" type="text/css"');
+    document.write(' href="' + url + '">');
+}
+function isMac() {
+        return /macintosh|mac os x/i.test(navigator.userAgent);
+};
+ var hash = window.location.hash.substring(1);
+hashArray = hash.split('=');
+if (hashArray[0] == 'stockpage') {
+    var STOCK_SKIN = 'white';
+} else {
+    var STOCK_SKIN = getCookie('skin_color');
+}
+//肤色与客户端同步
+function syncClientSkin(){
+	try {//取得客户端肤色
+		if (isMac()) {
+			return 'white';
+		}
+		return 'black';
+	} catch(e) {}
+}
+if (!STOCK_SKIN) {
+	STOCK_SKIN = syncClientSkin();
+}
+document.documentElement.setAttribute("class",STOCK_SKIN);
+if (STOCK_SKIN == 'white') {
+	// addCssByLink('/f10/css/company-compare.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/company-compare-202006082100.css');
+ 
+    addCssByLink('//s.thsi.cn/cb?css/basic/stock/white/20200604153837/style_v4-2.css;css/basic/stock/white/20200604153837/chart_v2.min.20180110.css;css/basic/stock/white/20200604153837/dupont.css;css/basic/stock/white/20200604153837/black_v2-4.20190711.css;css/basic/stock/white/custom.min.css;css/basic/stock/white/20200604153837/operations.css;css/basic/stock/white/20200604153837/writecsskzd.min.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/20200604153837/survey-w.css;css/basic/stock/20200604153837/wxgcl_mod.css;css/basic/stock/provider-w_v2.css;css/basic/stock/20200604153837/searchbar-w_v2.css;css/basic/stock/20200604153837/wccept.css;css/basic/stock/wtgfx.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/fschool/20200604153837/f_school_w.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/wsplpager.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/wchartsdom.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/white/20200604153837/industrydata.css;css/basic/stock/white/20200604153837/main_v1-2.css;css/basic/stock/white/20200604153837/xgcl.css;css/basic/stock/white/20200604153837/courier.css;css/basic/stock/white/20200604153837/recommend.css;css/basic/stock/white/20200604153837/housedata.css;css/basic/stock/white/202005071600/20200604153837/longhu.css;css/basic/stock/white/20200604153837/operate_white.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/remind_white.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/index_v1.css');
+	addCssByLink('//s.thsi.cn/js/home/v5/thirdpart/scrollbar/jquery.mCustomScrollbar.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/instition_white_v2.css');
+	if (!!window.ActiveXObject&&!window.XMLHttpRequest) {
+		addCssByLink('//s.thsi.cn/css/basic/stock/white/20200604153837/expression.css');
+	}
+					addCssByLink("//s.thsi.cn/css/basic/common/white/title.css")
+} else {
+	// addCssByLink('/f10/css/company-compare.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/company-compare-202006082100.css');
+ 	addCssByLink('//s.thsi.cn/cb?css/basic/stock/black/20200604153837/style_v3-5.min.20200426.css;css/basic/stock/black/20200604153837/chart_v2.min.20190410.css;css/basic/stock/black/20200604153837/black_v2-4.20190711.css;css/basic/stock/black/custom.min.css;css/basic/stock/black/20200604153837/operations.css;css/basic/stock/black/20200604153837/csskzd.min.20150608.css;/css/basic/stock/20200604153837/survey.20150929.css;/css/basic/stock/provider_v2.css;/css/basic/stock/20200604153837/searchbar_v2.css;/css/basic/stock/20200604153837/ccept.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/fschool/20200604153837/f_school.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/black/splpager.20170504.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/chartsdom.css;css/basic/stock/20200604153837/xgcl_mod.css;/css/basic/stock/tgfx.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/black/20200604153837/industrydata.css;css/basic/stock/black/20200604153837/main_v1-2.css;css/basic/stock/black/20200604153837/xgcl.css;css/basic/stock/black/20200604153837/courier.css;css/basic/stock/black/20200604153837/funcRecommend.css;css/basic/stock/black/20200604153837/dupont.css;css/basic/stock/black/202005071600/20200604153837/longhu.css;css/basic/stock/black/20200604153837/operate.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/black/remind_black.css');
+	addCssByLink('//s.thsi.cn/js/home/v5/thirdpart/scrollbar/jquery.mCustomScrollbar.css');
+
+	addCssByLink('//s.thsi.cn/css/basic/stock/index_v1.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/instition_black_v2.css');
+	if (!!window.ActiveXObject&&!window.XMLHttpRequest) {
+		addCssByLink('//s.thsi.cn/css/basic/stock/black/20200604153837/expression.min.20140801.css');
+	}
+					addCssByLink("//s.thsi.cn/css/basic/common/black/title.css")
+}
+/*calendar*/
+function  minDate(){
+ 	var data = $('#inte_json').text();
+	var datajson =new Object();
+	if (data) {
+		data = eval('('+data+')');
+	}
+	for (var x in data) {
+		datajson = data[x];
+	}
+	var minDate = datajson.year+'-'+datajson.month+'-'+datajson.day;
+	return minDate;
+ }
+ Date.prototype.Format = function(fmt)
+{ //author: meizz
+  var o = {
+    "M+" : this.getMonth()+1,                 //月份
+    "d+" : this.getDate(),                    //日
+    "h+" : this.getHours(),                   //小时
+    "m+" : this.getMinutes(),                 //分
+    "s+" : this.getSeconds(),                 //秒
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度
+    "S"  : this.getMilliseconds()             //毫
+  };
+  if(/(y+)/.test(fmt))
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+  for(var k in o)
+    if(new RegExp("("+ k +")").test(fmt))
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+  return fmt;
+}
+ function  displayDate(){
+ 	var data = $('#inte_json').text();
+ 	var date =new Array();
+	var datajson =new Object();
+	var i=0;
+	if (data) {
+		data = eval('('+data+')');
+	}
+	for (var x in data) {
+		datajson[x] = data[x];
+		dates = datajson[x].year+'-'+datajson[x].month+'-'+datajson[x].day;
+		if (x==0|| date[i-1] != dates) {
+			date[i] = dates;
+			i++;
+		}
+	}
+	var count =date.length;
+	var date2 = new Date();
+	var month =date2.getMonth()+1;
+	var day =date2.getDate();
+	if ((date2.getMonth()+1)>9) {
+	} else {
+	 	var month ="0"+month;
+	}
+	if (date2.getDate()>9) {
+	} else {
+	 	var day ="0"+day;
+	}
+	year = date2.getFullYear();
+	date2 = year+'-'+month+'-'+day;
+	var result = "['";
+	for (i=0;i<count;i++) {
+		if (date2 == date[i]) {
+			dateArr = date2.split('-');
+			newdate = new Date(new Date(dateArr[0], dateArr[1]-1,  dateArr[2])-24*60*60*1000);
+			date2 = newdate.Format("yyyy-MM-dd");
+		} else {
+			result +=date2+"',";
+			dateArr = date2.split('-');
+			newdate = new Date(new Date(dateArr[0], dateArr[1]-1,  dateArr[2])-24*60*60*1000);
+			date2 = newdate.Format("yyyy-MM-dd");
+			i--;
+		}
+	}
+	result = result.substr(0,result.length-1)+']';
+	return result;
+ }
+    function showDatePicker1(color) {
+        WdatePicker({
+            selfCssUrl:'//s.thsi.cn/css/basic/stock/'+STOCK_SKIN+'/mydatepicker.css',
+            eCont:'WdateDiv1',
+            vel:'elDate1',
+            minDate:minDate(),
+            maxDate:'%y-%M-%d',
+            onpicked:function(dp){
+                $('#elDate1').text(dp.cal.getNewDateStr());
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            },
+            Mchanged:function(dp){
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            }
+        });
+    }
+    function showDatePicker2(color) {
+
+        WdatePicker({
+            selfCssUrl:'//s.thsi.cn/css/basic/stock/'+STOCK_SKIN+'/mydatepicker.css',
+            eCont:'WdateDiv2',
+            vel:'elDate2',
+            maxDate:'%y-%M-%d',
+            onpicked:function(dp){
+                $('#elDate2').text(dp.cal.getNewDateStr());
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            },
+            Mchanged:function(dp){
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            }
+        });
+    }
+  function isIE() {
+	// 判断IE浏览器及其版本
+	if(document.documentMode) {
+		return document.documentMode;
+	}
+	var userAgent = navigator.userAgent.toLowerCase();
+	if (userAgent.indexOf('edge') > -1) {
+		return 'edge';
+	}
+	return false;
+  }
+	 // 初始化财务
+	 var initFinance = window.localStorage.getItem('initFinance');
+	 if (!initFinance) {
+		 window.localStorage.setItem('initFinance', 'init');
+		 window.localStorage.setItem('memoryPage', 'old');
+	  }
+	  // 跳转地址
+    function jumpToUrl(url, name, anchor, conceptName) {
+	  if (!url || !name) {
+			return;
+		}
+		// 新老地址切换
+		var oldPage = {
+			'financen': true
+		}
+		var pageLocation = window.localStorage.getItem('memoryPage');
+      //在IE环境中
+      if (isInIEEnv() || (pageLocation && pageLocation == 'old' && oldPage[name])) {
+        location.href = url;
+	    return;
+     }
+     var code = $('#stockCode').val();
+	 var codeName = $('#stockName').val();
+	 var marketid = $('#marketId').val();
+	 var pageAnchor = anchor ? '&anchor=' + anchor : '';
+	 var host = window.location.host;
+	 var targetUrl = '//' + host + '/astockpc/astockmain/index.html#/' + name + '?code=' + code + '&marketid=' + marketid + '&code_name=' + codeName + pageAnchor;
+	 if (conceptName) {
+		 targetUrl += "&cname=" + conceptName;
+	 }
+     location.href = targetUrl;
+    }
+	// 跳转新地址
+	function jumpToNew() {
+       var code = $('#stockCode').val();
+	   var codeName = $('#stockName').val();
+	   var marketid = $('#marketId').val();
+	   var url = window.location.href;
+	   var module = url.match(/\/(\w+).html?/);
+	   var moduleName = '';
+	   var host = window.location.host;
+	   if (module && module[1]) {
+		   moduleName = module[1];
+		   if (module[1] == 'finance') {
+			   moduleName = 'financen';
+		   }
+	   }
+	   window.TA.log('F10hs_cwfx.tyxbb.click');
+	   window.localStorage.setItem('memoryPage', 'new');
+	   setTimeout(function (){
+		  location.href = '//' + host + '/astockpc/astockmain/index.html#/' + moduleName + '?code=' + code + '&marketid=' + marketid + '&code_name=' + codeName;
+	   }, 10)
+	}
+</script>
+    <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/qdc_ad-fd3034.js"></script>
+	<link href="//s.thsi.cn/css/basic/stockph/qdc_ad-6e8683.css" rel="stylesheet" type="text/css">
+ 
+<body>
+<div class="votepopbox votesuccess" style="display: none">
+		<div class="vpopicon"></div>
+		<p class="vpoptxt fz18">谢谢您的宝贵意见</p>
+		<p class="vpoptxt">您的支持是我们最大的动力</p>
+	</div>
+	<div class="votepopbox voteinfo" style="display: none">
+		<div class="vpopicon"></div>
+		<p class="vpoptxt fz18">谢谢您的支持</p>
+		<p class="vpoptxt"></p>
+	</div>
+    <div class="wrapper">
+<!-- F10 Header Start -->
+		<div class="header">
+		    <div class="hd">
+		        <div class="logo fl" id="logo_self"><a title="同花顺F10">同花顺F10</a></div>
+
+															<div onclick="sendTalog('f10_click_quot')" style="width:260px; margin-left:60px; font-size:14px;cursor:pointer;margin-right:10px;display:none;text-align:center" class="fl tip " id="quotedata">
+							<div  class="fl">最新价： <span style="width:40px" class="upcolor" id="zxj">--</span></div>
+							<div  class="fr">涨跌幅： <span style="width:40px;" class="upcolor" id="zdf">--</span></div>
+						</div>
+											        <span class="fr skin-change"><a href="###">换肤</a></span>
+		        <div class="search fr" id="search_cyter">
+		            <div id="updownchange" type="once" class="codeChange fl" style="display: none;">
+		                <a href="javascript:void(0)" class="per">上一个股</a>
+		                <a href="javascript:void(0)" class="next">下一个股</a>
+		            </div>
+		            <div class="fl searchbar">
+			            <div class="text fl">
+			                <input type="text" id="jpjl-input" value="输入股票名称或代码" /><!--文本框获得焦点给.searchbar添加hover类-->
+			             </div>
+		                <input type="button" value="搜索" class="btn" id="submit"/>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="bd clear">
+		        <div class="code fl">
+					<div><h1 style="margin:3px 0px 0px 0px">
+												贵州茅台</h1></div>
+					<div>
+						<a href="interactive.html" tid="wdm" posid="r1c1" class="iwen" onclick="TA.log({'id':'F10_review','nj':1})">i问董秘</a>
+						<style>
+							.qiyehao {
+								display:none;
+								float:left;
+								cursor:pointer;
+								margin: 4px 0 0 17px;
+								width:50px;
+								text-align:center;
+								font-size:12px;
+								padding: 2px  0 4px 0;
+								line-height:12px;
+							    border-radius:6px;
+								color: white;
+                                background-color:#437eb7;
+							}
+							.black  .qiyehao {
+								background-color: #b60006;
+							}
+						</style>
+						<div class="qiyehao">企业号</div>
+						<h1 style="margin:3px 0px 0px 0px">
+						600519						</h1>
+						<script>
+							 $(document).ready(function(){
+								//获取市场代码
+                                var market = $('#marketId').val();
+								//获取股票代码
+								var code = $('#stockCode').val();
+								//判断是否是B股
+								var isBStock = function () {
+									var flag = market == '18' || market == '34' || market == '105';
+									return flag;
+								}
+								
+								//在B股和Ie浏览器中不展示企业号入口
+								if(isBStock() || isInIEEnv()){
+									return ;
+								}
+								isThsClient(function(){
+                                   //隐藏董秘问答入口
+								   $('.iwen').hide();
+                                   //展示企业号入口
+								   $('.qiyehao').show();
+								   $(document).on ('click','.qiyehao',function(){
+                                      var url = 'https://board.10jqka.com.cn/fe/board/qyh.html#/qyh/homepage?thscode=' + code  + '&marketid=' + market + '&from=f10';
+									    window.API.use({
+										  method: "Util.openURL2",
+										  data:{
+											url: url,
+											mode: 1,
+											useCef: true,
+										  }
+									    })
+								    })
+								})
+							 })
+						</script>
+					</div>
+		        </div>
+		        <div class="nav">
+		            <ul>
+		                <li><a href="./"              target="_self" tid="zxdt" posid="r1c3" >最新动态</a></li>
+		                <li><a href="javascript:void(0)" onclick="jumpToUrl('./company.html', 'company', '');return false;"   target="_self" tid="gszl" posid="r1c4" > 公司资料</a></li>
+		                <li><a href="./holder.html"   target="_self" tid="gdyj" posid="r1c5" >股东研究</a></li>
+						<li><a href="javascript:void(0)" onclick="jumpToUrl('./operate.html', 'operate', '');return false;" target="_self" tid="jyfx" posid="r1c6" > 经营分析</a></li>
+		                <li><a href="./equity.html"   target="_self" tid="gbjg" posid="r1c7" >股本结构</a></li>
+		                <li><a href="./capital.html"  target="_self" tid="zbyz" posid="r1c8" > 资本运作</a></li>
+		                <li><a href="./worth.html"    target="_self" tid="ylyc" posid="r1c9"  >盈利预测</a></li>
+		                <li><a href="./news.html"     target="_self" tid="xwgg" posid="r2c3" >新闻公告</a></li>
+						<li><a  href="javascript:void(0)"  onclick="jumpToUrl('./concept.html', 'concept', '');return false;"target="_self" tid="gntc" posid="r2c4" >概念题材</a></li>
+		                <li><a  href="javascript:void(0)"  onclick="jumpToUrl('./position.html', 'position', '');return false;"target="_self" tid="zlcc" posid="r2c5" >主力持仓</a></li>
+		                <li><a href="javascript:void(0)"  onclick="jumpToUrl('./finance.html', 'financen', '');return false;" target="_self" tid="cwgk" posid="r2c6" > 财务分析</a></li>
+						<li><a href="javascript:void(0)"  onclick="jumpToUrl('./bonus.html', 'bonus', '');return false;" target="_self" tid="fhrz" posid="r2c7" >分红融资</a></li>
+						<li><a href="./event.html"    target="_self" tid="gsds" posid="r2c8" >公司大事</a></li>
+		                <li><a href="./field.html"    target="_self" tid="hydb" posid="r2c9"  class="cur">行业对比</a></li>
+		            </ul>
+		        </div>
+		        <div class="subnav">
+					<ul>
+					   						<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="fieldstatus"  name="field.html#fieldstatus" href="###">行业地位							</a>
+						</li>
+												<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="fieldnews"  name="field.html#fieldnews" href="###">行业新闻							</a>
+						</li>
+								            </ul>
+		        </div>
+		    </div>
+		</div>
+<!-- F10 Header End -->
+<!-- F10 Content Start -->
+		<style>
+		.iwc_searchbar{display: none;}
+	</style>
+		<div class="iwc_searchbar clearfix" style="">
+    <div class="tips-box" style="display: none;">
+        <div class="t-hd"></div>
+        <div class="t-bd">
+            <div class="info">
+                <p>F10 功能找不到？在搜索框里直接输入您想要的功能！比如输入“龙虎榜”，赶快试一下哦！</p>
+                <div class="btn">
+                    <a href="###" class="a-left close">跳过</a>
+                    <a href="###" class="a-right next">下一步</a>
+                </div>
+            </div>
+            <div class="info" style="display: none;">
+                <p>选股选不好？可以直接输入你想要的问句啦，比如输入“近一周涨幅超过30%的股票”赶紧行动吧！</p>
+                <div class="btn">
+                    <a href="###" class="a-left prev">上一步</a>
+                    <a href="###" class="a-right close">完成</a>
+                </div>
+            </div>
+        </div>
+        <div class="t-ft"></div>
+   	 </div>
+     <div class="searchfx">
+        <input id="search_input" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh_CN" class="fillbox" autocomplete="off" type="text" value="输入问句，你想知道的都在这里">
+        <input class="action_btn" id="search_submit" type="button" value="搜索">
+        <span  class="tips-icon"></span>
+     </div>
+	</div>
+	<div class="content page_event_content" >	
+<!-- 行业地位 -->
+<div class="m_box page9table" id="fieldstatus" stat="field_fieldstatus">
+	<div class="hd">
+		<h2>行业地位</h2>
+	</div>
+	<div class="bd pr">
+		<div class="field_wraper">
+			<p class="threecate fl">三级行业分类：<span class="tip f14">食品饮料 -- 白酒Ⅱ -- 白酒Ⅲ （共<strong>20</strong>家）</span></p>
+			<div id="dateSelect" class="field_date1">
+				<div class="m_select">
+					<div class="text"><s></s><span>报告期</span></div>
+					<ul style="display:none;" class="list">
+						<li><a tag="0" class="tableTab" href="javascript:void(0);">2026-06-30</a></li>
+						<li><a tag="1" class="tableTab" href="javascript:void(0);">2026-03-31</a></li>
+					</ul>
+				</div>
+				报告期
+			</div>
+		</div>
+		<div class="chart_nav clearfix mt15">
+			<ul id="sortNav" class="nav_tab fl">
+				<li class="current"><a data-tag="0" data-unit="元" href="javascript:void(0)">每股收益</a></li>
+				<li><a data-tag="1" data-unit="元" href="javascript:void(0)">每股净资产</a></li>
+				<li><a data-tag="2" data-unit="元" href="javascript:void(0)">每股现金流</a></li>
+				<li><a data-tag="3" data-unit="亿元" href="javascript:void(0)">净利润</a></li>
+				<li><a data-tag="4" data-unit="亿元" href="javascript:void(0)">营业总收入</a></li>
+				<li><a data-tag="5" data-unit="亿元" href="javascript:void(0)">总资产</a></li>
+				<li><a data-tag="6" data-unit="%" href="javascript:void(0)">净资产收益率</a></li>
+				<li><a data-tag="7" data-unit="%" href="javascript:void(0)">股东权益比例</a></li>
+				<li><a data-tag="8" data-unit="%" href="javascript:void(0)">销售毛利率</a></li>
+				<li><a data-tag="9" data-unit="亿股" href="javascript:void(0)">总股本 </a></li>
+			</ul>
+		</div>
+		<div class="scrollbar_chart noselect">
+			<div class="scroll_container">
+				<input id="fieldsChartData" type="hidden" value='{"2026-06-30":[["000568","\u6cf8\u5dde\u8001\u7a96","2.950","31.07","1.414","43.39","104.7","643.3","8.620","71.33","85.35","14.72"],["000596","\u53e4\u4e95\u8d21\u9152","4.090","47.09","2.918","21.64","101.3","384.4","8.420","67.62","80.33","5.286"],["000799","\u9152\u9b3c\u9152","0.0379","11.24","-0.3269","0.1232","5.300","47.35","0.3300","77.14","66.58","3.249"],["000858","\u4e94\u7cae\u6db2","2.255","30.52","-0.5548","87.53","284.2","1850","7.140","65.38","80.29","38.82"],["000860","\u987a\u946b\u519c\u4e1a","0.0544","9.155","-0.8565","0.4035","38.04","126.3","0.6000","54.15","32.98","7.418"],["000995","\u7687\u53f0\u9152\u4e1a","-0.1000","0.8657","-0.2349","-0.1712","0.4851","4.954","-10.60","31.27","64.04","1.774"],["002304","\u6d0b\u6cb3\u80a1\u4efd","1.727","31.32","0.2222","26.02","105.4","559.8","5.410","84.45","73.35","15.06"],["002646","\u5929\u4f51\u5fb7\u9152","0.0219","5.934","0.2473","0.1044","5.749","31.47","0.3700","89.74","60.14","4.791"],["600197","\u4f0a\u529b\u7279","0.1730","8.369","-0.5975","0.8186","7.264","57.07","2.090","69.72","51.53","4.732"],["600199","\u91d1\u79cd\u5b50\u9152","-0.0986","2.881","-0.2429","-0.6484","2.360","28.77","-3.360","65.85","49.08","6.578"],["600519","\u8d35\u5dde\u8305\u53f0","35.57","201.0","56.55","445.2","922.8","3091","16.75","84.81","89.56","12.50"],["600559","\u8001\u767d\u5e72\u9152","0.2900","5.953","0.2088","2.616","21.04","85.03","4.950","64.04","63.45","9.147"],["600702","\u820d\u5f97\u9152\u4e1a","0.4425","20.98","-0.0800","1.451","22.87","129.4","2.120","55.60","61.24","3.321"],["600779","\u6c34\u4e95\u574a","-0.0128","10.22","-0.1503","-0.0622","10.82","82.13","-0.1200","60.68","76.13","4.875"],["600809","\u5c71\u897f\u6c7e\u9152","5.278","31.22","5.452","64.39","210.4","636.8","15.02","60.66","75.40","12.20"],["603198","\u8fce\u9a7e\u8d21\u9152","1.450","13.25","1.344","11.62","34.16","133.5","10.74","79.58","74.06","8.000"],["603369","\u4eca\u4e16\u7f18","1.670","13.75","1.296","20.82","64.36","258.7","11.83","66.27","74.14","12.47"],["603589","\u53e3\u5b50\u7a96","0.6100","17.50","-0.4290","3.649","19.52","127.2","3.460","82.32","67.35","5.981"],["603919","\u91d1\u5fbd\u9152","0.4200","6.707","0.4177","2.141","18.16","51.45","6.160","65.42","62.57","5.073"]],"2026-03-31":[["000568","\u6cf8\u5dde\u8001\u7a96","2.520","35.05","3.086","37.08","80.25","661.7","7.320","78.19","85.82","14.72"],["000596","\u53e4\u4e95\u8d21\u9152","3.040","49.42","3.616","16.07","74.46","406.2","6.300","67.03","77.85","5.286"],["000799","\u9152\u9b3c\u9152","0.1021","11.61","-0.1208","0.3318","3.173","48.37","0.8800","77.96","67.30","3.249"],["000858","\u4e94\u7cae\u6db2","2.077","32.98","-0.6532","80.63","228.4","1986","6.500","65.69","81.43","38.82"],["000860","\u987a\u946b\u519c\u4e1a","0.1560","9.256","-0.5012","1.157","24.11","132.1","1.700","52.33","37.55","5.706"],["000995","\u7687\u53f0\u9152\u4e1a","-0.0272","0.9317","-0.1941","-0.0482","0.3194","5.056","-2.880","32.97","65.15","1.774"],["002304","\u6d0b\u6cb3\u80a1\u4efd","1.624","32.69","1.287","24.47","81.86","602.9","5.090","81.83","75.42","15.06"],["002646","\u5929\u4f51\u5fb7\u9152","0.1018","6.017","0.3042","0.4848","4.063","31.90","1.700","89.78","61.76","4.791"],["600197","\u4f0a\u529b\u7279","0.2200","8.414","0.1757","1.049","6.063","64.32","2.670","62.20","51.53","4.720"],["600199","\u91d1\u79cd\u5b50\u9152","-0.0232","2.957","-0.1199","-0.1524","1.903","30.08","-0.7800","64.66","51.09","6.578"],["600519","\u8d35\u5dde\u8305\u53f0","21.76","216.3","21.49","272.4","547.0","3199","10.57","87.88","89.76","12.52"],["600559","\u8001\u767d\u5e72\u9152","0.1800","5.986","0.3911","1.655","12.20","88.65","3.070","61.77","64.10","9.147"],["600702","\u820d\u5f97\u9152\u4e1a","0.7067","21.49","-0.3065","2.315","14.81","132.1","3.260","55.88","66.35","3.328"],["600779","\u6c34\u4e95\u574a","0.3530","10.84","0.1440","1.710","8.158","83.80","3.290","63.06","79.84","4.884"],["600809","\u5c71\u897f\u6c7e\u9152","4.410","36.91","6.766","53.83","149.2","643.8","12.57","70.74","75.05","12.20"],["603198","\u8fce\u9a7e\u8d21\u9152","1.040","14.34","1.419","8.346","22.30","146.3","7.550","78.59","75.60","8.000"],["603369","\u4eca\u4e16\u7f18","1.111","14.39","1.695","13.85","43.23","275.0","8.030","65.26","74.40","12.55"],["603589","\u53e3\u5b50\u7a96","0.5500","17.94","-0.2260","3.287","13.75","129.6","3.330","82.81","67.61","6.000"],["603919","\u91d1\u5fbd\u9152","0.4000","6.970","0.6005","2.046","10.92","54.28","5.790","64.52","62.90","5.073"]]}'>
+				<div id="fieldsChart" class="xaxis_f14" data-url="../field/S340501.txt" style="width:100%;height:190px;padding:0px; position:relative"></div>
+			</div>
+			<div id="hChartScroll" class="scrollbar_h" style="bottom:20px;">
+				<div class="scrollbar_button decrement"></div>
+				<div class="scrollbar_track">
+					<div class="scrollbar_thumb">
+						<div class="thumb_top"></div>
+						<div class="thumb_bottom"></div>
+					</div>
+				</div>
+				<div class="scrollbar_button increment"></div>
+			</div>
+		</div>
+		<p class="clearfix p10_0"><span class="fr c_text2">查看更详细报告<a href="javascript:void(0)" tag="hy3_div" class="c_lable m_more_m"></a></span>注：当前行业中超过30%的个股发布了最新一期报告时进行数据统计。新股因未公布季报而不加入排名。</p>
+		<div id="hy3_div" >
+			<div class="m_tab pt5">
+				<ul>
+					<li class="cur" name="hy3_1"><a href="javascript:void(0)" class="fdate" targ="hy3_1">2026-06-30</a></li>
+					<li name="hy3_2"><a href="javascript:void(0)" class="fdate" targ="hy3_2">2026-03-31</a></li>
+				</ul>
+			</div>
+									<div class="m_tab_content" id="hy3_1" >
+				<table class="m_table m_hl" id="hy3_table_1">
+					<thead>
+						<tr>
+							<th class="nosort" id="stock">股票代码</th>
+							<th class="nosort" id="sname">股票简称</th>
+							<th class="nosort" id="rank">排名</th>
+							<th  width="40px">每股收益(元)<s></s></th>
+							<th  width="50px">每股净资产(元)<s></s></th>
+							<th  width="50px">每股现金流(元)<s></s></th>
+							<th>净利润(元)<s></s></th>
+							<th>营业总收入(元)<s></s></th>
+							<th>总资产(元)<s></s></th>
+							<th  width="40px">净资产收益率<s></s></th>
+							<th  width="40px">股东权益比率<s></s></th>
+							<th  width="40px">销售毛利率<s></s></th>
+							<th>总股本(股)<s></s></th>
+						</tr>
+					</thead>
+					<tbody>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000568</td>
+							<td style="text-align:center">泸州老窖</td>
+							<td>-</td>
+							<td>2.950</td>
+							<td >31.07</td>
+							<td >1.414</td>
+							<td>43.39亿</td>
+							<td>104.70亿</td>
+							<td>643.30亿</td>
+							<td>8.620%</td>
+							<td>71.33%</td>
+							<td>85.35%</td>
+							<td>14.72亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000596</td>
+							<td style="text-align:center">古井贡酒</td>
+							<td>-</td>
+							<td>4.090</td>
+							<td >47.09</td>
+							<td >2.918</td>
+							<td>21.64亿</td>
+							<td>101.30亿</td>
+							<td>384.40亿</td>
+							<td>8.420%</td>
+							<td>67.62%</td>
+							<td>80.33%</td>
+							<td>5.29亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000799</td>
+							<td style="text-align:center">酒鬼酒</td>
+							<td>-</td>
+							<td>0.0379</td>
+							<td >11.24</td>
+							<td >-0.3269</td>
+							<td>1232.00万</td>
+							<td>5.30亿</td>
+							<td>47.35亿</td>
+							<td>0.3300%</td>
+							<td>77.14%</td>
+							<td>66.58%</td>
+							<td>3.25亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000858</td>
+							<td style="text-align:center">五粮液</td>
+							<td>-</td>
+							<td>2.255</td>
+							<td >30.52</td>
+							<td >-0.5548</td>
+							<td>87.53亿</td>
+							<td>284.20亿</td>
+							<td>1850.00亿</td>
+							<td>7.140%</td>
+							<td>65.38%</td>
+							<td>80.29%</td>
+							<td>38.82亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000860</td>
+							<td style="text-align:center">顺鑫农业</td>
+							<td>-</td>
+							<td>0.0544</td>
+							<td >9.155</td>
+							<td >-0.8565</td>
+							<td>4035.00万</td>
+							<td>38.04亿</td>
+							<td>126.30亿</td>
+							<td>0.6000%</td>
+							<td>54.15%</td>
+							<td>32.98%</td>
+							<td>7.42亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000995</td>
+							<td style="text-align:center">皇台酒业</td>
+							<td>-</td>
+							<td>-0.1000</td>
+							<td >0.8657</td>
+							<td >-0.2349</td>
+							<td>-1712.00万</td>
+							<td>4851.00万</td>
+							<td>4.95亿</td>
+							<td>-10.60%</td>
+							<td>31.27%</td>
+							<td>64.04%</td>
+							<td>1.77亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">002304</td>
+							<td style="text-align:center">洋河股份</td>
+							<td>-</td>
+							<td>1.727</td>
+							<td >31.32</td>
+							<td >0.2222</td>
+							<td>26.02亿</td>
+							<td>105.40亿</td>
+							<td>559.80亿</td>
+							<td>5.410%</td>
+							<td>84.45%</td>
+							<td>73.35%</td>
+							<td>15.06亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">002646</td>
+							<td style="text-align:center">天佑德酒</td>
+							<td>-</td>
+							<td>0.0219</td>
+							<td >5.934</td>
+							<td >0.2473</td>
+							<td>1044.00万</td>
+							<td>5.75亿</td>
+							<td>31.47亿</td>
+							<td>0.3700%</td>
+							<td>89.74%</td>
+							<td>60.14%</td>
+							<td>4.79亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600197</td>
+							<td style="text-align:center">伊力特</td>
+							<td>-</td>
+							<td>0.1730</td>
+							<td >8.369</td>
+							<td >-0.5975</td>
+							<td>8186.00万</td>
+							<td>7.26亿</td>
+							<td>57.07亿</td>
+							<td>2.090%</td>
+							<td>69.72%</td>
+							<td>51.53%</td>
+							<td>4.73亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600199</td>
+							<td style="text-align:center">金种子酒</td>
+							<td>-</td>
+							<td>-0.0986</td>
+							<td >2.881</td>
+							<td >-0.2429</td>
+							<td>-6484.00万</td>
+							<td>2.36亿</td>
+							<td>28.77亿</td>
+							<td>-3.360%</td>
+							<td>65.85%</td>
+							<td>49.08%</td>
+							<td>6.58亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600519</td>
+							<td style="text-align:center">贵州茅台</td>
+							<td>-</td>
+							<td>35.57</td>
+							<td >201.0</td>
+							<td >56.55</td>
+							<td>445.20亿</td>
+							<td>922.80亿</td>
+							<td>3091.00亿</td>
+							<td>16.75%</td>
+							<td>84.81%</td>
+							<td>89.56%</td>
+							<td>12.50亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600559</td>
+							<td style="text-align:center">老白干酒</td>
+							<td>-</td>
+							<td>0.2900</td>
+							<td >5.953</td>
+							<td >0.2088</td>
+							<td>2.62亿</td>
+							<td>21.04亿</td>
+							<td>85.03亿</td>
+							<td>4.950%</td>
+							<td>64.04%</td>
+							<td>63.45%</td>
+							<td>9.15亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600702</td>
+							<td style="text-align:center">舍得酒业</td>
+							<td>-</td>
+							<td>0.4425</td>
+							<td >20.98</td>
+							<td >-0.0800</td>
+							<td>1.45亿</td>
+							<td>22.87亿</td>
+							<td>129.40亿</td>
+							<td>2.120%</td>
+							<td>55.60%</td>
+							<td>61.24%</td>
+							<td>3.32亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600779</td>
+							<td style="text-align:center">水井坊</td>
+							<td>-</td>
+							<td>-0.0128</td>
+							<td >10.22</td>
+							<td >-0.1503</td>
+							<td>-622.00万</td>
+							<td>10.82亿</td>
+							<td>82.13亿</td>
+							<td>-0.1200%</td>
+							<td>60.68%</td>
+							<td>76.13%</td>
+							<td>4.88亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600809</td>
+							<td style="text-align:center">山西汾酒</td>
+							<td>-</td>
+							<td>5.278</td>
+							<td >31.22</td>
+							<td >5.452</td>
+							<td>64.39亿</td>
+							<td>210.40亿</td>
+							<td>636.80亿</td>
+							<td>15.02%</td>
+							<td>60.66%</td>
+							<td>75.40%</td>
+							<td>12.20亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">603198</td>
+							<td style="text-align:center">迎驾贡酒</td>
+							<td>-</td>
+							<td>1.450</td>
+							<td >13.25</td>
+							<td >1.344</td>
+							<td>11.62亿</td>
+							<td>34.16亿</td>
+							<td>133.50亿</td>
+							<td>10.74%</td>
+							<td>79.58%</td>
+							<td>74.06%</td>
+							<td>8.00亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">603369</td>
+							<td style="text-align:center">今世缘</td>
+							<td>-</td>
+							<td>1.670</td>
+							<td >13.75</td>
+							<td >1.296</td>
+							<td>20.82亿</td>
+							<td>64.36亿</td>
+							<td>258.70亿</td>
+							<td>11.83%</td>
+							<td>66.27%</td>
+							<td>74.14%</td>
+							<td>12.47亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">603589</td>
+							<td style="text-align:center">口子窖</td>
+							<td>-</td>
+							<td>0.6100</td>
+							<td >17.50</td>
+							<td >-0.4290</td>
+							<td>3.65亿</td>
+							<td>19.52亿</td>
+							<td>127.20亿</td>
+							<td>3.460%</td>
+							<td>82.32%</td>
+							<td>67.35%</td>
+							<td>5.98亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">603919</td>
+							<td style="text-align:center">金徽酒</td>
+							<td>-</td>
+							<td>0.4200</td>
+							<td >6.707</td>
+							<td >0.4177</td>
+							<td>2.14亿</td>
+							<td>18.16亿</td>
+							<td>51.45亿</td>
+							<td>6.160%</td>
+							<td>65.42%</td>
+							<td>62.57%</td>
+							<td>5.07亿</td>
+						</tr>
+										</tbody>
+				</table>
+
+				<div class="pager clearfix">
+				    				    					<div class="fr pagernav">
+						<ul class="clearfix fr">
+													<li class="cur" id="hy3_table_1_fy1">
+								<a href="javascript:void(0)" onclick="hy3_sorter_1.move(1,'hy3_table_1_fy1')">1</a>
+								<s class="lb"></s><s class="rb"></s>
+							</li>
+													<li  id="hy3_table_1_fy2">
+								<a href="javascript:void(0)" onclick="hy3_sorter_1.move(2,'hy3_table_1_fy2')">2</a>
+								<s class="lb"></s><s class="rb"></s>
+							</li>
+												</ul>
+					</div>
+									</div>
+			</div>
+									<div class="m_tab_content" id="hy3_2" style="display:none">
+				<table class="m_table m_hl" id="hy3_table_2">
+					<thead>
+						<tr>
+							<th class="nosort" id="stock">股票代码</th>
+							<th class="nosort" id="sname">股票简称</th>
+							<th class="nosort" id="rank">排名</th>
+							<th  width="40px">每股收益(元)<s></s></th>
+							<th  width="50px">每股净资产(元)<s></s></th>
+							<th  width="50px">每股现金流(元)<s></s></th>
+							<th>净利润(元)<s></s></th>
+							<th>营业总收入(元)<s></s></th>
+							<th>总资产(元)<s></s></th>
+							<th  width="40px">净资产收益率<s></s></th>
+							<th  width="40px">股东权益比率<s></s></th>
+							<th  width="40px">销售毛利率<s></s></th>
+							<th>总股本(股)<s></s></th>
+						</tr>
+					</thead>
+					<tbody>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000568</td>
+							<td style="text-align:center">泸州老窖</td>
+							<td>-</td>
+							<td>2.520</td>
+							<td >35.05</td>
+							<td >3.086</td>
+							<td>37.08亿</td>
+							<td>80.25亿</td>
+							<td>661.70亿</td>
+							<td>7.320%</td>
+							<td>78.19%</td>
+							<td>85.82%</td>
+							<td>14.72亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000596</td>
+							<td style="text-align:center">古井贡酒</td>
+							<td>-</td>
+							<td>3.040</td>
+							<td >49.42</td>
+							<td >3.616</td>
+							<td>16.07亿</td>
+							<td>74.46亿</td>
+							<td>406.20亿</td>
+							<td>6.300%</td>
+							<td>67.03%</td>
+							<td>77.85%</td>
+							<td>5.29亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000799</td>
+							<td style="text-align:center">酒鬼酒</td>
+							<td>-</td>
+							<td>0.1021</td>
+							<td >11.61</td>
+							<td >-0.1208</td>
+							<td>3318.00万</td>
+							<td>3.17亿</td>
+							<td>48.37亿</td>
+							<td>0.8800%</td>
+							<td>77.96%</td>
+							<td>67.30%</td>
+							<td>3.25亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000858</td>
+							<td style="text-align:center">五粮液</td>
+							<td>-</td>
+							<td>2.077</td>
+							<td >32.98</td>
+							<td >-0.6532</td>
+							<td>80.63亿</td>
+							<td>228.40亿</td>
+							<td>1986.00亿</td>
+							<td>6.500%</td>
+							<td>65.69%</td>
+							<td>81.43%</td>
+							<td>38.82亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000860</td>
+							<td style="text-align:center">顺鑫农业</td>
+							<td>-</td>
+							<td>0.1560</td>
+							<td >9.256</td>
+							<td >-0.5012</td>
+							<td>1.16亿</td>
+							<td>24.11亿</td>
+							<td>132.10亿</td>
+							<td>1.700%</td>
+							<td>52.33%</td>
+							<td>37.55%</td>
+							<td>5.71亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">000995</td>
+							<td style="text-align:center">皇台酒业</td>
+							<td>-</td>
+							<td>-0.0272</td>
+							<td >0.9317</td>
+							<td >-0.1941</td>
+							<td>-482.00万</td>
+							<td>3194.00万</td>
+							<td>5.06亿</td>
+							<td>-2.880%</td>
+							<td>32.97%</td>
+							<td>65.15%</td>
+							<td>1.77亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">002304</td>
+							<td style="text-align:center">洋河股份</td>
+							<td>-</td>
+							<td>1.624</td>
+							<td >32.69</td>
+							<td >1.287</td>
+							<td>24.47亿</td>
+							<td>81.86亿</td>
+							<td>602.90亿</td>
+							<td>5.090%</td>
+							<td>81.83%</td>
+							<td>75.42%</td>
+							<td>15.06亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">002646</td>
+							<td style="text-align:center">天佑德酒</td>
+							<td>-</td>
+							<td>0.1018</td>
+							<td >6.017</td>
+							<td >0.3042</td>
+							<td>4848.00万</td>
+							<td>4.06亿</td>
+							<td>31.90亿</td>
+							<td>1.700%</td>
+							<td>89.78%</td>
+							<td>61.76%</td>
+							<td>4.79亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600197</td>
+							<td style="text-align:center">伊力特</td>
+							<td>-</td>
+							<td>0.2200</td>
+							<td >8.414</td>
+							<td >0.1757</td>
+							<td>1.05亿</td>
+							<td>6.06亿</td>
+							<td>64.32亿</td>
+							<td>2.670%</td>
+							<td>62.20%</td>
+							<td>51.53%</td>
+							<td>4.72亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600199</td>
+							<td style="text-align:center">金种子酒</td>
+							<td>-</td>
+							<td>-0.0232</td>
+							<td >2.957</td>
+							<td >-0.1199</td>
+							<td>-1524.00万</td>
+							<td>1.90亿</td>
+							<td>30.08亿</td>
+							<td>-0.7800%</td>
+							<td>64.66%</td>
+							<td>51.09%</td>
+							<td>6.58亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600519</td>
+							<td style="text-align:center">贵州茅台</td>
+							<td>-</td>
+							<td>21.76</td>
+							<td >216.3</td>
+							<td >21.49</td>
+							<td>272.40亿</td>
+							<td>547.00亿</td>
+							<td>3199.00亿</td>
+							<td>10.57%</td>
+							<td>87.88%</td>
+							<td>89.76%</td>
+							<td>12.52亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600559</td>
+							<td style="text-align:center">老白干酒</td>
+							<td>-</td>
+							<td>0.1800</td>
+							<td >5.986</td>
+							<td >0.3911</td>
+							<td>1.66亿</td>
+							<td>12.20亿</td>
+							<td>88.65亿</td>
+							<td>3.070%</td>
+							<td>61.77%</td>
+							<td>64.10%</td>
+							<td>9.15亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600702</td>
+							<td style="text-align:center">舍得酒业</td>
+							<td>-</td>
+							<td>0.7067</td>
+							<td >21.49</td>
+							<td >-0.3065</td>
+							<td>2.31亿</td>
+							<td>14.81亿</td>
+							<td>132.10亿</td>
+							<td>3.260%</td>
+							<td>55.88%</td>
+							<td>66.35%</td>
+							<td>3.33亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600779</td>
+							<td style="text-align:center">水井坊</td>
+							<td>-</td>
+							<td>0.3530</td>
+							<td >10.84</td>
+							<td >0.1440</td>
+							<td>1.71亿</td>
+							<td>8.16亿</td>
+							<td>83.80亿</td>
+							<td>3.290%</td>
+							<td>63.06%</td>
+							<td>79.84%</td>
+							<td>4.88亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">600809</td>
+							<td style="text-align:center">山西汾酒</td>
+							<td>-</td>
+							<td>4.410</td>
+							<td >36.91</td>
+							<td >6.766</td>
+							<td>53.83亿</td>
+							<td>149.20亿</td>
+							<td>643.80亿</td>
+							<td>12.57%</td>
+							<td>70.74%</td>
+							<td>75.05%</td>
+							<td>12.20亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">603198</td>
+							<td style="text-align:center">迎驾贡酒</td>
+							<td>-</td>
+							<td>1.040</td>
+							<td >14.34</td>
+							<td >1.419</td>
+							<td>8.35亿</td>
+							<td>22.30亿</td>
+							<td>146.30亿</td>
+							<td>7.550%</td>
+							<td>78.59%</td>
+							<td>75.60%</td>
+							<td>8.00亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">603369</td>
+							<td style="text-align:center">今世缘</td>
+							<td>-</td>
+							<td>1.111</td>
+							<td >14.39</td>
+							<td >1.695</td>
+							<td>13.85亿</td>
+							<td>43.23亿</td>
+							<td>275.00亿</td>
+							<td>8.030%</td>
+							<td>65.26%</td>
+							<td>74.40%</td>
+							<td>12.55亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">603589</td>
+							<td style="text-align:center">口子窖</td>
+							<td>-</td>
+							<td>0.5500</td>
+							<td >17.94</td>
+							<td >-0.2260</td>
+							<td>3.29亿</td>
+							<td>13.75亿</td>
+							<td>129.60亿</td>
+							<td>3.330%</td>
+							<td>82.81%</td>
+							<td>67.61%</td>
+							<td>6.00亿</td>
+						</tr>
+											<tr>
+							<td class="colorDifBg" style="text-align:center;">603919</td>
+							<td style="text-align:center">金徽酒</td>
+							<td>-</td>
+							<td>0.4000</td>
+							<td >6.970</td>
+							<td >0.6005</td>
+							<td>2.05亿</td>
+							<td>10.92亿</td>
+							<td>54.28亿</td>
+							<td>5.790%</td>
+							<td>64.52%</td>
+							<td>62.90%</td>
+							<td>5.07亿</td>
+						</tr>
+										</tbody>
+				</table>
+
+				<div class="pager clearfix">
+				    				    					<div class="fr pagernav">
+						<ul class="clearfix fr">
+													<li class="cur" id="hy3_table_2_fy1">
+								<a href="javascript:void(0)" onclick="hy3_sorter_2.move(1,'hy3_table_2_fy1')">1</a>
+								<s class="lb"></s><s class="rb"></s>
+							</li>
+													<li  id="hy3_table_2_fy2">
+								<a href="javascript:void(0)" onclick="hy3_sorter_2.move(2,'hy3_table_2_fy2')">2</a>
+								<s class="lb"></s><s class="rb"></s>
+							</li>
+												</ul>
+					</div>
+									</div>
+			</div>
+								</div>
+			</div>
+	<div class="ft"></div>
+</div>
+
+<!-- 行业新闻 -->
+<div class="m_box" id="fieldnews" stat="field_fieldnews">
+	<div class="hd">
+		<h2>行业新闻</h2>
+		<a href="http://index.10jqka.com.cn/list/field/0881273/" class="fr more" target="_blank">更多&gt;&gt;</a>
+	</div>
+	<div class="bd clearfix">
+		<div class="newslist clearfix">
+				    			<dl>
+				<dt>
+					<span class="date">10/17 23:50</span>
+					<span class="fl">标题：</span><a href="http://news.10jqka.com.cn/field/20261017/680804285.shtml" class="client" target="_blank" class="fl" title="中外代表聚首2026赤水河论坛 探讨酒业结构性变革下的价值重构">中外代表聚首2026赤水河论坛 探讨酒业结构性变革下的价值重构</a>
+				</dt>
+				<dd class="preview">暂无文章概要</dd>
+				<dd class="more"><a href="http://news.10jqka.com.cn/field/20261017/680804285.shtml" class="client" target="_blank">查看全文&gt;&gt;</a></dd>
+			</dl>
+						<dl>
+				<dt>
+					<span class="date">10/17 22:40</span>
+					<span class="fl">标题：</span><a href="http://news.10jqka.com.cn/field/20261017/680804182.shtml" class="client" target="_blank" class="fl" title="从“产区协同”迈向“场景破圈” 蓉酒公司赴京参展2026中国户外运动产业大会">从“产区协同”迈向“场景破圈” 蓉酒公司赴京参展2026中国户外运动产业大会</a>
+				</dt>
+				<dd class="preview">暂无文章概要</dd>
+				<dd class="more"><a href="http://news.10jqka.com.cn/field/20261017/680804182.shtml" class="client" target="_blank">查看全文&gt;&gt;</a></dd>
+			</dl>
+						<dl>
+				<dt>
+					<span class="date">10/17 22:38</span>
+					<span class="fl">标题：</span><a href="http://news.10jqka.com.cn/field/20261017/680804177.shtml" class="client" target="_blank" class="fl" title="武汉酒博会观察：白酒放低身段，黄酒走出江南">武汉酒博会观察：白酒放低身段，黄酒走出江南</a>
+				</dt>
+				<dd class="preview">蓝鲸新闻10月17日讯(记者朱欣悦)十月的武汉，长江晚风掠过江滩，空气里浮动着若有若无的酒意。第二十五届中国国际酒业博览会，在武汉国际博览中心拉开帷幕。酒企全面To C的叙事早已铺开，如今，连酒博会也接过了接力棒。行业展会的重心正在</dd>
+				<dd class="more"><a href="http://news.10jqka.com.cn/field/20261017/680804177.shtml" class="client" target="_blank">查看全文&gt;&gt;</a></dd>
+			</dl>
+						<dl>
+				<dt>
+					<span class="date">10/17 22:33</span>
+					<span class="fl">标题：</span><a href="http://news.10jqka.com.cn/field/20261017/680804173.shtml" class="client" target="_blank" class="fl" title="赤水河畔，茅台为白酒行业再探发展坐标">赤水河畔，茅台为白酒行业再探发展坐标</a>
+				</dt>
+				<dd class="preview">暂无文章概要</dd>
+				<dd class="more"><a href="http://news.10jqka.com.cn/field/20261017/680804173.shtml" class="client" target="_blank">查看全文&gt;&gt;</a></dd>
+			</dl>
+						<dl>
+				<dt>
+					<span class="date">10/17 22:00</span>
+					<span class="fl">标题：</span><a href="http://news.10jqka.com.cn/field/20261017/680804120.shtml" class="client" target="_blank" class="fl" title="酒博会连续第二年落地武汉，53度飞天茅台开瓶免费尝">酒博会连续第二年落地武汉，53度飞天茅台开瓶免费尝</a>
+				</dt>
+				<dd class="preview">暂无文章概要</dd>
+				<dd class="more"><a href="http://news.10jqka.com.cn/field/20261017/680804120.shtml" class="client" target="_blank">查看全文&gt;&gt;</a></dd>
+			</dl>
+						<dl>
+				<dt>
+					<span class="date">10/17 21:45</span>
+					<span class="fl">标题：</span><a href="http://news.10jqka.com.cn/field/20261017/680804018.shtml" class="client" target="_blank" class="fl" title="世界名酒可持续发展指数报告发布：量化洞察全球酒业发展新态势">世界名酒可持续发展指数报告发布：量化洞察全球酒业发展新态势</a>
+				</dt>
+				<dd class="preview">暂无文章概要</dd>
+				<dd class="more"><a href="http://news.10jqka.com.cn/field/20261017/680804018.shtml" class="client" target="_blank">查看全文&gt;&gt;</a></dd>
+			</dl>
+										<ul>
+							<li><a href="http://news.10jqka.com.cn/field/20261017/680804001.shtml" class="client" target="_blank" title="泸州：龍涧酒博园下沙开甑 解锁产教融合“新酒方”"><span>10/17 21:44</span> 泸州：龍涧酒博园下沙开甑 解锁产教融合“新酒方”</a></li>
+							<li><a href="http://news.10jqka.com.cn/field/20261017/680803946.shtml" class="client" target="_blank" title="白酒“取悦”年轻人：降度做小酒，技术创新推动健康化"><span>10/17 21:36</span> 白酒“取悦”年轻人：降度做小酒，技术创新推动健康化</a></li>
+							<li><a href="http://news.10jqka.com.cn/field/20261017/680803492.shtml" class="client" target="_blank" title="第二届“白酒邪修学院”落地秋糖，白酒行业在尝试什么？"><span>10/17 20:44</span> 第二届“白酒邪修学院”落地秋糖，白酒行业在尝试什么？</a></li>
+							<li><a href="http://news.10jqka.com.cn/field/20261017/680803143.shtml" class="client" target="_blank" title="励小捷：让文化遗产赋能中国酒产业高质量发展"><span>10/17 20:02</span> 励小捷：让文化遗产赋能中国酒产业高质量发展</a></li>
+							<li><a href="http://news.10jqka.com.cn/field/20261017/680802957.shtml" class="client" target="_blank" title="一杯锦绣敬山河万里 双沟锦绣山河新品上市暨核心经销商签约盛典在南京举行"><span>10/17 19:17</span> 一杯锦绣敬山河万里 双沟锦绣山河新品上市暨核心经销商签约盛典在南京举行</a></li>
+							<li><a href="http://news.10jqka.com.cn/field/20261017/680802929.shtml" class="client" target="_blank" title="共筑全球酒业新共识 2026赤水河论坛启幕"><span>10/17 19:07</span> 共筑全球酒业新共识 2026赤水河论坛启幕</a></li>
+							<li><a href="http://news.10jqka.com.cn/field/20261017/680802897.shtml" class="client" target="_blank" title="亮相武汉酒博会！国威酒业行稳致远，与中国酒业同频共振"><span>10/17 18:59</span> 亮相武汉酒博会！国威酒业行稳致远，与中国酒业同频共振</a></li>
+							<li><a href="http://news.10jqka.com.cn/field/20261017/680802895.shtml" class="client" target="_blank" title="在“厂门口”的酒博会，看见黄鹤楼酒的“新酒巷”谋变"><span>10/17 18:59</span> 在“厂门口”的酒博会，看见黄鹤楼酒的“新酒巷”谋变</a></li>
+						</ul>
+				</div>
+	</div>
+	<div class="ft"></div>
+</div>
+</div>
+		<!-- F10 Content End -->
+<!-- F10 Footer Start -->
+		<div class="footer">
+		<div class="links">
+		    <a href="http://stockpage.10jqka.com.cn" target="_blank" onclick="clickTalogStat('jptostock');">同花顺个股</a> |
+		    <a href="http://moni.10jqka.com.cn/" target="_blank">模拟炒股</a> |
+		    <a href="https://xtz.10jqka.com.cn/pc/home?from=pcf10" target="_blank">股民学校</a> |
+		    <a href="http://mobile.10jqka.com.cn/?req=pcf10" target="_blank">手机炒股</a>|
+		    <a target="_blank" href="https://news.10jqka.com.cn/homepage/intro/contact-us">联系我们</a>
+		</div>
+		<p>免责声明:本信息由同花顺金融研究中心提供，仅供参考，同花顺金融研究中心力求但不保证数据的完全准确，如有错漏请以中国证监会指定上市公司信息披露媒体为准，同花顺金融研究中心不对因该资料全部或部分内容而引致的盈亏承担任何责任。用户个人对服务的使用承担风险。同花顺对此不作任何类型的担保。同花顺不担保服务一定能满足用户的要求，也不担保服务不会受中断，对服务的及时性，安全性，出错发生都不作担保。同花顺对在同花顺上得到的任何信息服务或交易进程不作担保。同花顺提供的包括同花顺理财的所有文章，数据，不构成任何的投资建议，用户查看或依据这些内容所进行的任何行为造成的风险和结果都自行负责，与同花顺无关。 </p>
+		</div>
+<!-- F10 Footer End -->
+    </div>
+    <div class="r-go-top" id="r-go-top"></div>
+</body>
+<input id="stockCode" type="hidden" value="600519">
+<input id="F001" type="hidden" value="A">
+<input id="F002" type="hidden" value="上海证券交易所">
+<input id="F004" type="hidden" value="1">
+<input id="stockName" type="hidden" value="贵州茅台">
+<input id="marketId" type="hidden" value="17">
+<input id="cateName"  type="hidden" value="行业对比">
+<input id="catecode"  type="hidden" value="field">
+<input id="fcatecode"  type="hidden" value="field">
+<input id="sid" type="hidden" value="F10new_hyfx">
+<input id="fid" type="hidden" value="F10,F10master,F10main,F10new">
+<input id="qid" type="hidden" value="14585071">
+<div style="display:none" id="wordraddom">
+</div>
+<!-- title 容器 -->
+	<div class="titleBox" id="altlayer" style="display:none; width: 260px;">
+		<div class="tipbox_bd p0_5"><span style="line-height:24px;" class="tip f14">
+		<span id="altlayer_content"></span>
+		</div>
+	</div>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/common/cefapi/1.5.5/cefApi.min.js;js/basic/stock/newPcJs/common.js"></script>
+<script>
+try {
+    external.createObject('Util');
+    //document.getElementById("updownchange").style.display = "block";
+} catch (e) {}
+</script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/jquery-1.8.3.min.js;js/basic/common/inheritance.js;js/basic/stock/popWin.js;js/basic/common/Model_v2.js;js/basic/stock/20200604153837/index.js;js/basic/stock/20200604153837/po_v2.js;js/basic/stock/scrollBind.js"></script>
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/common_v3-2-475b46.js"></script>
+<!--[if IE ]><script type="text/javascript"  crossorigin src="//s.thsi.cn/js/excanvas.min.js"></script><![endif]-->
+<!--[if IE 6]>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">DD_belatedPNG.fix('.company_logo,.btn-gnjx-left, .btn-gnjx-right, .concept_hot_icons,.iwc_searchbar,.iwc_searchbar .tips-icon,#autocomplete_search_input dd .icona,#autocomplete_search_input dd .iconb');</script>
+<![endif]-->
+<script type="text/javascript" crossorigin src="//s.thsi.cn/js/basic/jquery.pos-fixed.js"></script>
+<script type="text/javascript" crossorigin src="//s.thsi.cn/cb?js/ta.min.js;js/pa.min.js;js/basic/stock/StatLoad.js;js/basic/stock/20200605135220/xgcl_mod.js"></script>
+<script type="text/javascript" crossorigin src="//s.thsi.cn/js/basic/stock/tongji.min.js"></script>
+<!-- 统计 -->
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/home/ths_core.min.js;js/home/ths_quote.min.js;js/home/tongji.min.js" charset="utf-8"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/commonLog_v3.js" charset="utf-8"></script>
+<!--F10运营位脚本-->
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/append-960857.js"></script>
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/f10widget_v3-5ec039.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?/js/navigation/jquery.bgiframe.min.js;/js/navigation/jquery.ui.position.min.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/basic/stock/json2.js"></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/search_v3-fec53c.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/basic/stock/tableSorter_v6.20170511.js;js/basic/stock/jquery.flot.min.js;js/basic/stock/jquery.flot.tooltip.min.js;js/basic/stock/20200604153837/field.20140705.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn//js/basic/stock/jquery.simplePagination.js"></script>
+<script>
+//---------------自定义title弹窗 start----------
+var tempalt='';//临时存储title
+document.body.onmousemove = function(event) {
+	if(altlayer.style.display==''){
+		$("#altlayer").css({
+			left: event.pageX,
+			top: event.pageY+10
+		});
+	}
+};
+document.body.onmouseover = function(event) {
+	if (event.srcElement.className !== 'titleIcon') {
+		return false;
+	}
+	if(event.srcElement.title && (event.srcElement.title!='' || (event.srcElement.title=='' && tempalt!=''))){
+		$("#altlayer").css({
+			left: event.pageX,
+			top: event.pageY+20,
+			display: ''
+		});
+		$("#altlayer_content").html(event.srcElement.title)
+		tempalt = event.srcElement.title;
+		event.srcElement.title='';
+	}
+};
+document.body.onmouseout = function(event) {
+	if (tempalt != '') {
+		event.srcElement.title = tempalt;	
+	}
+	tempalt = '';
+	$("#altlayer").hide();
+};
+//---------------自定义title弹窗 end----------
+//F10客户端结点设置
+function setClientCacheData() {
+    try { //判断是否在客户端，存入结点
+        external.createObject('Util');
+        window.API.use({
+            method: 'Util.getHxVer',
+            success: function(data) {
+                var hexinVer = getVersionStr(data);
+                var pathname = window.location.pathname
+                pathname = pathname.replace(/\/\d{2,3}\//, '/%4/');
+                pathname = pathname.replace(/\/[\d|A]\d{5}\//, '/%6/');
+                //dalert(hexinVer);//上线注意，测试版版本86080  正式版 86090 请注意
+                if (hexinVer >= 86080) {
+                    window.API.use({
+                        method: 'Info.cacheInfoData',
+                        data: ['f10_client_node', 'http://basic.10jqka.com.cn' + pathname],
+                        success: function() {
+                        }
+                    })
+                } else {
+                    window.API.use({
+                        method: 'Info.cacheInfoData',
+                        data: ['', 'http://basic.10jqka.com.cn/' + pathname],
+                        success: function() {
+                        }
+                    })
+                }
+            }
+        })
+        document.getElementById("updownchange").style.display = "block";
+    } catch (e) {
+        //远航版隐藏header
+        $("#quotedata").empty()
+        $("#updownchange").empty()
+    }
+	try {
+		callNativeHandler('getMacVer', {}, function(data){
+			if (data.plaform == 'mac' && data.version>='1.3.0' ) {
+				var pathname = window.location.pathname
+                pathname = pathname.replace(/\/\d{2,3}\//, '/%4/');
+                pathname = pathname.replace(/\/[\d|A]\d{5}\//, '/%6/');
+				callNativeHandler('cache_info_Data', {
+					'f10_client_node': 'http://basic.10jqka.com.cn' + pathname
+				}, function(data){
+				});
+			}
+		});
+	} catch (e) {
+    }
+}
+setClientCacheData();
+</script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/20200604153837/stockpage_v3.20190506.js"></script>
+<script type="text/javascript" charset="utf-8" crossorigin id="ths-parser-script" app_key="f10_astockpc_config" src="//s.thsi.cn/cd/website-thsc-f10-utils/1.4.39/parser.js"></script>
+<script type="text/javascript">
+var sid = 'F10new_hyfx';
+var fid = 'F10,F10master,F10main,F10new';
+var stockcode = '600519';
+if (window.location.href.indexOf('interactive')<0
+		&&window.location.href.indexOf('dupont')<0) {
+    $(".subnav .skipto").each(function(){
+    	sonnav = $(this).attr('nav');
+    	if ($("#"+sonnav).length>0 || $("[idchange='"+sonnav+"']").length>0) {
+    	} else {
+    		$(this).hide();
+    	}
+    })
+}
+if (stockcode.substr(0,2) == '43' || stockcode.substr(0,2) == '83') {
+	var third_sid = sid+'_thirdboard';
+	var third_fid = fid+'_thirdboard';
+    PA.setStartTime(loadTimer);
+	PA.init({'id':third_sid, 'fid':third_fid, 'stockcode':stockcode});
+}
+$(document).ready(function(){
+var hash = window.location.hash.substring(1);
+var hashArray = hash.split('-');
+if(hashArray[0]  == 'position'){
+	$("#sortNav li").eq(hashArray[1]).find("a").click();
+}
+});
+try {
+    external.createObject('Util');
+    window.API.use({
+        method: 'Passport.get',
+        data: ['m_qs'],
+        success: function(data) {
+            var qsid = data
+            if (qsid == '114') {
+                $("#f10_top_ad").hide();
+                $("#r-go-top").hide();
+            }
+        }
+    })
+} catch (e) {}
+if (!isIE6()) {
+    $(".m_box").statload();
+}
+try {
+    external.createObject('Util');
+    window.API.use({
+        method: 'Passport.get',
+        data: 'm_qs',
+        success: function(data) {
+            var qsid = data
+            if (qsid < 800) {
+                fid += ',f10new_qs';
+            } else {
+                fid += ',f10new_fqs';
+            }
+            PA.setStartTime(loadTimer);
+            setTimeout(function(){
+                PA.init({
+                    'id': sid,
+                    'fid': fid,
+                    'stockcode': stockcode,
+                    'qsid': qsid
+                });
+            },100)
+        }
+    })
+} catch (e) {
+    PA.setStartTime(loadTimer);
+    PA.init({
+        'id': sid,
+        'fid': fid,
+        'stockcode': stockcode
+    });
+}
+try {
+    external.createObject('Util');
+    var externalSessionId = window.API.createSessionId('external');
+    window.API.use({
+        method: 'external.registerEvent',
+        data: 'onshow',
+        sessionId: externalSessionId,
+        persistent: true,
+        callbackName: 'onshow',
+        success: function(data) {
+            if (!data) {
+                 PA.setStartTime(loadTimer);
+                 PA.init({
+                    'id': sid,
+                    'fid': fid,
+                    'stockcode': stockcode,
+                    'hide': 1,
+                    'nj': 1,
+                    _sid: "__ths_onshow"
+                });
+            }
+        }
+    })
+} catch (e) {}
+</script>
+<div style="display:none"><script type="text/javascript">
+// 在客户端内，html做个区分，解决端内的一些特性
+if ((window.external && 'createObject' in window.external) || (window.HevoCef && "IsHevoCef" in window.HevoCef)) {
+	$('html').addClass("inClient");
+}
+(function(){
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F78c58f01938e4d85eaf619eae71b4ed1' type='text/javascript'%3E%3C/script%3E"));
+});
+</script>
+
+<script type="text/javascript" charset="utf-8" crossorigin src="//s.thsi.cn/js/basic/stockph_v2/stock/f10hq_v4-5-576b58.js"></script>
+<script type="text/javascript" charset="utf-8" crossorigin src="//s.thsi.cn/js/basic/stockph_v2/stock/onlyBAuthorize-4a6ce9.js"></script>
+</div>
+<!--F10头部广告-->
+
+<!--<div id="f10_top_ad" class="f10_ad_top none"><script type="text/javascript">CNZZ_SLOT_RENDER('297563');</script></div>-->
+</html>
+	

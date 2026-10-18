@@ -1,0 +1,2611 @@
+<!DOCTYPE HTML>
+<html>
+<head id="head">
+		    <title>平安银行(000001) 公司资料_F10_同花顺金融服务网</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7;IE=9"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+	<meta name="keywords" content="平安银行最新动态,平安银行公司概况,平安银行财务分析,平安银行股东研究,平安银行股本结构,平安银行公司大事,平安银行分红融资"/>
+	<meta name="description" content="暂无"/>
+	<!-- 券商url参数添加，落地只落broker-pcf10.html -->
+	
+	<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.1.13.min.1792310.js"></script> <script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1792310.js"></script> <script>
+    function getUrlParams(key, url) {
+        var href = url ? url : window.location.href;
+        if (href.indexOf("?") < 0 && href.indexOf("#") < 0) {
+            return false;
+        }
+        var hrefStr = href.replace(/#/g, "&");
+        hrefStr = hrefStr.replace(/\?/g, "&");
+        var paramsObj= {};
+        hrefStr.split("&").forEach(function(i) {
+            if (i.indexOf("=") > -1) {
+                paramsObj[i.split("=")[0]] = i.split("=")[1];
+            }
+        });
+        if (key) {
+            return paramsObj[key] || false;
+        } else {
+            return paramsObj;
+        }
+    }
+
+    function addParam(url, obj) {
+        var str = "",res;
+        for (var key in obj) {
+            str += (key + "=" + obj[key]);
+        }
+        if (url.indexOf("?") > -1) {
+            res = url.split('?').join('?' + str + '&');
+        } else if (url.indexOf("#") > -1) {
+            res = url.replace(/#/g, "?" + str + "#");
+        } else {
+            res = url + "?" + str;
+        }
+        return res;
+    }
+
+    var historyUrl = document.referrer;
+    if (historyUrl) {
+        var broker = getUrlParams('broker', historyUrl);
+        if (broker && window.history) {
+            var url = window.location.href;
+            url = addParam(url, broker ? {broker: broker} : {});
+            window.history.pushState('', '', url);
+        }
+    }
+</script>
+	<!-- f10工具箱，工具函数修改，落地只落utils.html -->
+	
+	<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1792310.js"></script> <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.4.8/f10-polyfill.js" crossorigin></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cd/kernel-thslc-component-materials-container/F10/static/css-vars-ponyfill.js" ></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.6.0/thsc-f10-utils.js" crossorigin></script>
+<script>
+    function isIEInClient(){
+        return !!(window.external && 'getUserPath' in window.external && 'createObject' in window.external);
+    }
+
+    function isInTongYiClient(){
+      return !!(window.external && 'createObject' in window.external);
+    }
+
+    function isInYuanHangClient(){
+        return !!(window.HevoCef && 'IsHevoCef' in window.HevoCef);
+    }
+    
+    function isInIEEnv(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        return ua.indexOf('msie') > -1 || ua.indexOf('trident/') > -1;
+    }
+
+    function isChromeOlderThan50(){
+        var userAgent = navigator.userAgent.toLowerCase();
+        var match = userAgent.match(/chrome\/(\d+)./);
+        if (match && parseInt(match[1]) <= 49) {
+           return true;
+        }
+        return false;
+    }
+
+</script>
+<style>
+.kamis-loading {
+	min-height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #437EB7;
+	background-color: rgba(255,255,255,0.8);
+	gap: 4px;
+	font-size: 14px;
+}
+.dark .kamis-loading, .black .kamis-loading {
+	background-color: #171D25;
+	color: #FEB302;
+}
+.kamis-loading svg {
+	width: 20px;
+	height: 20px;
+}
+.arco-icon-spin {
+  animation: spin 1s linear infinite;
+}
+.kamis-nodata {
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #333;
+  padding: 10px 14px;
+}
+.dark .kamis-nodata, .black .kamis-nodata {
+  color: #999;
+  background-color: #0b1016;
+  border-color:#1e2b38;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+		<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1792310.js"></script> <script src="//s.thsi.cn/js/m/common/bridge.js" type="text/javascript"  crossorigin></script>
+	<script type="text/javascript"  crossorigin  src="//s.thsi.cn/js/jquery-1.8.3.min.js"></script>
+	<script charset="utf-8" src="//s.thsi.cn/cb?webprivate/lib/axios.min.js;hxapp/m/base/js/vue.2.7.16.min.js" crossorigin="anonymous"></script>
+	<!-- kamis 渲染器 -->
+	<script charset="utf-8" src="//s.thsi.cn/hxapp/m/pkgs/amis-2c/sdk/v1-3/2c-sdk-register.1.3.6.js"></script>
+	<!-- 新版埋点cdn -->
+	<script crossorigin src="//s.thsi.cn/cb?cd/weblog/0.0.1-alpha.27/weblog.js"></script>
+		<script>
+		var xhrProto = XMLHttpRequest.prototype;
+		var origOpen = xhrProto.open;
+		xhrProto.open = function (method, url) {
+			if (location.host.indexOf('0033.cn') > -1 && arguments[1] !== undefined && arguments[1].indexOf('10jqka.com.cn') > -1) {
+				arguments[1] = arguments[1].replace('10jqka.com.cn', '0033.cn');
+			}
+			return origOpen.apply(this, arguments);
+		};
+	</script>
+	<script>
+		var originCreateElement =  document.createElement;
+		document.createElement = function(tagName){
+			const element = originCreateElement.apply(document,arguments);
+			if(tagName.toLowerCase() === 'script'){
+				element.setAttribute('charset','utf-8');
+			}
+			return element;
+		}
+	</script>
+	<script id="monitor-script" api_key="ths_f10" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.6.40/monitor.js" crossorigin></script>
+	<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/common/cefapi/1.5.5/cefApi.min.js;js/basic/stock/newPcJs/common.js"></script>
+	<script>
+		try{
+			feMonitor.setConfig(
+				{
+				slientDev:false,//开发环境(localhost)是否发送报错请求，默认不发送为true
+				sampleRate:0.1, //采样率,可设置0-1之间，越小采集的频率越低
+				isCollectPerformance:true, //是否采集性能
+				title:'pc-F10'
+				}
+			);
+		}catch(e){
+
+		}
+	</script>
+	<style>
+        .wencaibs{color:#008BFF!important;cursor:pointer;}
+        .wd-tb .ptxt { word-break: break-word;}
+        .comment-chart-head{color: #89a;}
+        .comment-chart-head span{float: right;}
+        .comment-chart-head span i{vertical-align: middle; display: inline-block; width: 20px; height: 20px;margin: 0 2px 0 6px; border-radius: 20px; overflow: hidden;}
+        .comment-chart-head .imp-news{background: #da2e1f;}
+        .comment-chart-head .yidong-news{background: #e3bf1a;}
+
+        #ckg_table1 tr td{text-align:center}
+        #ckg_table2 tr td{text-align:center}
+        #ckg_table3 tr td{text-align:center}
+        #ckg_table4 tr td{text-align:center}
+        #ckg_table5 tr td{text-align:center}
+		li{list-style-type:none;
+			list-style-position:outside;}
+		#jpjl-input:focus { outline: none; }
+		.black.inClient .clientJump {
+			cursor: pointer;
+			color: #0199fa;
+			text-decoration: underline;
+		}
+		.white.inClient .clientJump {
+			color: #07519a;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		.managelist .name a {    color: #0199fa;
+			margin: 0 3px 2px;
+			text-decoration: underline;
+			border-bottom: none !important;
+		}
+	</style>
+	<!--统计页面加载时间-->
+	<script type="text/javascript">
+		var loadTimer= new Date().getTime();
+	</script>
+    <style>
+        #search_cyter{
+            display: block !important;
+        }
+		#profile .tickLabels .tickLabel{
+			padding-right:12px;
+			box-sizing:border-box;
+		}
+	  .a_cursor {
+		pointer: cursor;
+	}
+    </style>
+</head>
+<script type="text/javascript">
+
+//cookie设置
+function setReviewJumpState(state) {
+	document.cookie = 'reviewJump='
+					+ state
+					+ ';path=/;domain='
+					+ window.location.host;
+}
+//取得对应名字cookie
+function getCookie(name) {
+	var cookieValue = "";
+	var search = name + "=";
+	if (document.cookie.length > 0) {
+	    offset = document.cookie.indexOf(search);
+	    if (offset != -1)    {
+	        offset += search.length;
+	        end = document.cookie.indexOf(";", offset);
+	        if (end == -1) end = document.cookie.length;
+	        cookieValue = unescape(document.cookie.substring(offset, end))
+	    }
+	}
+	return cookieValue;
+}
+//栏目提前跳转
+var reviewJumpState = getCookie('reviewJump');
+if (!!reviewJumpState && reviewJumpState != 'nojump') {
+	setReviewJumpState('nojump');
+	window.location.href = unescape(reviewJumpState);
+} else {
+	setReviewJumpState('nojump');
+}
+//动态添加link-同步-会阻塞
+function addCssByLink(url){
+    document.write('<link rel="stylesheet" type="text/css"');
+    document.write(' href="' + url + '">');
+}
+function isMac() {
+        return /macintosh|mac os x/i.test(navigator.userAgent);
+};
+ var hash = window.location.hash.substring(1);
+hashArray = hash.split('=');
+if (hashArray[0] == 'stockpage') {
+    var STOCK_SKIN = 'white';
+} else {
+    var STOCK_SKIN = getCookie('skin_color');
+}
+//肤色与客户端同步
+function syncClientSkin(){
+	try {//取得客户端肤色
+		if (isMac()) {
+			return 'white';
+		}
+		return 'black';
+	} catch(e) {}
+}
+if (!STOCK_SKIN) {
+	STOCK_SKIN = syncClientSkin();
+}
+document.documentElement.setAttribute("class",STOCK_SKIN);
+if (STOCK_SKIN == 'white') {
+	// addCssByLink('/f10/css/company-compare.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/company-compare-202006082100.css');
+ 
+    addCssByLink('//s.thsi.cn/cb?css/basic/stock/white/20200604153837/style_v4-2.css;css/basic/stock/white/20200604153837/chart_v2.min.20180110.css;css/basic/stock/white/20200604153837/dupont.css;css/basic/stock/white/20200604153837/black_v2-4.20190711.css;css/basic/stock/white/custom.min.css;css/basic/stock/white/20200604153837/operations.css;css/basic/stock/white/20200604153837/writecsskzd.min.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/20200604153837/survey-w.css;css/basic/stock/20200604153837/wxgcl_mod.css;css/basic/stock/provider-w_v2.css;css/basic/stock/20200604153837/searchbar-w_v2.css;css/basic/stock/20200604153837/wccept.css;css/basic/stock/wtgfx.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/fschool/20200604153837/f_school_w.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/wsplpager.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/wchartsdom.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/white/20200604153837/industrydata.css;css/basic/stock/white/20200604153837/main_v1-2.css;css/basic/stock/white/20200604153837/xgcl.css;css/basic/stock/white/20200604153837/courier.css;css/basic/stock/white/20200604153837/recommend.css;css/basic/stock/white/20200604153837/housedata.css;css/basic/stock/white/202005071600/20200604153837/longhu.css;css/basic/stock/white/20200604153837/operate_white.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/remind_white.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/index_v1.css');
+	addCssByLink('//s.thsi.cn/js/home/v5/thirdpart/scrollbar/jquery.mCustomScrollbar.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/instition_white_v2.css');
+	if (!!window.ActiveXObject&&!window.XMLHttpRequest) {
+		addCssByLink('//s.thsi.cn/css/basic/stock/white/20200604153837/expression.css');
+	}
+				addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/jquery.mCustomScrollbar.min.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/20200604153837/patentData_v3.20180130.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/20200604153837/product_cmper_v2.20170706.css');
+    		addCssByLink("//s.thsi.cn/css/basic/common/white/title.css")
+} else {
+	// addCssByLink('/f10/css/company-compare.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/company-compare-202006082100.css');
+ 	addCssByLink('//s.thsi.cn/cb?css/basic/stock/black/20200604153837/style_v3-5.min.20200426.css;css/basic/stock/black/20200604153837/chart_v2.min.20190410.css;css/basic/stock/black/20200604153837/black_v2-4.20190711.css;css/basic/stock/black/custom.min.css;css/basic/stock/black/20200604153837/operations.css;css/basic/stock/black/20200604153837/csskzd.min.20150608.css;/css/basic/stock/20200604153837/survey.20150929.css;/css/basic/stock/provider_v2.css;/css/basic/stock/20200604153837/searchbar_v2.css;/css/basic/stock/20200604153837/ccept.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/fschool/20200604153837/f_school.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/black/splpager.20170504.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/chartsdom.css;css/basic/stock/20200604153837/xgcl_mod.css;/css/basic/stock/tgfx.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/black/20200604153837/industrydata.css;css/basic/stock/black/20200604153837/main_v1-2.css;css/basic/stock/black/20200604153837/xgcl.css;css/basic/stock/black/20200604153837/courier.css;css/basic/stock/black/20200604153837/funcRecommend.css;css/basic/stock/black/20200604153837/dupont.css;css/basic/stock/black/202005071600/20200604153837/longhu.css;css/basic/stock/black/20200604153837/operate.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/black/remind_black.css');
+	addCssByLink('//s.thsi.cn/js/home/v5/thirdpart/scrollbar/jquery.mCustomScrollbar.css');
+
+	addCssByLink('//s.thsi.cn/css/basic/stock/index_v1.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/instition_black_v2.css');
+	if (!!window.ActiveXObject&&!window.XMLHttpRequest) {
+		addCssByLink('//s.thsi.cn/css/basic/stock/black/20200604153837/expression.min.20140801.css');
+	}
+		addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/jquery.mCustomScrollbar.min.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/patentData_v2.20180130.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/black/20200604153837/product_cmper_v2.20170706.css');
+					addCssByLink("//s.thsi.cn/css/basic/common/black/title.css")
+}
+/*calendar*/
+function  minDate(){
+ 	var data = $('#inte_json').text();
+	var datajson =new Object();
+	if (data) {
+		data = eval('('+data+')');
+	}
+	for (var x in data) {
+		datajson = data[x];
+	}
+	var minDate = datajson.year+'-'+datajson.month+'-'+datajson.day;
+	return minDate;
+ }
+ Date.prototype.Format = function(fmt)
+{ //author: meizz
+  var o = {
+    "M+" : this.getMonth()+1,                 //月份
+    "d+" : this.getDate(),                    //日
+    "h+" : this.getHours(),                   //小时
+    "m+" : this.getMinutes(),                 //分
+    "s+" : this.getSeconds(),                 //秒
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度
+    "S"  : this.getMilliseconds()             //毫
+  };
+  if(/(y+)/.test(fmt))
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+  for(var k in o)
+    if(new RegExp("("+ k +")").test(fmt))
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+  return fmt;
+}
+ function  displayDate(){
+ 	var data = $('#inte_json').text();
+ 	var date =new Array();
+	var datajson =new Object();
+	var i=0;
+	if (data) {
+		data = eval('('+data+')');
+	}
+	for (var x in data) {
+		datajson[x] = data[x];
+		dates = datajson[x].year+'-'+datajson[x].month+'-'+datajson[x].day;
+		if (x==0|| date[i-1] != dates) {
+			date[i] = dates;
+			i++;
+		}
+	}
+	var count =date.length;
+	var date2 = new Date();
+	var month =date2.getMonth()+1;
+	var day =date2.getDate();
+	if ((date2.getMonth()+1)>9) {
+	} else {
+	 	var month ="0"+month;
+	}
+	if (date2.getDate()>9) {
+	} else {
+	 	var day ="0"+day;
+	}
+	year = date2.getFullYear();
+	date2 = year+'-'+month+'-'+day;
+	var result = "['";
+	for (i=0;i<count;i++) {
+		if (date2 == date[i]) {
+			dateArr = date2.split('-');
+			newdate = new Date(new Date(dateArr[0], dateArr[1]-1,  dateArr[2])-24*60*60*1000);
+			date2 = newdate.Format("yyyy-MM-dd");
+		} else {
+			result +=date2+"',";
+			dateArr = date2.split('-');
+			newdate = new Date(new Date(dateArr[0], dateArr[1]-1,  dateArr[2])-24*60*60*1000);
+			date2 = newdate.Format("yyyy-MM-dd");
+			i--;
+		}
+	}
+	result = result.substr(0,result.length-1)+']';
+	return result;
+ }
+    function showDatePicker1(color) {
+        WdatePicker({
+            selfCssUrl:'//s.thsi.cn/css/basic/stock/'+STOCK_SKIN+'/mydatepicker.css',
+            eCont:'WdateDiv1',
+            vel:'elDate1',
+            minDate:minDate(),
+            maxDate:'%y-%M-%d',
+            onpicked:function(dp){
+                $('#elDate1').text(dp.cal.getNewDateStr());
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            },
+            Mchanged:function(dp){
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            }
+        });
+    }
+    function showDatePicker2(color) {
+
+        WdatePicker({
+            selfCssUrl:'//s.thsi.cn/css/basic/stock/'+STOCK_SKIN+'/mydatepicker.css',
+            eCont:'WdateDiv2',
+            vel:'elDate2',
+            maxDate:'%y-%M-%d',
+            onpicked:function(dp){
+                $('#elDate2').text(dp.cal.getNewDateStr());
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            },
+            Mchanged:function(dp){
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            }
+        });
+    }
+  function isIE() {
+	// 判断IE浏览器及其版本
+	if(document.documentMode) {
+		return document.documentMode;
+	}
+	var userAgent = navigator.userAgent.toLowerCase();
+	if (userAgent.indexOf('edge') > -1) {
+		return 'edge';
+	}
+	return false;
+  }
+	 // 初始化财务
+	 var initFinance = window.localStorage.getItem('initFinance');
+	 if (!initFinance) {
+		 window.localStorage.setItem('initFinance', 'init');
+		 window.localStorage.setItem('memoryPage', 'old');
+	  }
+	  // 跳转地址
+    function jumpToUrl(url, name, anchor, conceptName) {
+	  if (!url || !name) {
+			return;
+		}
+		// 新老地址切换
+		var oldPage = {
+			'financen': true
+		}
+		var pageLocation = window.localStorage.getItem('memoryPage');
+      //在IE环境中
+      if (isInIEEnv() || (pageLocation && pageLocation == 'old' && oldPage[name])) {
+        location.href = url;
+	    return;
+     }
+     var code = $('#stockCode').val();
+	 var codeName = $('#stockName').val();
+	 var marketid = $('#marketId').val();
+	 var pageAnchor = anchor ? '&anchor=' + anchor : '';
+	 var host = window.location.host;
+	 var targetUrl = '//' + host + '/astockpc/astockmain/index.html#/' + name + '?code=' + code + '&marketid=' + marketid + '&code_name=' + codeName + pageAnchor;
+	 if (conceptName) {
+		 targetUrl += "&cname=" + conceptName;
+	 }
+     location.href = targetUrl;
+    }
+	// 跳转新地址
+	function jumpToNew() {
+       var code = $('#stockCode').val();
+	   var codeName = $('#stockName').val();
+	   var marketid = $('#marketId').val();
+	   var url = window.location.href;
+	   var module = url.match(/\/(\w+).html?/);
+	   var moduleName = '';
+	   var host = window.location.host;
+	   if (module && module[1]) {
+		   moduleName = module[1];
+		   if (module[1] == 'finance') {
+			   moduleName = 'financen';
+		   }
+	   }
+	   window.TA.log('F10hs_cwfx.tyxbb.click');
+	   window.localStorage.setItem('memoryPage', 'new');
+	   setTimeout(function (){
+		  location.href = '//' + host + '/astockpc/astockmain/index.html#/' + moduleName + '?code=' + code + '&marketid=' + marketid + '&code_name=' + codeName;
+	   }, 10)
+	}
+</script>
+    <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/qdc_ad-fd3034.js"></script>
+	<link href="//s.thsi.cn/css/basic/stockph/qdc_ad-6e8683.css" rel="stylesheet" type="text/css">
+ 
+<body>
+<div class="votepopbox votesuccess" style="display: none">
+		<div class="vpopicon"></div>
+		<p class="vpoptxt fz18">谢谢您的宝贵意见</p>
+		<p class="vpoptxt">您的支持是我们最大的动力</p>
+	</div>
+	<div class="votepopbox voteinfo" style="display: none">
+		<div class="vpopicon"></div>
+		<p class="vpoptxt fz18">谢谢您的支持</p>
+		<p class="vpoptxt"></p>
+	</div>
+    <div class="wrapper">
+<!-- F10 Header Start -->
+		<div class="header">
+		    <div class="hd">
+		        <div class="logo fl" id="logo_self"><a title="同花顺F10">同花顺F10</a></div>
+
+															<div onclick="sendTalog('f10_click_quot')" style="width:260px; margin-left:60px; font-size:14px;cursor:pointer;margin-right:10px;display:none;text-align:center" class="fl tip " id="quotedata">
+							<div  class="fl">最新价： <span style="width:40px" class="upcolor" id="zxj">--</span></div>
+							<div  class="fr">涨跌幅： <span style="width:40px;" class="upcolor" id="zdf">--</span></div>
+						</div>
+											        <span class="fr skin-change"><a href="###">换肤</a></span>
+		        <div class="search fr" id="search_cyter">
+		            <div id="updownchange" type="once" class="codeChange fl" style="display: none;">
+		                <a href="javascript:void(0)" class="per">上一个股</a>
+		                <a href="javascript:void(0)" class="next">下一个股</a>
+		            </div>
+		            <div class="fl searchbar">
+			            <div class="text fl">
+			                <input type="text" id="jpjl-input" value="输入股票名称或代码" /><!--文本框获得焦点给.searchbar添加hover类-->
+			             </div>
+		                <input type="button" value="搜索" class="btn" id="submit"/>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="bd clear">
+		        <div class="code fl">
+					<div><h1 style="margin:3px 0px 0px 0px">
+												平安银行</h1></div>
+					<div>
+						<a href="interactive.html" tid="wdm" posid="r1c1" class="iwen" onclick="TA.log({'id':'F10_review','nj':1})">i问董秘</a>
+						<style>
+							.qiyehao {
+								display:none;
+								float:left;
+								cursor:pointer;
+								margin: 4px 0 0 17px;
+								width:50px;
+								text-align:center;
+								font-size:12px;
+								padding: 2px  0 4px 0;
+								line-height:12px;
+							    border-radius:6px;
+								color: white;
+                                background-color:#437eb7;
+							}
+							.black  .qiyehao {
+								background-color: #b60006;
+							}
+						</style>
+						<div class="qiyehao">企业号</div>
+						<h1 style="margin:3px 0px 0px 0px">
+						000001						</h1>
+						<script>
+							 $(document).ready(function(){
+								//获取市场代码
+                                var market = $('#marketId').val();
+								//获取股票代码
+								var code = $('#stockCode').val();
+								//判断是否是B股
+								var isBStock = function () {
+									var flag = market == '18' || market == '34' || market == '105';
+									return flag;
+								}
+								
+								//在B股和Ie浏览器中不展示企业号入口
+								if(isBStock() || isInIEEnv()){
+									return ;
+								}
+								isThsClient(function(){
+                                   //隐藏董秘问答入口
+								   $('.iwen').hide();
+                                   //展示企业号入口
+								   $('.qiyehao').show();
+								   $(document).on ('click','.qiyehao',function(){
+                                      var url = 'https://board.10jqka.com.cn/fe/board/qyh.html#/qyh/homepage?thscode=' + code  + '&marketid=' + market + '&from=f10';
+									    window.API.use({
+										  method: "Util.openURL2",
+										  data:{
+											url: url,
+											mode: 1,
+											useCef: true,
+										  }
+									    })
+								    })
+								})
+							 })
+						</script>
+					</div>
+		        </div>
+		        <div class="nav">
+		            <ul>
+		                <li><a href="./"              target="_self" tid="zxdt" posid="r1c3" >最新动态</a></li>
+		                <li><a href="javascript:void(0)" onclick="jumpToUrl('./company.html', 'company', '');return false;"   target="_self" tid="gszl" posid="r1c4"  class="cur"> 公司资料</a></li>
+		                <li><a href="./holder.html"   target="_self" tid="gdyj" posid="r1c5" >股东研究</a></li>
+						<li><a href="javascript:void(0)" onclick="jumpToUrl('./operate.html', 'operate', '');return false;" target="_self" tid="jyfx" posid="r1c6" > 经营分析</a></li>
+		                <li><a href="./equity.html"   target="_self" tid="gbjg" posid="r1c7" >股本结构</a></li>
+		                <li><a href="./capital.html"  target="_self" tid="zbyz" posid="r1c8" > 资本运作</a></li>
+		                <li><a href="./worth.html"    target="_self" tid="ylyc" posid="r1c9"  >盈利预测</a></li>
+		                <li><a href="./news.html"     target="_self" tid="xwgg" posid="r2c3" >新闻公告</a></li>
+						<li><a  href="javascript:void(0)"  onclick="jumpToUrl('./concept.html', 'concept', '');return false;"target="_self" tid="gntc" posid="r2c4" >概念题材</a></li>
+		                <li><a  href="javascript:void(0)"  onclick="jumpToUrl('./position.html', 'position', '');return false;"target="_self" tid="zlcc" posid="r2c5" >主力持仓</a></li>
+		                <li><a href="javascript:void(0)"  onclick="jumpToUrl('./finance.html', 'financen', '');return false;" target="_self" tid="cwgk" posid="r2c6" > 财务分析</a></li>
+						<li><a href="javascript:void(0)"  onclick="jumpToUrl('./bonus.html', 'bonus', '');return false;" target="_self" tid="fhrz" posid="r2c7" >分红融资</a></li>
+						<li><a href="./event.html"    target="_self" tid="gsds" posid="r2c8" >公司大事</a></li>
+		                <li><a href="./field.html"    target="_self" tid="hydb" posid="r2c9" >行业对比</a></li>
+		            </ul>
+		        </div>
+		        <div class="subnav">
+					<ul>
+					   						<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="detail"  name="company.html#detail" href="###">详细情况							</a>
+						</li>
+												<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="manager"  name="company.html#manager" href="###">高管介绍							</a>
+						</li>
+												<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="publish"  name="company.html#publish" href="###">发行相关							</a>
+						</li>
+												<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="share"  name="company.html#share" href="###">参控股公司							</a>
+						</li>
+												<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="patent"  name="company.html#patent" href="###">专利状况							</a>
+						</li>
+								            </ul>
+		        </div>
+		    </div>
+		</div>
+<!-- F10 Header End -->
+<!-- F10 Content Start -->
+		<style>
+		.iwc_searchbar{display: none;}
+	</style>
+		<div class="iwc_searchbar clearfix" style="">
+    <div class="tips-box" style="display: none;">
+        <div class="t-hd"></div>
+        <div class="t-bd">
+            <div class="info">
+                <p>F10 功能找不到？在搜索框里直接输入您想要的功能！比如输入“龙虎榜”，赶快试一下哦！</p>
+                <div class="btn">
+                    <a href="###" class="a-left close">跳过</a>
+                    <a href="###" class="a-right next">下一步</a>
+                </div>
+            </div>
+            <div class="info" style="display: none;">
+                <p>选股选不好？可以直接输入你想要的问句啦，比如输入“近一周涨幅超过30%的股票”赶紧行动吧！</p>
+                <div class="btn">
+                    <a href="###" class="a-left prev">上一步</a>
+                    <a href="###" class="a-right close">完成</a>
+                </div>
+            </div>
+        </div>
+        <div class="t-ft"></div>
+   	 </div>
+     <div class="searchfx">
+        <input id="search_input" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh_CN" class="fillbox" autocomplete="off" type="text" value="输入问句，你想知道的都在这里">
+        <input class="action_btn" id="search_submit" type="button" value="搜索">
+        <span  class="tips-icon"></span>
+     </div>
+	</div>
+	<div class="content page_event_content" ><link rel="stylesheet" href="//s.thsi.cn/css/basic/stock/newPcCss/20200604153837/newCompany_cb.css">
+<link rel="stylesheet" href="//s.thsi.cn/css/basic/stock/newPcCss/20200604153837/company_share.css">
+
+<div class="m_box company_overview company_detail" id="detail" stat="compnay_detail">
+	<div class="hd flow_index search_z">
+        <h2>详细情况</h2>
+    </div>
+		<div class="bd">
+				<table class="m_table">
+			<tbody>
+				<tr class="video-btn-box-tr">
+											<td rowspan="3" align="center" >
+							<p style="width:160px;align:center"><img src="https://basic.10jqka.com.cn/ai_data/logo/company/dc-d-common-global.company-logo/44dfd6b2-ba2e-4e8f-8cf6-f1cbd3aacd87.png" alt="平安银行股份有限公司" height="60"></p>
+							<!--<p class="email-address">企业在此投放宣传视频：news@myhexin.com</p>-->
+						</td>
+										
+					<td><strong class="hltip fl">公司名称：</strong><span>平安银行股份有限公司</span>
+					</td>
+					<td><strong class="hltip fl">所属地域：</strong><span>广东省</span>
+					</td>
+				</tr>
+				<tr>
+					<td><strong class="hltip fl">英文名称：</strong><span>Ping An Bank Co.,Ltd.</span>
+					</td>
+					<td><strong class="hltip fl">所属申万行业：</strong><span>银行 — 股份制银行Ⅱ</span>
+					</td>
+				</tr>
+				<tr>
+					<td><strong class="hltip fl">曾 用 名：</strong><span>深发展A->S深发展A->深发展A</span></td>
+					<td><strong class="hltip fl">公司网址：</strong><span>
+    					    					    					<a href="http://bank.pingan.com" target="_blank">bank.pingan.com</a>
+    					    					</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="m_tab_content2">
+			<table class="m_table ggintro managelist">
+				<tbody>
+					<tr>
+						<td colspan="3">
+							<strong class="hltip fl">主营业务：</strong>
+							<span>经有关监管机构批准的各项商业银行业务。</span>
+						</td>
+					</tr>
+					<tr class="product_name"  >									
+						<td colspan="3"><strong class="hltip fl">产品名称：</strong>
+							<span>
+														<span style="color:#ffb400">
+															商业银行业务																	<a class="m_more" topstock="000001"  cid="商业银行业务" tag="商业银行业务" onclick="TA.log({'id':'f10_jzds','nj':1})" href="javascript:void(0)"  targ="proCompete_box0" title="产品竞争"></a>
+							    																					</span>
+							</span>
+						</td>
+					</tr>
+					<!--
+					<tr class="product_show">									
+						<td colspan="3" class ="product"><strong class="hltip fl">可能存在产品：</strong>
+							<span class="product_title">
+														</span>
+							<span class="performance_trailer"> 
+							    <a class="check_detail" href="javascript:void(0);" onclick="clickTalogStat('f10_gszl_xxqk_product_zk','F10new_tbts');">
+                    				<span class="open_btn">展开&nbsp▼</span><span class="close_btn hidden">收起&nbsp▲</span>
+                    	        </a>
+                    		</span>
+                    		<span tag="zycpcontent" taname="f10_stock_iwc_knczcp" onclick="clickTalogStat('f10_gszl_xxqk_product_wh','F10new_tbts');" class="gd_ques iwcclick" name="可能存在产品" content="是同花顺根据人工智能计算挖掘得出的结果，数据仅供参考。"></span>
+                    		<div class="check_else performance_trailer" style="display:none;width:100%;"> 
+                    		         <table class="m_table m_hl" style="width:100%;">
+                        				<thead>
+					<tr>
+                        						<th class="tc" width="22%">主营产品名称</th>
+                        						<th class="tc">出自摘要</th>
+                        					</tr>
+                        				</thead>
+                        				<tbody>
+																				<tr>
+										<td class="tc"><span></span></td>
+                    			        <td class="tl"><span class="short_content"></span><span class="more_tag1"><a class="client" onclick="clickTalogStat('f10_gszl_xxqk_product_xq','F10new_tbts');" href="" target="_blank">详情>></a></span></td>
+                    			        </tr>
+                    			        										
+									</tbody>
+								  </table>
+                    			</div> 
+						</td>
+					</tr>
+										<tr>-->
+						<td colspan="3">
+						<div class="tipbox_wrap mr10" style="z-index:100">
+							<strong class="hltip fl iwcclick"  taname='f10_stock_iwc_kggdck' data-url='http://www.iwencai.com/yike/detail/auid/0948cd92a5d19de8?qs=client_f10_baike_4' content='控股股东是指其出资额占有限责任公司资本总额50％以上，或者是其持有的股份占股份有限公司股本总额50％以上的股东；且出资额或者持有股份的比例虽然不足50％，但依其出资额或者持有的股份所享有的表决权已足以对股东会、股东大会的决议产生重大影响的股东。'>控股股东：</strong>
+												        					        <span>中国平安保险(集团)股份有限公司					        <span class="gray">(持有平安银行股份有限公司股份比例：57.96%）</span>							</span>
+													</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+						<div class="tipbox_wrap mr10" style="z-index:99">
+							<strong class="hltip fl iwcclick"  taname='f10_stock_iwc_kggdck' data-url='http://www.iwencai.com/yike/detail/auid/abb88516c5fb2dbd?qs=client_f10_baike_4' content='指虽不是公司的股东，但通过投资关系、协议或者其他安排，能够实际支配公司行为的人'>实际控制人：</strong>
+	
+														
+														  无实际控制人
+													</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<div class="tipbox_wrap mr10" style="z-index:98">
+								<strong class="hltip fl">最终控制人：</strong>
+																								  无最终控制人
+															</div>
+						</td>
+					</tr>							
+					<tr>
+						<td class="name">
+							<strong class="hltip fl">董事长：</strong>
+							<span>
+								                                    <a person_id="T000342482" jumpUrl="https://www.kuaicha365.com/person/T000342482?source=f10" class="turnto clientJump" href="javascript:void(0)">谢永林</a>
+                                <div class="person_table hidden clientJumpHidden">
+								<a class="close" href="javascript:void(0);">×</a>
+								<table class="m_table ggintro" style="width: 100%">
+									<thead>
+										<tr>
+											<td rowspan="2" class="title">
+												<h3>
+													谢永林												</h3>
+											</td>
+											<td colspan="3" class="jobs" style="width: 150px;">董事长,非执行董事</td>
+										</tr>
+										<tr>
+											<td class="intro">男  58岁  博士</td>
+											<td class="salary"><span>薪酬：</span>--</td>
+											<td>
+												<div class="tipbox_wrap" style="z-index: 99">
+													<span>持股数：</span>
+													<span class="hold">2.67万</span>
+												</div>
+											</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="4" class="mainintro">
+												<div>
+													<p>谢永林，男，非执行董事、董事长。1968年出生，南京大学管理学博士、理学硕士。现任中国平安执行董事、总经理、联席首席执行官。于集团所担任的其他职务谢先生为平安银行董事长和平安资产管理的非执行董事。前期工作经历谢先生于2005年6月至2006年3月任中国平安保险（集团）股份有限公司发展改革中心副主任，于2006年3月至2013年11月先后担任平安银行运营总监、人力资源总监、副行长，于2013年11月至2016年11月先后担任平安证券董事长特别助理、总经理兼首席执行官、董事长，于2016年9月至2019年12月担任中国平安保险（集团）股份有限公司副总经理。此前，谢先生先后出任平安产险支公司副总经理，平安寿险分公司副总经理、总经理，平安寿险市场营销部总经理等职务。教育背景及资格南京大学理学硕士学位南京大学管理学博士学位。</p>
+<!--													<p style="text-align:right">此简介更新于--><!--</p>-->
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+                                							</span>
+						</td>
+						<td class="name">
+							<strong class="hltip fl">董　　秘：</strong>
+							<span>
+							                                <a person_id="T499731000" jumpUrl="https://www.kuaicha365.com/person/T499731000?source=f10" class="turnto clientJump" href="javascript:void(0)">周强</a>
+                                <div class="person_table hidden clientJumpHidden">
+								<a class="close" href="javascript:void(0);">×</a>
+								<table class="m_table ggintro" style="width: 100%">
+									<thead>
+										<tr>
+											<td rowspan="2" class="title">
+												<h3>
+													周强												</h3>
+											</td>
+											<td colspan="3" class="jobs" style="width: 150px;">董事会秘书</td>
+										</tr>
+										<tr>
+											<td class="intro">男  54岁  博士</td>
+											<td class="salary"><span>薪酬：</span>226.9万</td>
+											<td>
+												<div class="tipbox_wrap" style="z-index: 99">
+													<span>持股数：</span>
+													<span class="hold">--</span>
+												</div>
+											</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="4" class="mainintro">
+												<div>
+													<p>周强，男，董事会秘书。1972年出生，南开大学金融学系国际金融专业毕业，经济学博士。周强先生于2001年7月至2007年4月历任平安证券投资银行事业部业务经理、投行管理部副总经理、总经理，2007年4月至2011年10月任中国平安董事会办公室副主任、证券事务代表，2011年10月至2014年5月历任平安证券总经理助理、副总经理；2014年6月至今，任平安银行股份有限公司董事会秘书。</p>
+<!--													<p style="text-align:right">职位更新于--><!--</p>-->
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+                            </span>
+                            						</td>
+						<td width="117px" class="name">
+							<strong class="hltip fl">法人代表：</strong>
+							<span>
+							                                <a person_id="T000342482" jumpUrl="https://www.kuaicha365.com/person/T000342482?source=f10" class="turnto clientJump" href="javascript:void(0)">谢永林</a>
+                                <div class="person_table hidden clientJumpHidden">
+								<a class="close" href="javascript:void(0);">×</a>
+								<table class="m_table ggintro" style="width: 100%">
+									<thead>
+										<tr>
+											<td rowspan="2" class="title">
+												<h3>
+													谢永林												</h3>
+											</td>
+											<td colspan="3" class="jobs" style="width: 150px;">董事长,非执行董事</td>
+										</tr>
+										<tr>
+											<td class="intro">男  58岁  博士</td>
+											<td class="salary"><span>薪酬：</span>--</td>
+											<td>
+												<div class="tipbox_wrap" style="z-index: 99">
+													<span>持股数：</span>
+													<span class="hold">2.67万</span>
+												</div>
+											</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="4" class="mainintro">
+												<div>
+													<p>谢永林，男，非执行董事、董事长。1968年出生，南京大学管理学博士、理学硕士。现任中国平安执行董事、总经理、联席首席执行官。于集团所担任的其他职务谢先生为平安银行董事长和平安资产管理的非执行董事。前期工作经历谢先生于2005年6月至2006年3月任中国平安保险（集团）股份有限公司发展改革中心副主任，于2006年3月至2013年11月先后担任平安银行运营总监、人力资源总监、副行长，于2013年11月至2016年11月先后担任平安证券董事长特别助理、总经理兼首席执行官、董事长，于2016年9月至2019年12月担任中国平安保险（集团）股份有限公司副总经理。此前，谢先生先后出任平安产险支公司副总经理，平安寿险分公司副总经理、总经理，平安寿险市场营销部总经理等职务。教育背景及资格南京大学理学硕士学位南京大学管理学博士学位。</p>
+<!--													<p style="text-align:right">此简介更新于--><!--</p>-->
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+                            							</span>
+						</td>
+					</tr>
+					<tr>
+						<td class="name">
+							<strong class="hltip fl">总 经 理：</strong>
+							<span>
+								                                    <a person_id="T000134715" jumpUrl="https://www.kuaicha365.com/person/T000134715?source=f10" class="turnto clientJump" href="javascript:void(0)">冀光恒</a>
+                                <div class="person_table hidden clientJumpHidden">
+								<a class="close" href="javascript:void(0);">×</a>
+								<table class="m_table ggintro" style="width: 100%">
+									<thead>
+										<tr>
+											<td rowspan="2" class="title">
+												<h3>
+													冀光恒												</h3>
+											</td>
+											<td colspan="3" class="jobs" style="width: 150px;">战略发展与消费者权益保护委员会主席,战略发展与消费者权益保护委员会委员,提名委员会委员,执行董事,行长</td>
+										</tr>
+										<tr>
+											<td class="intro">男  58岁  博士</td>
+											<td class="salary"><span>薪酬：</span>400万</td>
+											<td>
+												<div class="tipbox_wrap" style="z-index: 99">
+													<span>持股数：</span>
+													<span class="hold">--</span>
+												</div>
+											</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="4" class="mainintro">
+												<div>
+													<p>冀光恒，男，执行董事、行长。1968年出生，北京大学经济地理学本科、人文地理学硕士、区域经济学博士，高级经济师。冀光恒先生于2020年4月加入中国平安，历任上海总部党委书记、总经理，陆金所控股有限公司党委书记、董事长，中国平安副总经理。2022年7月至今任中国平安党委副书记。2023年6月至今任平安银行党委书记，2023年11月至今任平安银行执行董事、行长。在加入中国平安前，冀先生曾出任宝能集团副董事长、联席总裁；上海农商银行党委书记、董事长；上海浦东发展银行党委委员、副行长、北京分行党委书记、行长；中国工商银行北京市分行党委委员、副行长，北京市分行办公室主任兼党办主任，长安支行党委书记、行长，总行副行长专职秘书，总行住房信贷部市场开发处副处长；上海银工房地产开发公司董事、副总经理。</p>
+<!--													<p style="text-align:right">此简介更新于--><!--</p>-->
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+                            </span>
+														</td>
+						<td>
+							<strong class="hltip fl">注册资金：</strong>
+							<span>								194.06亿元	
+							</span>
+						</td>
+						<td>
+							<strong class="hltip fl">员工人数：</strong>
+							<span>41043</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong class="hltip fl">电　　话：</strong>
+							<span>86-0755-82080387</span>
+						</td>
+						<td>
+							<strong class="hltip fl">传　　真：</strong>
+							<span>86-0755-82080386</span>
+						</td>
+						<td>
+							<strong class="hltip fl">邮      编：</strong>
+							<span>518001;518033</span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<strong class="hltip fl">办公地址：</strong>
+							<span>广东省深圳市罗湖区深南东路5047号;广东省深圳市福田区益田路5023号平安金融中心B座</span>
+						</td>
+					</tr>
+					<tr class="intro">
+						<td colspan="3">
+							<strong class="hltip">公司简介：</strong>
+														<p class="tip lh24">平安银行股份有限公司的主营业务是经有关监管机构批准的各项商业银行业务。公司的主要产品是商业银行业务。公司获得了《新浪财经》“年度最佳私人银行”、《财富管理》“最佳企业家服务奖及中国家族办公室TOP50”、《中国基金报》“优秀私人银行”、《亚洲私人银行家》“优胜私人银行-专属客户体验”等荣誉。</p>
+													</td>
+					</tr>						
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="ft"></div>
+</div>
+
+<!-- 高管介绍 -->
+    <div class="m_box z101" id="manager" stat="company_manager">
+        <div class="hd">
+            <h2>高管介绍</h2>
+        </div>
+        <div class="bd">
+            <div class="m_tab">
+                <ul>
+                    <li class="cur" name="ml_001"><a class="mlabel"
+                                                     href="javascript:void(0)"
+                                                     targ="ml_001">董事会(13人)</a>
+                    </li>
+                    <li name="ml_002"><a class="mlabel"
+                                         href="javascript:void(0)"
+                                         targ="ml_002">监事会(0人)</a>
+                    </li>
+                    <li name="ml_003"><a class="mlabel"
+                                         href="javascript:void(0)"
+                                         targ="ml_003">高管(7人)</a>
+                    </li>
+                </ul>
+            </div>
+                                                        <div class="m_tab_content" id="ml_001"
+                      >
+                    <table class="m_table managelist m_hl">
+                        <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="8%">姓名</th>
+                            <th width="15%">职务</th>
+                            <th width="10%">直接持股数</th>
+                            <th width="12%">间接持股数</th>
+                            <th width="5%">序号</th>
+                            <th width="8%">姓名</th>
+                            <th width="15%">职务</th>
+                            <th width="10%">直接持股数</th>
+                            <th width="12%">间接持股数</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                                                                                                            <tr>
+                                                                                    <th class="tc">1</th>
+                            <td class="tc name">
+							                                <a person_id="T000342482" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T000342482?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">谢永林</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    谢永林                                                </h3>
+                                                                                                    <!--<img src="https://e.thsi.cn/timg/e68c430d39e268a5f971d4b9372fe2e7"/>-->
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">董事长,非执行董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2016-12-10                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男58岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>--                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">2.67万</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>谢永林，男，非执行董事、董事长。1968年出生，南京大学管理学博士、理学硕士。现任中国平安执行董事、总经理、联席首席执行官。于集团所担任的其他职务谢先生为平安银行董事长和平安资产管理的非执行董事。前期工作经历谢先生于2005年6月至2006年3月任中国平安保险（集团）股份有限公司发展改革中心副主任，于2006年3月至2013年11月先后担任平安银行运营总监、人力资源总监、副行长，于2013年11月至2016年11月先后担任平安证券董事长特别助理、总经理兼首席执行官、董事长，于2016年9月至2019年12月担任中国平安保险（集团）股份有限公司副总经理。此前，谢先生先后出任平安产险支公司副总经理，平安寿险分公司副总经理、总经理，平安寿险市场营销部总经理等职务。教育背景及资格南京大学理学硕士学位南京大学管理学博士学位。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">董事长,非执行董事</td>
+							
+							<td>
+                                <div>
+                                    <span>2.67万</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                                                                        <th class="tc">2</th>
+                            <td class="tc name">
+							                                <a person_id="T000134715" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T000134715?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">冀光恒</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    冀光恒                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">执行董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2023-11-10                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男58岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>400.0万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>冀光恒，男，执行董事、行长。1968年出生，北京大学经济地理学本科、人文地理学硕士、区域经济学博士，高级经济师。冀光恒先生于2020年4月加入中国平安，历任上海总部党委书记、总经理，陆金所控股有限公司党委书记、董事长，中国平安副总经理。2022年7月至今任中国平安党委副书记。2023年6月至今任平安银行党委书记，2023年11月至今任平安银行执行董事、行长。在加入中国平安前，冀先生曾出任宝能集团副董事长、联席总裁；上海农商银行党委书记、董事长；上海浦东发展银行党委委员、副行长、北京分行党委书记、行长；中国工商银行北京市分行党委委员、副行长，北京市分行办公室主任兼党办主任，长安支行党委书记、行长，总行副行长专职秘书，总行住房信贷部市场开发处副处长；上海银工房地产开发公司董事、副总经理。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">执行董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                            </tr>
+                                                                                                                <tr>
+                                                                                    <th class="tc">3</th>
+                            <td class="tc name">
+							                                <a person_id="H000424301" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/H000424301?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">项有志</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    项有志                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">执行董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2019-11-07                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男62岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>265.0万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">2.6万</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>项有志，男，执行董事、副行长兼首席财务官。1964年出生，厦门大学管理学博士，高级会计师，非执业注册会计师。项有志先生于1987年7月至1991年9月任华东冶金学院（现安徽工业大学）经济管理系助教，1991年9月至1994年7月获厦门大学会计学硕士学位，1994年8月至1995年8月任华东冶金学院（现安徽工业大学）经济管理系讲师，1995年9月至1998年8月获厦门大学管理学博士学位，1998年9月至2007年4月历任招商银行总行会计部室经理、总经理助理、副总经理，计划财务部副总经理，2007年4月至2013年7月先后任平安银行（原深圳发展银行）计财总监兼计财管理部总经理、资产负债管理部总经理，2013年7月至2014年5月任中国平安企划部总经理，2014年5月至2017年8月任中国平安财务总监兼财务部总经理。2017年8月至今任职于平安银行股份有限公司，2018年1月起任平安银行首席财务官，2020年1月起任平安银行执行董事，2020年6月起任平安银行股份有限公司副行长兼首席财务官。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">执行董事</td>
+							
+							<td>
+                                <div>
+                                    <span>2.6万</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                                                                        <th class="tc">4</th>
+                            <td class="tc name">
+							                                <a person_id="T138533600" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T138533600?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">杨志群</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    杨志群                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">执行董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2019-11-07                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男56岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>276.6万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">5万</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>杨志群，男，执行董事、副行长。1970年出生，南开大学世界经济学博士，高级经济师。杨志群先生于1991年至1996年10月任职于广州市九佛电器实业有限公司、中国南海石油联合服务总公司；1996年10月至2008年9月任职于中国民生银行，历任广州分行柜员、副科长、科长、市场一部副总经理（主持工作）、天河支行副行长（主持工作）、天河支行行长、分行行长高级助理、分行副行长；2008年10月至2011年2月历任原平安银行广州分行筹备组组长、分行行长；2011年3月至2015年3月任平安银行（原深圳发展银行）广州分行行长；2015年3月至2016年11月任平安证券股份有限公司总经理。2016年11月至2023年12月任平安银行深圳分行党委书记，2017年5月至2023年12月任平安银行深圳分行行长，2017年5月至2019年4月任平安银行行长助理。2019年4月至今任平安银行副行长，2020年1月至今任平安银行股份有限公司执行董事，2025年4月至今兼任平安银行北京分行党委书记、行长。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">执行董事</td>
+							
+							<td>
+                                <div>
+                                    <span>5万</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                            </tr>
+                                                                                                                <tr>
+                                                                                    <th class="tc">5</th>
+                            <td class="tc name">
+							                                <a person_id="T149472800" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T149472800?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">付欣</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    付欣                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">非执行董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2024-03-06                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">女47岁硕士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>--                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>付欣，女，非执行董事。1979年出生，上海交通大学工商管理硕士。于集团所担任的其他职务付女士为平安寿险、平安银行、平安资产管理、平安健康和金融壹账通等公司多家控股子公司的非执行董事。前期工作经历付女士于2017年10月至2023年1月出任中国平安保险（集团）股份有限公司企划部总经理，并于2020年3月至2022年3月出任中国平安保险（集团）股份有限公司副首席财务执行官，于2022年3月至2023年9月出任中国平安保险（集团）股份有限公司首席运营官。在加入公司前，付女士曾任罗兰贝格管理咨询金融行业合伙人、普华永道执行总监。教育背景及资格上海交通大学工商管理硕士学位。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">非执行董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                                                                        <th class="tc">6</th>
+                            <td class="tc name">
+							                                <a person_id="T212923200" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T212923200?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">郭晓涛</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    郭晓涛                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">非执行董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2024-09-26                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男55岁硕士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>--                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>郭晓涛，男，非执行董事。1971年出生，澳大利亚新南威尔士大学工商管理硕士。现任中国平安执行董事、联席首席执行官、副总经理。于集团所担任的其他职务郭先生为平安健康董事长，平安寿险、平安产险、平安银行和金融壹账通等公司多家控股子公司的非执行董事。前期工作经历郭先生于2022年8月至2023年9月先后任中国平安保险（集团）股份有限公司副首席人力资源执行官、首席人力资源执行官，此前曾先后出任平安产险董事长特别助理、常务副总经理。在加入公司之前，郭先生曾任波士顿咨询合伙人兼董事总经理、韦莱韬悦资本市场业务全球联席首席执行官。教育背景及资格澳大利亚新南威尔士大学工商管理硕士学位。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">非执行董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                            </tr>
+                                                                                                                <tr>
+                                                                                    <th class="tc">7</th>
+                            <td class="tc name">
+							                                <a person_id="T470236000" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T470236000?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">蔡方方</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    蔡方方                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">非执行董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2014-01-21                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">女52岁硕士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>--                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>蔡方方，女，非执行董事。1974年出生，澳大利亚新南威尔士大学会计专业硕士。于集团所担任的其他职务蔡女士为平安寿险、平安产险、平安银行、平安健康和陆金所控股等公司多家控股子公司的非执行董事。前期工作经历蔡女士于2009年10月至2012年2月先后出任中国平安保险（集团）股份有限公司人力资源中心薪酬规划管理部副总经理、总经理，于2012年2月至2013年9月出任中国平安保险（集团）股份有限公司副首席财务官兼企划部总经理，于2013年9月至2015年3月出任中国平安保险（集团）股份有限公司副首席人力资源执行官，于2015年3月至2023年4月出任中国平安保险（集团）股份有限公司首席人力资源执行官。在加入公司之前，蔡女士曾出任华信惠悦咨询（上海）有限公司咨询总监和英国标准管理认证体系公司金融业审核总监。教育背景及资格澳大利亚新南威尔士大学会计专业硕士学位。于2026年4月13日获委任为陆金所控股有限公司提名与薪酬委员会委员。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">非执行董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                                                                        <th class="tc">8</th>
+                            <td class="tc name">
+							                                <a person_id="T703793000" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T703793000?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">高鹏</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    高鹏                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">职工董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2026-08-22                                            </td>
+                                            <td class="date"><span>本届任期：</span>2026-08-22                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男49岁本科</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>--                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">--</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>高鹏先生，1977年出生，中共党员，浙江大学金融学本科，经济学学士。现任平安银行人力资源总监兼人力资源部总经理。高鹏先生于2000年10月加入中国平安，历任平安寿险营业区经理、分公司营销管理部经理助理，中国平安人力资源中心人才绩效管理部室经理、员工服务管理部副总经理、人才绩效管理部副总经理、薪酬规划管理部总经理、组织人事部部长。2022年11月至今，任平安银行人力资源总监兼人力资源部总经理。</p>
+                                                    <p style="text-align:right">此简介更新于2026-08-22</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">职工董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                            </tr>
+                                                                                                                <tr>
+                                                                                    <th class="tc">9</th>
+                            <td class="tc name">
+							                                <a person_id="T105716700" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T105716700?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">刘峰</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    刘峰                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">独立董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2023-04-24                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男60岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>46.92万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>刘峰，男，1966年2月出生，经济学（会计学）博士，教授。现任厦门国贸集团股份有限公司独立董事、Luckin Coffee Inc.（在境外上市上柜公司）独立董事，厦门大学管理学院教授，兼任厦门澍风投资合伙企业（有限合伙）执行事务合伙人，泉州银行股份有限公司董事，安徽亚兰德新能源材料股份有限公司董事，中国金茂控股集团有限公司（港股）独立非执行董事，平安银行股份有限公司独立董事。曾任中山大学管理学院副院长，厦门大学管理学院副院长等职。刘峰先生1983年考入厦门大学会计系，1987年毕业留校任教，其间于1994年10月获经济学（会计学）博士学位，1997年11月晋升为教授。2000年1月至2010年8月在中山大学管理学院会计系任教，并兼任中山大学现代会计与财务研究中心主任。2010年9月起在厦门大学会计系任教。先后担任过中山大学管理学院副院长、厦门大学管理学院副院长。现为厦门大学会计系教授、会计发展研究中心主任、《当代会计评论》主编。刘峰先生长期研究的领域是会计理论、会计准则、公司治理等，先后承担了多项国家自然科学基金、社会科学基金项目、教育部重大基地项目。曾任财政部会计准则咨询委员会成员，2020-2025年任国际财务报告准则咨询委员会（IFRS Advisory Council）中国委员，2020年起任深圳证券交易所第一届、第二届会计专业咨询委员会委员。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">独立董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                                                                        <th class="tc">10</th>
+                            <td class="tc name">
+							                                <a person_id="T000070793" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T000070793?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">吴志攀</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    吴志攀                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">独立董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2022-11-10                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男70岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>46.02万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>吴志攀，男，独立董事。1956年出生，法学博士学位，现任北京大学法学院教授、博士生导师。2023年5月至今任平安银行独立董事。吴志攀先生1975年9月参加工作，1978年至1988年在北京大学法律系学习，获法学学士、硕士、博士学位。1988年至今就职于北京大学，历任法律系讲师、副教授、教授，法律系副主任、主任，法学院院长，北京大学校长助理、副校长、常务副书记、常务副校长，并曾兼任北京大学金融法研究中心主任、光华管理学院院长。吴志攀教授的研究领域为金融法学、国际经济法、国际金融法，已出版《金融法概论》《国际金融法》等专著，曾任人民银行法和商业银行法起草小组顾问、中国法学会副会长、中国金融学会副会长等职，参与证券法起草工作，2020年起任中国证监会资本市场法治建设高级咨询专家。兼任蓝色光标及中国信托业保障基金有限责任公司独立董事，曾任中国国航、民生银行、中国石油、中孚实业及华宝兴业基金管理有限公司独立董事。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">独立董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                            </tr>
+                                                                                                                <tr>
+                                                                                    <th class="tc">11</th>
+                            <td class="tc name">
+							                                <a person_id="T118160900" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T118160900?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">杨运杰</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    杨运杰                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">独立董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2026-03-26                                            </td>
+                                            <td class="date"><span>本届任期：</span>2026-03-26                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男60岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>--                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">--</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>杨运杰先生，1966年出生，中国人民大学经济学博士，2018年12月至2025年8月担任北京银行股份有限公司独立董事，2016年7月至今担任中央财经大学经济学院教授、博士生导师，历任研究生部常务副主任、经济学院院长、研究生院常务副院长、教务处处长。现任中央财经大学经济学院教授、博士生导师、教育部高等学校经济学类专业教学指导委员会副主任委员、中加基金管理有限公司独立董事、平安银行股份有限公司独立董事。</p>
+                                                    <p style="text-align:right">此简介更新于2026-03-26</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">独立董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                                                                        <th class="tc">12</th>
+                            <td class="tc name">
+							                                <a person_id="H000437059" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/H000437059?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">潘敏</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    潘敏                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">独立董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2024-05-11                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男60岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>45.86万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>潘敏：男，独立董事。1966年出生，中国国籍，无境外永久居留权，经济学博士，武汉大学经济与管理学院金融系教授、博士生导师，武汉大学金融发展与政策研究中心主任。1987年和1990年分获武汉大学经济学学士和硕士学位，2000年获日本神户大学经济学博士学位。1990年7月至1995年9月，任武汉大学管理学院金融系助教、讲师；2000年4月至2003年10月，任武汉大学商学院讲师、副教授；2003年11月至今，任武汉大学经济与管理学院金融系教授、博士生导师。其间，于2005年6月至2013年6月任武汉大学经济与管理学院金融系副主任；2013年7月至2017年12月任武汉大学经济与管理学院副院长，其中2016年1月至2017年12月任执行院长；2019年9月至2022年6月，兼任湖南大学金融与统计学院院长、教授、博士生导师。现兼任平安银行独立董事，曾任聚辰股份、湖北银行独立董事。2025年9月至今任深圳市财富趋势科技股份有限公司独立董事。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">独立董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                            </tr>
+                                                                                                                <tr>
+                                                                                    <th class="tc">13</th>
+                            <td class="tc name">
+							                                <a person_id="T000383369" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T000383369?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">张杰</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    张杰                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">独立董事</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2026-03-21                                            </td>
+                                            <td class="date"><span>本届任期：</span>2026-03-13                                                至 2028-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男61岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>--                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>张杰，男，独立董事。1965年出生，经济学博士，现任中国人民大学财政金融学院教授、博士生导师。2026年3月至今任平安银行股份有限公司独立董事。张杰先生1984年7月、1990年7月和1993年7月先后于陕西财经学院金融系获经济学学士、硕士和博士学位。1984年7月至2000年4月任陕西财经学院助教、讲师、副教授、教授，金融系常务副主任、主任，金融财政学院院长。2000年4月至2002年9月任西安交通大学经济与金融学院副院长、教授、博士生导师、学术委员会主任、金融制度与发展研究中心主任。2002年9月起在中国人民大学财政金融学院任教，2007年3月至2010年3月任中国财政金融政策研究中心主任，2008年9月至2017年8月任财政金融学院副院长，2009年12月至2024年6月任国际货币研究所（IMI）所长，现为中国人民大学财政金融学院教授、博士生导师。入选国家高层次人才计划，享受国务院政府特殊津贴，兼任中国金融学会常务理事等，曾任国务院参事室金融研究中心研究员。张杰先生长期致力于制度金融学以及中国金融制度与金融发展问题的研究，代表性学术著作有《天圆地方的困惑：中国货币历史文化之总考察》《中国金融制度的结构与变迁》《金融分析的制度范式：制度金融学导论》等，曾获教育部首届“高校青年教师奖”、首届孙冶方“金融创新奖”著作奖等。曾任工商银行外部监事、农业银行外部监事、兴业银行独立董事等。</p>
+                                                    <p style="text-align:right">此简介更新于2026-03-21</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">独立董事</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                            <th></th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                </tr>
+                                                                            </tbody>
+                    </table>
+                </div>
+                                            <div class="m_tab_content" id="ml_003"
+                     style="display:none" >
+                    <table class="m_table managelist m_hl">
+                        <thead>
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="8%">姓名</th>
+                            <th width="15%">职务</th>
+                            <th width="10%">直接持股数</th>
+                            <th width="12%">间接持股数</th>
+                            <th width="5%">序号</th>
+                            <th width="8%">姓名</th>
+                            <th width="15%">职务</th>
+                            <th width="10%">直接持股数</th>
+                            <th width="12%">间接持股数</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                                                                                                            <tr>
+                                                                                    <th class="tc">1</th>
+                            <td class="tc name">
+							                                <a person_id="T000134715" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T000134715?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">冀光恒</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    冀光恒                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">行长</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2023-11-10                                                至 今</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男58岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>400.0万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>冀光恒，男，执行董事、行长。1968年出生，北京大学经济地理学本科、人文地理学硕士、区域经济学博士，高级经济师。冀光恒先生于2020年4月加入中国平安，历任上海总部党委书记、总经理，陆金所控股有限公司党委书记、董事长，中国平安副总经理。2022年7月至今任中国平安党委副书记。2023年6月至今任平安银行党委书记，2023年11月至今任平安银行执行董事、行长。在加入中国平安前，冀先生曾出任宝能集团副董事长、联席总裁；上海农商银行党委书记、董事长；上海浦东发展银行党委委员、副行长、北京分行党委书记、行长；中国工商银行北京市分行党委委员、副行长，北京市分行办公室主任兼党办主任，长安支行党委书记、行长，总行副行长专职秘书，总行住房信贷部市场开发处副处长；上海银工房地产开发公司董事、副总经理。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">行长</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                                                                        <th class="tc">2</th>
+                            <td class="tc name">
+							                                <a person_id="T499731000" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T499731000?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">周强</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    周强                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">董事会秘书</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2014-10-23                                            </td>
+                                            <td class="date"><span>本届任期：</span>2014-10-21                                                至 今</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男54岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>226.9万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>周强，男，董事会秘书。1972年出生，南开大学金融学系国际金融专业毕业，经济学博士。周强先生于2001年7月至2007年4月历任平安证券投资银行事业部业务经理、投行管理部副总经理、总经理，2007年4月至2011年10月任中国平安董事会办公室副主任、证券事务代表，2011年10月至2014年5月历任平安证券总经理助理、副总经理；2014年6月至今，任平安银行股份有限公司董事会秘书。</p>
+                                                    <p style="text-align:right">此简介更新于2014-10-23</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">董事会秘书</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                            </tr>
+                                                                                                                <tr>
+                                                                                    <th class="tc">3</th>
+                            <td class="tc name">
+							                                <a person_id="H000424301" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/H000424301?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">项有志</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    项有志                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">副行长,首席财务官</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2020-06-05                                                至 今</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男62岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>265.0万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">2.6万</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>项有志，男，执行董事、副行长兼首席财务官。1964年出生，厦门大学管理学博士，高级会计师，非执业注册会计师。项有志先生于1987年7月至1991年9月任华东冶金学院（现安徽工业大学）经济管理系助教，1991年9月至1994年7月获厦门大学会计学硕士学位，1994年8月至1995年8月任华东冶金学院（现安徽工业大学）经济管理系讲师，1995年9月至1998年8月获厦门大学管理学博士学位，1998年9月至2007年4月历任招商银行总行会计部室经理、总经理助理、副总经理，计划财务部副总经理，2007年4月至2013年7月先后任平安银行（原深圳发展银行）计财总监兼计财管理部总经理、资产负债管理部总经理，2013年7月至2014年5月任中国平安企划部总经理，2014年5月至2017年8月任中国平安财务总监兼财务部总经理。2017年8月至今任职于平安银行股份有限公司，2018年1月起任平安银行首席财务官，2020年1月起任平安银行执行董事，2020年6月起任平安银行股份有限公司副行长兼首席财务官。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">副行长,首席财务官</td>
+							
+							<td>
+                                <div>
+                                    <span>2.6万</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                                                                        <th class="tc">4</th>
+                            <td class="tc name">
+							                                <a person_id="T138533600" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T138533600?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">杨志群</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    杨志群                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">副行长</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2025-12-17                                            </td>
+                                            <td class="date"><span>本届任期：</span>2019-04-19                                                至 今</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男56岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>276.6万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">5万</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>杨志群，男，执行董事、副行长。1970年出生，南开大学世界经济学博士，高级经济师。杨志群先生于1991年至1996年10月任职于广州市九佛电器实业有限公司、中国南海石油联合服务总公司；1996年10月至2008年9月任职于中国民生银行，历任广州分行柜员、副科长、科长、市场一部副总经理（主持工作）、天河支行副行长（主持工作）、天河支行行长、分行行长高级助理、分行副行长；2008年10月至2011年2月历任原平安银行广州分行筹备组组长、分行行长；2011年3月至2015年3月任平安银行（原深圳发展银行）广州分行行长；2015年3月至2016年11月任平安证券股份有限公司总经理。2016年11月至2023年12月任平安银行深圳分行党委书记，2017年5月至2023年12月任平安银行深圳分行行长，2017年5月至2019年4月任平安银行行长助理。2019年4月至今任平安银行副行长，2020年1月至今任平安银行股份有限公司执行董事，2025年4月至今兼任平安银行北京分行党委书记、行长。</p>
+                                                    <p style="text-align:right">此简介更新于2025-12-17</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">副行长</td>
+							
+							<td>
+                                <div>
+                                    <span>5万</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                            </tr>
+                                                                                                                <tr>
+                                                                                    <th class="tc">5</th>
+                            <td class="tc name">
+							                                <a person_id="H002429259" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/H002429259?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">吴雷鸣</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    吴雷鸣                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">副行长,首席合规官</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2026-06-26                                            </td>
+                                            <td class="date"><span>本届任期：</span>2026-06-26                                                至 今</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男50岁硕士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>--                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">--</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>吴雷鸣先生，1976年出生，中南财经大学金融学学士、武汉大学工商管理硕士。吴雷鸣先生于1997年7月至2002年10月，任职于中国农业银行湖北省分行；2002年10月至2006年7月，历任深圳发展银行北京分行市场管理部市场调查室职员、经理、总经理助理兼贸易融资部副总经理；2006年7月至2009年10月，任深圳发展银行信贷审批部、华北信贷审批中心副经理；2009年10月至2013年4月，历任平安银行（原深圳发展银行）北京分行信贷审批中心副总经理（主持工作）、总经理；2013年4月至2016年12月，历任平安银行郑州分行信贷审批执行官、副行长兼风险总监；2016年12月至2020年6月，任平安银行北京分行副行长；2020年6月至2023年12月，任平安银行西安分行行长；2023年12月至今，任平安银行总行党委委员；2024年4月至2026年3月，任平安银行总行行长助理兼首席风险官；2026年3月至今，任平安银行总行行长助理兼首席风险官兼首席合规官。</p>
+                                                    <p style="text-align:right">此简介更新于2026-06-26</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">副行长,首席合规官</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                                                                        <th class="tc">6</th>
+                            <td class="tc name">
+							                                <a person_id="T000305445" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/T000305445?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">方蔚豪</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    方蔚豪                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">副行长</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2026-03-21                                            </td>
+                                            <td class="date"><span>本届任期：</span>2025-06-22                                                至 今</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男53岁博士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>239.4万                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">-</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>方蔚豪，男，中共党员，副行长。1973年出生，北京理工大学机械工程及自动化专业本科，中欧国际工商学院工商管理硕士，西安交通大学应用经济学博士。方蔚豪先生于2012年8月加入中国平安，先后曾任平安国际融资租赁有限公司董事长兼CEO，中国平安财产保险股份有限公司副董事长、董事，平安医疗健康管理股份有限公司董事长兼CEO，平安健康医疗科技有限公司董事会主席兼CEO，平安信托有限责任公司党委书记、董事长。在加入中国平安前，方先生曾出任远东宏信有限公司常务副总裁、远东国际租赁有限公司常务副总经理、中化国际招标有限责任公司副总经理、中化国际实业有限公司业务经理。</p>
+                                                    <p style="text-align:right">此简介更新于2026-03-21</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">副行长</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                                                            </tr>
+                                                                                                                <tr>
+                                                                                    <th class="tc">7</th>
+                            <td class="tc name">
+							                                <a person_id="H004813782" href="javascript:void(0)" jumpUrl="https://www.kuaicha365.com/person/H004813782?source=f10" onclick="TA.log({'id':'f10_gszl_ggjs','nj':1})" class="turnto clientJump">王军</a>
+							                                <div class="person_table hidden clientJumpHidden">
+                                    <a class="close" href="javascript:void(0);">×</a>
+                                    <table class="m_table ggintro">
+                                        <thead>
+                                        <tr>
+                                            <td rowspan="2" class="title">
+                                                <h3>
+                                                    王军                                                </h3>
+                                                                                            </td>
+                                            <td class="jobs"
+                                                style="width: 150px;">副行长</td>
+                                            <td class="date" style="width: 170px;">
+                                                <span>公告日期：</span>2026-10-13                                            </td>
+                                            <td class="date"><span>本届任期：</span>2026-10-13                                                至 今</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="intro">男49岁硕士</td>
+                                            <td class="salary">
+                                                <span>薪酬：</span>--                                            </td>
+                                            <td>
+                                                <div class="tipbox_wrap" style="z-index: 99">
+                                                    <span>直接持股数：</span>
+                                                    <span class="directnum hold">--</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4" class="mainintro">
+                                                <div>
+                                                    <p>王军先生，1977年出生，西安交通大学国际经济与贸易专业本科，中国香港理工大学工商管理专业硕士研究生。王军先生于2003年5月至2006年11月，历任光大银行西安高新支行客户经理、公司业务部负责人、行长助理；2006年11月至2008年7月，历任光大银行西安分行公司业务部总经理助理、贸易金融部总经理助理、国际业务部副总经理、公司业务部副总经理（主持工作）；2008年7月至2013年1月，任光大银行西安高新支行行长；2013年3月至2016年12月，历任平安银行西安分行行长助理、副行长；2016年12月至2018年4月，任平安银行大连分行行长；2018年4月至2019年8月，任平安银行西安分行行长；2019年8月至2023年12月，任平安银行广州分行行长；2023年12月至2025年3月，任平安银行深圳分行行长；2025年3月至今，任平安银行总行党委委员；2025年5月至今，任平安银行总行行长助理。</p>
+                                                    <p style="text-align:right">此简介更新于2026-10-13</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="tl">副行长</td>
+							
+							<td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>--</span>
+                                </div>
+                            </td>
+							
+                                                            <th></th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                </tr>
+                                                                            </tbody>
+                    </table>
+                </div>
+                        <p class="pt5">注：点击高管姓名查看高管简历介绍</p>
+        </div>
+        <div class="ft"></div>
+    </div>
+
+<!-- 发行相关 -->
+<div class="m_box company_detail" id="publish" stat="company_publish">
+	<div class="hd">
+		<h2>发行相关</h2>
+	</div>
+	<div class="bd pr">
+				<table class="m_table">
+			<tr>
+				<td><strong class="hltip fl">成立日期：</strong><span>1987-12-22</span></td>
+				<td><strong class="hltip fl">发行数量：</strong><span>35.00万股</span></td>
+				<td><strong class="hltip fl">发行价格：</strong><span>40.00元</span></td>
+			</tr>
+			<tr>
+				<td><strong class="hltip fl">上市日期：</strong><span>1991-04-03</span></td>
+				<td><strong class="hltip fl">发行市盈率：</strong><span>-</span></td>
+				<td><strong class="hltip fl">预计募资：</strong><span>2700万元</span></td>
+			</tr>
+			<tr>
+				<td><strong class="hltip fl">首日开盘价：</strong><span>49.00元</span></td>
+				<td><strong class="hltip fl">发行<span class="hltip  iwcclick" taname='f10_stock_iwc_zql' content='中签率= 股票发行股数/有效申购股数*100%'  data-url='http://www.iwencai.com/yike/detail/auid/6fdbde6ab15aba60?qs=client_f10_baike_4' >中签率</span>：</strong>
+				<span>-</span></td>
+				<td><strong class="hltip fl">实际募资：</strong><span>1400万元</span></td>
+			</tr>
+			<tr> <td colspan="3">
+					<div class="main_sell">
+						<strong class="hltip iwcclick" taname='f10_stock_iwc_zql' content='主承销商，是指在股票发行中独家承销或牵头组织承销团经销的证券经营机构。'  data-url='http://www.iwencai.com/yike/detail/auid/2d7c8f7de1372d8e?qs=client_f10_baike_4' >主承销商：</strong><span>巨田证券有限责任公司</span>
+					</div>
+					<div class="main_sell">
+						<strong class="hltip">上市保荐人：</strong><span>巨田证券有限责任公司</span>
+					</div>
+				</td>
+			</tr>
+			<tr class="intro">
+				<td colspan="3">
+					<strong class="hltip">历史沿革：</strong>
+										<p class="tip lh24" style="text-indent: 0;">　　平安银行股份有限公司(原名深圳发展银行股份有限公司)(以下简称“本公司”)系在对中华人民共和国深圳经济特区内原6家农村信用社进行股份制改造的基础上设立的股份制商业银行。1987年5月10日以自由认购的形式首次向社会公开发售人民币普通股，于1987年12月22日正式设立。1991年4月3日，本公司在深圳证券交易所上市，股票代码为000001。于2016年12月31日，本公司的总股本为17,170百万元，每股面值1元。<br>　　本公司于2012年2月9日召开的2012年第一次临时股东大会审议并通过了《深圳发展银行股份有限公司关于吸收合并控股子公司平安银行股份有限公司方案的议案》以及《深圳发展...<a href="javascript:void(0)" class="more fr">查看全部▼</a></p>
+					<p class="tip lh24 none"  style="text-indent: 0;">　　平安银行股份有限公司(原名深圳发展银行股份有限公司)(以下简称“本公司”)系在对中华人民共和国深圳经济特区内原6家农村信用社进行股份制改造的基础上设立的股份制商业银行。1987年5月10日以自由认购的形式首次向社会公开发售人民币普通股，于1987年12月22日正式设立。1991年4月3日，本公司在深圳证券交易所上市，股票代码为000001。于2016年12月31日，本公司的总股本为17,170百万元，每股面值1元。<br>　　本公司于2012年2月9日召开的2012年第一次临时股东大会审议并通过了《深圳发展银行股份有限公司关于吸收合并控股子公司平安银行股份有限公司方案的议案》以及《深圳发展银行股份有限公司关于与平安银行股份有限公司签署吸收合并协议的议案》。本次吸收合并原平安银行股份有限公司(以下简称“原平安银行”)事宜业经中国银行业监督管理委员会《中国银监会关于深圳发展银行吸收合并平安银行的批复》(银监复(2012)192号)批准。<br>　　于2012年6月12日，经深圳市市场监督管理局核准原平安银行办理注销登记。2012年7月，经中国银行业监督管理委员会《中国银监会关于深圳发展银行更名的批复》(银监复(2012)397号)同意本公司(原名深圳发展银行股份有限公司)更名为“平安银行股份有限公司”，英文名称变更为“PingAnBankCo.,Ltd.”。<br>　　本公司的注册办公所在地为中国广东省深圳市罗湖区深南东路5047号。本公司总部设在深圳，在中华人民共和国境内经营。经中国银行业监督管理委员会批准领有00386413号金融许可证，机构编码为B0014H144030001，经深圳市市场监督管理局核准领有统一社会信用代码为91440300192185379H号的营业执照。<br>　　于2019年12月16日，本公司在中国香港特别行政区(“中国香港”)开设分支机构。截至2023年12月31日止，本公司在中国内地及中国香港均设有分支机构。本公司总行、中国境内分支机构统称“境内机构”，中国境外分支机构统称为“境外机构”。<br>　　于2020年8月19日，本行收到《中国银保监会关于平安理财有限责任公司开业的批复》(银保监复[2020]513号)，国家金融监督管理总局已批准本行的全资子公司平安理财有限责任公司开业。根据国家金融监督管理总局的批复，平安理财有限责任公司的注册资本为人民币50亿元，主要从事发行公募理财产品、发行私募理财产品、理财顾问和咨询等资产管理相关业务。<br>　　于2025年12月31日，本行的总股本为19,406百万元，每股面值1元。<br>　　于2026年1月4日，本行收到《国家金融监督管理总局关于平安银行修改公司章程的批复》(金复〔2026〕9号)，自本行章程核准之日起，本行监事会及监事依法撤销，由董事会审计委员会行使《中华人民共和国公司法》和监管制度规定的监事会职权。<a href="javascript:void(0)" class="less fr">收起▲</a></p>
+									</td>
+			</tr>
+		</table>
+			</div>
+	<div class="ft"></div>
+</div>
+
+<div class="m_box gssj_scroll" id="share" stat="company_share">
+	<div class="hd">
+		<h2>参股控股公司</h2>
+	</div>
+	<div class="bd pr">
+		<table class="m_table m_hl ggintro business" id="ckg_table">
+			<caption class="m_cap tip">
+				<div class="fr">最新公告日期：<span class="hl">2026-08-15</span>
+											<a class="pdf-icon client" href="http://notice.10jqka.com.cn/api/pdf/4dd0e41a3a55f67a.pdf" target="_blank" title="【查看公告】"></a>
+									<!-- <span class="pdf-icon" title="【查看公告】公告为有参控股的最新的半年报或年报"></span> -->
+				</div>
+				<span class="f14">参股或控股公司：<strong>1</strong> 家，
+				其中合并报表的有：<strong>1</strong> 家。</span>
+			</caption>
+			<thead>
+				<tr>
+					<th width="25px" class="nosort">序号</th>
+					<th width="170px" class="nosort">关联公司名称</th>
+					<th width="50px" class="nosort">参控关系</th>
+					<th width="50px">参控比例<s></s></th>
+					<th width="105px">投资金额(元)<s></s></th>
+					<th width="60px">被参控公司净<br />利润(元)<s></s></th>
+					<th width="50px">是否报表<br />合并<s></s></th>
+					<th width="140px" class="nosort">被参股公司主营业务</th>
+				</tr>
+			</thead>
+			<tbody>
+										<tr> 
+					<td style="color:#ccc;text-align:center">-</td>
+					<td style="text-align:left;word-break:break-all">
+						<p   href="javascript:void(0)" >平安理财有限责任公司</p>
+						<div class="gssjBox hidden clientJumpHidden"></div>
+					</td>
+					<td style="text-align:left">子公司</td>
+					<td>100.00%</td>
+					<td data-unit="元">50.00亿</td>
+					<td data-unit="元">5.53亿</td>
+					<td style="text-align:center">是</td>
+					<td style="text-align:left">
+										发行公募与私募理财产品、理财顾问和... &nbsp;<a class="m_more" href="javascript:void(0)" data="发行公募与私募理财产品、理财顾问和咨询服务等资产管理相关业务" targ="box_cfe66c28d3618809d305b1cae8358021" title="查看详细"></a>
+										</td>
+				</tr>
+						</tbody>
+		</table>
+		<div class="rp_tipbox zyyw_box none" style="width:190px">
+		    <div class="tipbox_bd p0_5">
+		    <table class="m_table" style="width:180px">
+				<thead>
+					<tr>
+						<th class="tl">主营业务详情：</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="tl" id="busi"></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			<s class="arrow" style="right:25px"></s>
+		</div>
+		<div class="pager clearfix">
+						
+			<!-- $num = count($this->share['data']); -->
+								</div>
+	</div>
+	<div class="ft"></div>
+</div>
+
+
+<input type="hidden" id="eventtype" value="click" />
+</div>
+		<!-- F10 Content End -->
+<!-- F10 Footer Start -->
+		<div class="footer">
+		<div class="links">
+		    <a href="http://stockpage.10jqka.com.cn" target="_blank" onclick="clickTalogStat('jptostock');">同花顺个股</a> |
+		    <a href="http://moni.10jqka.com.cn/" target="_blank">模拟炒股</a> |
+		    <a href="https://xtz.10jqka.com.cn/pc/home?from=pcf10" target="_blank">股民学校</a> |
+		    <a href="http://mobile.10jqka.com.cn/?req=pcf10" target="_blank">手机炒股</a>|
+		    <a target="_blank" href="https://news.10jqka.com.cn/homepage/intro/contact-us">联系我们</a>
+		</div>
+		<p>免责声明:本信息由同花顺金融研究中心提供，仅供参考，同花顺金融研究中心力求但不保证数据的完全准确，如有错漏请以中国证监会指定上市公司信息披露媒体为准，同花顺金融研究中心不对因该资料全部或部分内容而引致的盈亏承担任何责任。用户个人对服务的使用承担风险。同花顺对此不作任何类型的担保。同花顺不担保服务一定能满足用户的要求，也不担保服务不会受中断，对服务的及时性，安全性，出错发生都不作担保。同花顺对在同花顺上得到的任何信息服务或交易进程不作担保。同花顺提供的包括同花顺理财的所有文章，数据，不构成任何的投资建议，用户查看或依据这些内容所进行的任何行为造成的风险和结果都自行负责，与同花顺无关。 </p>
+		</div>
+<!-- F10 Footer End -->
+    </div>
+    <div class="r-go-top" id="r-go-top"></div>
+</body>
+<input id="stockCode" type="hidden" value="000001">
+<input id="F001" type="hidden" value="A">
+<input id="F002" type="hidden" value="深圳证券交易所">
+<input id="F004" type="hidden" value="1">
+<input id="stockName" type="hidden" value="平安银行">
+<input id="marketId" type="hidden" value="33">
+<input id="cateName"  type="hidden" value="公司资料">
+<input id="catecode"  type="hidden" value="company">
+<input id="fcatecode"  type="hidden" value="company">
+<input id="sid" type="hidden" value="F10new_gszl">
+<input id="fid" type="hidden" value="F10,F10master,F10main,F10new">
+<input id="qid" type="hidden" value="14585038">
+<div style="display:none" id="wordraddom">
+</div>
+<!-- title 容器 -->
+	<div class="titleBox" id="altlayer" style="display:none; width: 260px;">
+		<div class="tipbox_bd p0_5"><span style="line-height:24px;" class="tip f14">
+		<span id="altlayer_content"></span>
+		</div>
+	</div>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/common/cefapi/1.5.5/cefApi.min.js;js/basic/stock/newPcJs/common.js"></script>
+<script>
+try {
+    external.createObject('Util');
+    //document.getElementById("updownchange").style.display = "block";
+} catch (e) {}
+</script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/jquery-1.8.3.min.js;js/basic/common/inheritance.js;js/basic/stock/popWin.js;js/basic/common/Model_v2.js;js/basic/stock/20200604153837/index.js;js/basic/stock/20200604153837/po_v2.js;js/basic/stock/scrollBind.js"></script>
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/common_v3-2-475b46.js"></script>
+<!--[if IE ]><script type="text/javascript"  crossorigin src="//s.thsi.cn/js/excanvas.min.js"></script><![endif]-->
+<!--[if IE 6]>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">DD_belatedPNG.fix('.company_logo,.btn-gnjx-left, .btn-gnjx-right, .concept_hot_icons,.iwc_searchbar,.iwc_searchbar .tips-icon,#autocomplete_search_input dd .icona,#autocomplete_search_input dd .iconb');</script>
+<![endif]-->
+<script type="text/javascript" crossorigin src="//s.thsi.cn/js/basic/jquery.pos-fixed.js"></script>
+<script type="text/javascript" crossorigin src="//s.thsi.cn/cb?js/ta.min.js;js/pa.min.js;js/basic/stock/StatLoad.js;js/basic/stock/20200605135220/xgcl_mod.js"></script>
+<script type="text/javascript" crossorigin src="//s.thsi.cn/js/basic/stock/tongji.min.js"></script>
+<!-- 统计 -->
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/home/ths_core.min.js;js/home/ths_quote.min.js;js/home/tongji.min.js" charset="utf-8"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/commonLog_v3.js" charset="utf-8"></script>
+<!--F10运营位脚本-->
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/append-960857.js"></script>
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/f10widget_v3-5ec039.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?/js/navigation/jquery.bgiframe.min.js;/js/navigation/jquery.ui.position.min.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/basic/stock/json2.js"></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/search_v3-fec53c.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn//sns/sea-modules/gallery/ckplayer6.7/ckplayer/ckplayer-homepage.js"></script>
+    <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/tableSorter_v6-00bff1.js"></script>
+ 
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/basic/stock/pagescroll.js;js/basic/common/investTree.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/userevaluate_v3.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/jquery-ui.min.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/jquery.mousewheel.min.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/jquery.mCustomScrollbar.min.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/20200605135220/product_cmper.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/pop_v2.js"></script>
+<!--工商数据-->
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/home/v5/thirdpart/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/instajax-79a8e6.js"></script>
+ 
+<script>
+//---------------自定义title弹窗 start----------
+var tempalt='';//临时存储title
+document.body.onmousemove = function(event) {
+	if(altlayer.style.display==''){
+		$("#altlayer").css({
+			left: event.pageX,
+			top: event.pageY+10
+		});
+	}
+};
+document.body.onmouseover = function(event) {
+	if (event.srcElement.className !== 'titleIcon') {
+		return false;
+	}
+	if(event.srcElement.title && (event.srcElement.title!='' || (event.srcElement.title=='' && tempalt!=''))){
+		$("#altlayer").css({
+			left: event.pageX,
+			top: event.pageY+20,
+			display: ''
+		});
+		$("#altlayer_content").html(event.srcElement.title)
+		tempalt = event.srcElement.title;
+		event.srcElement.title='';
+	}
+};
+document.body.onmouseout = function(event) {
+	if (tempalt != '') {
+		event.srcElement.title = tempalt;	
+	}
+	tempalt = '';
+	$("#altlayer").hide();
+};
+//---------------自定义title弹窗 end----------
+//F10客户端结点设置
+function setClientCacheData() {
+    try { //判断是否在客户端，存入结点
+        external.createObject('Util');
+        window.API.use({
+            method: 'Util.getHxVer',
+            success: function(data) {
+                var hexinVer = getVersionStr(data);
+                var pathname = window.location.pathname
+                pathname = pathname.replace(/\/\d{2,3}\//, '/%4/');
+                pathname = pathname.replace(/\/[\d|A]\d{5}\//, '/%6/');
+                //dalert(hexinVer);//上线注意，测试版版本86080  正式版 86090 请注意
+                if (hexinVer >= 86080) {
+                    window.API.use({
+                        method: 'Info.cacheInfoData',
+                        data: ['f10_client_node', 'http://basic.10jqka.com.cn' + pathname],
+                        success: function() {
+                        }
+                    })
+                } else {
+                    window.API.use({
+                        method: 'Info.cacheInfoData',
+                        data: ['', 'http://basic.10jqka.com.cn/' + pathname],
+                        success: function() {
+                        }
+                    })
+                }
+            }
+        })
+        document.getElementById("updownchange").style.display = "block";
+    } catch (e) {
+        //远航版隐藏header
+        $("#quotedata").empty()
+        $("#updownchange").empty()
+    }
+	try {
+		callNativeHandler('getMacVer', {}, function(data){
+			if (data.plaform == 'mac' && data.version>='1.3.0' ) {
+				var pathname = window.location.pathname
+                pathname = pathname.replace(/\/\d{2,3}\//, '/%4/');
+                pathname = pathname.replace(/\/[\d|A]\d{5}\//, '/%6/');
+				callNativeHandler('cache_info_Data', {
+					'f10_client_node': 'http://basic.10jqka.com.cn' + pathname
+				}, function(data){
+				});
+			}
+		});
+	} catch (e) {
+    }
+}
+setClientCacheData();
+</script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/20200604153837/stockpage_v3.20190506.js"></script>
+<script type="text/javascript" charset="utf-8" crossorigin id="ths-parser-script" app_key="f10_astockpc_config" src="//s.thsi.cn/cd/website-thsc-f10-utils/1.4.39/parser.js"></script>
+<script type="text/javascript">
+var sid = 'F10new_gszl';
+var fid = 'F10,F10master,F10main,F10new';
+var stockcode = '000001';
+if (window.location.href.indexOf('interactive')<0
+		&&window.location.href.indexOf('dupont')<0) {
+    $(".subnav .skipto").each(function(){
+    	sonnav = $(this).attr('nav');
+    	if ($("#"+sonnav).length>0 || $("[idchange='"+sonnav+"']").length>0) {
+    	} else {
+    		$(this).hide();
+    	}
+    })
+}
+if (stockcode.substr(0,2) == '43' || stockcode.substr(0,2) == '83') {
+	var third_sid = sid+'_thirdboard';
+	var third_fid = fid+'_thirdboard';
+    PA.setStartTime(loadTimer);
+	PA.init({'id':third_sid, 'fid':third_fid, 'stockcode':stockcode});
+}
+$(document).ready(function(){
+var hash = window.location.hash.substring(1);
+var hashArray = hash.split('-');
+if(hashArray[0]  == 'position'){
+	$("#sortNav li").eq(hashArray[1]).find("a").click();
+}
+});
+try {
+    external.createObject('Util');
+    window.API.use({
+        method: 'Passport.get',
+        data: ['m_qs'],
+        success: function(data) {
+            var qsid = data
+            if (qsid == '114') {
+                $("#f10_top_ad").hide();
+                $("#r-go-top").hide();
+            }
+        }
+    })
+} catch (e) {}
+if (!isIE6()) {
+    $(".m_box").statload();
+}
+try {
+    external.createObject('Util');
+    window.API.use({
+        method: 'Passport.get',
+        data: 'm_qs',
+        success: function(data) {
+            var qsid = data
+            if (qsid < 800) {
+                fid += ',f10new_qs';
+            } else {
+                fid += ',f10new_fqs';
+            }
+            PA.setStartTime(loadTimer);
+            setTimeout(function(){
+                PA.init({
+                    'id': sid,
+                    'fid': fid,
+                    'stockcode': stockcode,
+                    'qsid': qsid
+                });
+            },100)
+        }
+    })
+} catch (e) {
+    PA.setStartTime(loadTimer);
+    PA.init({
+        'id': sid,
+        'fid': fid,
+        'stockcode': stockcode
+    });
+}
+try {
+    external.createObject('Util');
+    var externalSessionId = window.API.createSessionId('external');
+    window.API.use({
+        method: 'external.registerEvent',
+        data: 'onshow',
+        sessionId: externalSessionId,
+        persistent: true,
+        callbackName: 'onshow',
+        success: function(data) {
+            if (!data) {
+                 PA.setStartTime(loadTimer);
+                 PA.init({
+                    'id': sid,
+                    'fid': fid,
+                    'stockcode': stockcode,
+                    'hide': 1,
+                    'nj': 1,
+                    _sid: "__ths_onshow"
+                });
+            }
+        }
+    })
+} catch (e) {}
+</script>
+<div style="display:none"><script type="text/javascript">
+// 在客户端内，html做个区分，解决端内的一些特性
+if ((window.external && 'createObject' in window.external) || (window.HevoCef && "IsHevoCef" in window.HevoCef)) {
+	$('html').addClass("inClient");
+}
+(function(){
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F78c58f01938e4d85eaf619eae71b4ed1' type='text/javascript'%3E%3C/script%3E"));
+});
+</script>
+
+<script type="text/javascript" charset="utf-8" crossorigin src="//s.thsi.cn/js/basic/stockph_v2/stock/f10hq_v4-5-576b58.js"></script>
+<script type="text/javascript" charset="utf-8" crossorigin src="//s.thsi.cn/js/basic/stockph_v2/stock/onlyBAuthorize-4a6ce9.js"></script>
+</div>
+<!--F10头部广告-->
+
+<!--<div id="f10_top_ad" class="f10_ad_top none"><script type="text/javascript">CNZZ_SLOT_RENDER('297563');</script></div>-->
+</html>
+<script  type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/newCompany-87c698.js"></script>
