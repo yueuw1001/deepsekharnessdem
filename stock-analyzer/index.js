@@ -33,6 +33,7 @@ import {
 
 const API_PATH = '/dsh-stock/analyze.json'
 const SEARCH_PATH = '/dsh-stock/search.json'
+const QUOTES_PATH = '/dsh-stock/quotes.json'
 
 const THS_QUOTE = 'https://d.10jqka.com.cn/v6/realhead'
 const THS_LINE = 'https://d.10jqka.com.cn/v6/line'
@@ -1081,31 +1082,19 @@ async function fetchConceptDetail(code, timeoutMs) {
   return cached(`concept:detail:${code}`, 30 * 60_000, async () => {
     const base = `https://q.10jqka.com.cn/gn/detail/code/${code}/`
     const first = await httpText(base, { encoding: 'gbk', timeoutMs })
-    const page = parseIndustryDetail(first)
+    const components = parseIndustryDetail(first).components ?? []
     const header = parseBoardHeader(first)
-    // 概念成分股较少时抓全部分页；成分股很多（宽基概念）时取涨幅榜/跌幅榜各一页抽样。
-    const count = header.upCount !== null && header.downCount !== null ? header.upCount + header.downCount : null
-    const pages = count ? Math.ceil(count / 10) : 1
-    const variants = []
-    if (pages > 1 && pages <= 6) {
-      for (let pageNumber = 2; pageNumber <= pages; pageNumber += 1) variants.push(`page/${pageNumber}/`)
-    } else if (pages > 1) {
-      variants.push('order/asc/', 'order/asc/page/2/')
+    // 第 2 页补充成分股（用于展示），升序页取跌幅榜样本（用于板块 5 日均值，避免只用涨幅榜）。
+    const [second, asc] = await Promise.allSettled([
+      httpText(`${base}page/2/`, { encoding: 'gbk', timeoutMs }),
+      httpText(`${base}order/asc/`, { encoding: 'gbk', timeoutMs }),
+    ])
+    return {
+      header,
+      components,
+      moreComponents: second.status === 'fulfilled' ? parseIndustryDetail(second.value).components ?? [] : [],
+      bottomComponents: asc.status === 'fulfilled' ? parseIndustryDetail(asc.value).components ?? [] : [],
     }
-    const settled = await Promise.allSettled(
-      variants.map((path) => httpText(`${base}${path}`, { encoding: 'gbk', timeoutMs })),
-    )
-    const sampleComponents = []
-    const seen = new Set((page.components ?? []).map((stock) => stock.code))
-    for (const item of settled) {
-      if (item.status !== 'fulfilled') continue
-      for (const stock of parseIndustryDetail(item.value).components ?? []) {
-        if (!stock.code || seen.has(stock.code)) continue
-        seen.add(stock.code)
-        sampleComponents.push(stock)
-      }
-    }
-    return { header, components: page.components ?? [], sampleComponents, full: variants.length > 0 && variants.length === pages - 1 }
   })
 }
 
@@ -1121,13 +1110,42 @@ function parseBoardHeader(html) {
   const upDownText = pick('涨跌家数')
   const rankMatch = /(\d+)\s*\/\s*(\d+)/.exec(rankText ?? '')
   const numbers = (upDownText ?? '').match(/\d+/g) ?? []
+  const boardMatch = /<h3[^>]*>[\s\S]{1,80}?<span[^>]*>(\d{4,6})<\/span>/.exec(source)
   return {
     changePct: changeText ? num(changeText.replace('%', '')) : null,
     rank: rankMatch ? Number(rankMatch[1]) : null,
     total: rankMatch ? Number(rankMatch[2]) : null,
     upCount: numbers.length >= 1 ? Number(numbers[0]) : null,
     downCount: numbers.length >= 2 ? Number(numbers[1]) : null,
+    boardCode: boardMatch ? boardMatch[1] : null,
   }
+}
+
+/** 同花顺板块日线（48_ 前缀 + 板块代码，885xxx 概念 / 881xxx 行业；886xxx 部分需 bk_ 前缀），精确计算板块今日与 5 日涨跌。 */
+async function fetchBoardKline(code, timeoutMs) {
+  if (!code) return null
+  return cached(`board:kline:${code}`, 10 * 60_000, async () => {
+    for (const prefix of ['48_', 'bk_']) {
+      try {
+        const text = await httpText(`${THS_LINE}/${prefix}${code}/01/last.js`, { timeoutMs })
+        const parsed = parseThsLine(text)
+        const rows = (parsed.rows ?? []).filter((row) => Number.isFinite(row.close) && row.close > 0)
+        if (rows.length < 2) continue
+        const last = rows[rows.length - 1]
+        const prev = rows[rows.length - 2]
+        const base = rows.length >= 6 ? rows[rows.length - 6].close : null
+        return {
+          date: last.date,
+          close: last.close,
+          changePct: prev.close > 0 ? round(((last.close - prev.close) / prev.close) * 100, 2) : null,
+          change5d: base && base > 0 ? round(((last.close - base) / base) * 100, 2) : null,
+        }
+      } catch {
+        /* 尝试下一个前缀 */
+      }
+    }
+    return null
+  })
 }
 
 /* ------------------------------------------------------------------ */
@@ -1791,7 +1809,7 @@ export function apply(ctx, config) {
           ? { rank: stockIndex + 1, total: components.length, changePct: components[stockIndex].changePct }
           : industry.stockRank ?? null
 
-      // 关联概念股 / 关联板块：取概念热度前两个可匹配的同花顺概念，补齐今日与近 5 日涨跌。
+      // 关联概念股 / 关联板块：展示全部可匹配的同花顺概念（含成分股）与行业板块。
       const related = { concepts: [], sectors: [] }
       try {
         const conceptBoards = await fetchConceptBoards(timeoutMs)
@@ -1800,33 +1818,26 @@ export function apply(ctx, config) {
         for (const name of heatNames) {
           const boardItem = conceptBoards.find((item) => item.name === name)
           if (boardItem && !targets.some((target) => target.code === boardItem.code)) targets.push(boardItem)
-          if (targets.length >= 2) break
+          if (targets.length >= 10) break
         }
         const details = await Promise.allSettled(targets.map((target) => fetchConceptDetail(target.code, timeoutMs)))
         const matched = targets.map((target, index) => ({
           target,
           detail: details[index].status === 'fulfilled' ? details[index].value : null,
         }))
-        const bottomComponents = Array.isArray(industryBottom?.components) ? industryBottom.components : []
-        const statCodes = [
-          ...components.slice(0, 10).map((item) => item.code),
-          ...bottomComponents.slice(0, 10).map((item) => item.code),
-          ...matched.flatMap((item) => (item.detail?.components ?? []).slice(0, 10).map((stock) => stock.code)),
-          ...matched.flatMap((item) =>
-            (item.detail?.full ? (item.detail?.sampleComponents ?? []).slice(0, 50) : spread(item.detail?.sampleComponents ?? [], 20)).map(
-              (stock) => stock.code,
-            ),
-          ),
-        ]
-        const stats = await fetchStatsMap(statCodes, timeoutMs)
+        // 板块今日/5 日涨跌直接取同花顺板块日线（48_ 前缀），比成分股均值更准确。
+        const [industryBoardKline, conceptBoardKlines] = await Promise.all([
+          fetchBoardKline(industry.code, timeoutMs),
+          Promise.allSettled(matched.map((item) => fetchBoardKline(item.detail?.header?.boardCode ?? null, timeoutMs))),
+        ])
+        // 只预取同行前 10 只的 5 日涨跌；概念成分股的 5 日涨跌由前端展开时按需补拉（/dsh-stock/quotes.json）。
+        const stats = await fetchStatsMap(
+          components.slice(0, 10).map((item) => item.code),
+          timeoutMs,
+        )
         const average = (values) => {
           const list = values.filter((value) => Number.isFinite(value))
           return list.length ? round(list.reduce((sum, value) => sum + value, 0) / list.length, 2) : null
-        }
-        function spread(list, limit) {
-          if (!Array.isArray(list) || list.length <= limit) return list ?? []
-          const step = list.length / limit
-          return Array.from({ length: limit }, (_, index) => list[Math.floor(index * step)])
         }
         const enrich = (stock) => {
           const stat = stats.get(stock.code)
@@ -1842,13 +1853,10 @@ export function apply(ctx, config) {
           ...peer,
           change5d: stats.get(peer.code)?.change5d ?? null,
         }))
-        for (const { target, detail } of matched) {
+        matched.forEach(({ target, detail }, index) => {
           const header = detail?.header ?? {}
-          const stocks = (detail?.components ?? []).slice(0, 10).map(enrich)
-          const sampleCodes = [
-            ...(detail?.components ?? []),
-            ...(detail?.full ? (detail?.sampleComponents ?? []).slice(0, 50) : spread(detail?.sampleComponents ?? [], 20)),
-          ].map((stock) => stock.code)
+          const boardKline = conceptBoardKlines[index]?.status === 'fulfilled' ? conceptBoardKlines[index].value : null
+          const stocks = [...(detail?.components ?? []), ...(detail?.moreComponents ?? [])].slice(0, 20).map(enrich)
           const stockCount =
             header.upCount !== null && header.downCount !== null
               ? header.upCount + header.downCount
@@ -1856,27 +1864,23 @@ export function apply(ctx, config) {
           related.concepts.push({
             name: target.name,
             code: target.code,
+            boardCode: header.boardCode ?? null,
             stockCount,
             rank: header.rank ?? null,
             rankTotal: header.total ?? null,
             upCount: header.upCount ?? null,
             downCount: header.downCount ?? null,
-            changePct: header.changePct ?? average(stocks.map((stock) => stock.changePct)),
-            change5d: average(sampleCodes.map((code) => stats.get(code)?.change5d)),
+            changePct: boardKline?.changePct ?? header.changePct ?? average(stocks.map((stock) => stock.changePct)),
+            change5d: boardKline?.change5d ?? null,
             stocks,
           })
-        }
-        const industryCodes = [
-          ...components.slice(0, 10).map((item) => item.code),
-          ...bottomComponents.slice(0, 10).map((item) => item.code),
-        ]
-        const industryChange5d = average(industryCodes.map((code) => stats.get(code)?.change5d))
+        })
         related.sectors.push({
           name: industry.name ?? normaliseIndustryName(f10?.main?.industryName) ?? null,
           code: industry.code ?? null,
           kind: 'industry',
           changePct: industry.changePct ?? null,
-          change5d: industryChange5d,
+          change5d: industryBoardKline?.change5d ?? null,
           stockCount: components.length || null,
           stocks: (industry.peers ?? []).slice(0, 10),
         })
@@ -2073,6 +2077,32 @@ export function apply(ctx, config) {
           const q = url.searchParams.get('q') ?? ''
           const items = await searchStocks(q, cfg.requestTimeoutMs)
           sendJson(res, 200, { ok: true, error: null, items })
+        } catch (error) {
+          sendJson(res, 200, { ok: false, error: errorText(error), items: [] })
+        }
+      },
+    }),
+  )
+
+  // 按需批量补拉成分股今日/5 日涨跌（前端展开概念或板块时调用）。
+  ctx.effect(() =>
+    ctx.webServer.register({
+      kind: 'exact',
+      path: QUOTES_PATH,
+      handler: async (req, res) => {
+        if (req.method !== 'GET' && req.method !== 'HEAD') {
+          sendJson(res, 405, { ok: false, error: '仅支持 GET', items: [] })
+          return
+        }
+        try {
+          const url = new URL(req.url ?? QUOTES_PATH, 'http://127.0.0.1')
+          const codes = String(url.searchParams.get('codes') ?? '')
+            .split(',')
+            .map((item) => item.trim())
+            .filter((item) => /^\d{6}$/.test(item))
+            .slice(0, 60)
+          const map = await fetchStatsMap(codes, cfg.requestTimeoutMs)
+          sendJson(res, 200, { ok: true, error: null, items: [...map.values()] })
         } catch (error) {
           sendJson(res, 200, { ok: false, error: errorText(error), items: [] })
         }

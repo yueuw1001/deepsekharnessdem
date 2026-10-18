@@ -850,7 +850,44 @@ window.__ModuleLoader__.load({
       const conceptGroups = listOf(related.concepts)
       const sectors = listOf(related.sectors)
       const [openSector, setOpenSector] = React.useState(null)
+      const [openConcept, setOpenConcept] = React.useState(null)
+      const [quotes, setQuotes] = React.useState({})
+      const requested = React.useRef({})
       const onSelect = typeof props.onSelect === 'function' ? props.onSelect : null
+      const quoteOf = (stock) => {
+        if (!stock) return stock
+        const cached = stock.code ? quotes[stock.code] : null
+        const fallback = cached && cached.change5d !== undefined ? cached.change5d : null
+        return {
+          ...stock,
+          change5d: stock.change5d === null || stock.change5d === undefined ? fallback : stock.change5d,
+        }
+      }
+      const loadQuotes = (stocks) => {
+        const codes = []
+        for (const stock of listOf(stocks)) {
+          if (!stock || !stock.code) continue
+          if (stock.change5d !== null && stock.change5d !== undefined) continue
+          if (requested.current[stock.code]) continue
+          if (codes.length >= 60) break
+          requested.current[stock.code] = true
+          codes.push(stock.code)
+        }
+        if (codes.length === 0) return
+        fetch(`/dsh-stock/quotes.json?codes=${codes.join(',')}`)
+          .then((response) => (response.ok ? response.json() : null))
+          .then((json) => {
+            if (!json || !json.ok || !Array.isArray(json.items)) return
+            setQuotes((previous) => {
+              const next = { ...previous }
+              for (const item of json.items) {
+                if (item && item.code) next[item.code] = item
+              }
+              return next
+            })
+          })
+          .catch(() => {})
+      }
       const industryEmpty = Object.keys(industry).length === 0
       // 行业缺失但关联概念/板块有数据时仍要展示（数据源局部降级场景）
       if (industryEmpty && conceptGroups.length === 0 && sectors.length === 0) {
@@ -886,8 +923,15 @@ window.__ModuleLoader__.load({
       ]
       const sectorKey = (sector, index) =>
         `${sector && sector.kind ? sector.kind : 'sector'}-${sector && sector.code ? sector.code : index}-${index}`
-      const toggleSector = (key) => {
-        setOpenSector((current) => (current === key ? null : key))
+      const toggleSector = (key, stocks) => {
+        const open = openSector === key
+        setOpenSector(open ? null : key)
+        if (!open) loadQuotes(stocks)
+      }
+      const toggleConcept = (key, stocks) => {
+        const open = openConcept === key
+        setOpenConcept(open ? null : key)
+        if (!open) loadQuotes(stocks)
       }
       return h(
         Card,
@@ -897,7 +941,7 @@ window.__ModuleLoader__.load({
           'div',
           { className: 'sa-sub-block' },
           h('div', { className: 'sa-mini-title' }, t('peers')),
-          h(PeersTable, { rows: peers, limit: 10, onSelect }),
+          h(PeersTable, { rows: listOf(peers).map(quoteOf), limit: 10, onSelect }),
         ),
         hotSectors.length > 0
           ? h(
@@ -929,29 +973,53 @@ window.__ModuleLoader__.load({
               { className: 'sa-sub-block' },
               h('div', { className: 'sa-mini-title' }, t('relatedConcepts')),
               h('div', { className: 'sa-hint' }, t('clickStockHint')),
-              conceptGroups.map((group, index) =>
-                h(
+              h(
+                'div',
+                { className: 'sa-sector-head' },
+                h('span', { className: 'sa-sector-col sa-sector-name' }, t('peerName')),
+                h('span', { className: 'sa-sector-col sa-sector-pct' }, t('sectorToday')),
+                h('span', { className: 'sa-sector-col sa-sector-pct' }, t('sector5d')),
+                h('span', { className: 'sa-sector-caret' }),
+              ),
+              conceptGroups.map((group, index) => {
+                const key = `concept-${group.code === undefined ? index : group.code}-${index}`
+                const open = openConcept === key
+                return h(
                   'div',
-                  { className: 'sa-concept-group', key: `${group.code === undefined ? index : group.code}-${index}` },
+                  { className: 'sa-concept-group', key },
                   h(
                     'div',
-                    { className: 'sa-concept-head' },
-                    h('span', { className: 'sa-concept-name' }, textOf(group.name)),
-                    h('span', { className: 'sa-concept-count' }, `${textOf(group.stockCount)} ${t('conceptStocks')}`),
+                    {
+                      className: 'sa-sector-row sa-clickable',
+                      role: 'button',
+                      tabIndex: 0,
+                      onClick: () => toggleConcept(key, group.stocks),
+                      onKeyDown: (event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault()
+                          toggleConcept(key, group.stocks)
+                        }
+                      },
+                    },
                     h(
                       'span',
-                      { className: `sa-concept-pct ${toneOf(group.changePct)}` },
-                      `${t('sectorToday')} ${pct(group.changePct)}`,
+                      { className: 'sa-sector-name' },
+                      textOf(group.name),
+                      h('span', { className: 'sa-kind' }, `${textOf(group.stockCount)} ${t('conceptStocks')}`),
                     ),
-                    h(
-                      'span',
-                      { className: `sa-concept-pct ${toneOf(group.change5d)}` },
-                      `${t('sector5d')} ${pct(group.change5d)}`,
-                    ),
+                    h('span', { className: `sa-sector-pct ${toneOf(group.changePct)}` }, pct(group.changePct)),
+                    h('span', { className: `sa-sector-pct ${toneOf(group.change5d)}` }, pct(group.change5d)),
+                    h('span', { className: 'sa-sector-caret' }, open ? '▾' : '▸'),
                   ),
-                  h(PeersTable, { rows: group.stocks, limit: 10, onSelect }),
-                ),
-              ),
+                  open
+                    ? h(
+                        'div',
+                        { className: 'sa-sector-stocks' },
+                        h(PeersTable, { rows: listOf(group.stocks).map(quoteOf), limit: 20, onSelect }),
+                      )
+                    : null,
+                )
+              }),
             )
           : null,
         sectors.length > 0
@@ -979,11 +1047,11 @@ window.__ModuleLoader__.load({
                       className: 'sa-sector-row sa-clickable',
                       role: 'button',
                       tabIndex: 0,
-                      onClick: () => toggleSector(key),
+                      onClick: () => toggleSector(key, sector.stocks),
                       onKeyDown: (event) => {
                         if (event.key === 'Enter' || event.key === ' ') {
                           event.preventDefault()
-                          toggleSector(key)
+                          toggleSector(key, sector.stocks)
                         }
                       },
                     },
@@ -1005,7 +1073,7 @@ window.__ModuleLoader__.load({
                     ? h(
                         'div',
                         { className: 'sa-sector-stocks' },
-                        h(PeersTable, { rows: sector.stocks, limit: 10, onSelect }),
+                        h(PeersTable, { rows: listOf(sector.stocks).map(quoteOf), limit: 20, onSelect }),
                       )
                     : null,
                 )

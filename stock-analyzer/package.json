@@ -1,6 +1,6 @@
 {
   "name": "dsh-stock-analyzer",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "type": "module",
   "description": "A 股个股智能分析（同花顺 + 东方财富双数据源）：输入股票名称或代码，输出行情估值、技术指标、资金流、行业板块、财务、新闻、热点与规则化投资建议",
