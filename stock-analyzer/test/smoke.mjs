@@ -67,6 +67,14 @@ console.log('MACD:', JSON.stringify(technical.macd), 'KDJ:', JSON.stringify(tech
 console.log('资金:', JSON.stringify({ mainNet: funds.mainNet, ratio: funds.mainNetRatio, estimated: funds.estimated }))
 console.log('东财资金流:', JSON.stringify(funds.em ? { main5: funds.em.main5, main10: funds.em.main10, main20: funds.em.main20, latest: funds.em.latestDate } : null))
 console.log('行业:', industry.name, '排名', industry.rank, '/', industry.total, '| 申万:', industry.swName, '| 同行:', industry.peers.length)
+console.log(
+  '关联概念股:',
+  data.related.concepts.map((item) => `${item.name}(${item.code}) 今日 ${item.changePct}% / 5日 ${item.change5d}% / ${item.stocks.length} 只`).join(' | '),
+)
+console.log(
+  '关联板块:',
+  data.related.sectors.map((item) => `${item.name}[${item.kind}] 今日 ${item.changePct}% / 5日 ${item.change5d}%`).join(' | '),
+)
 console.log('财务:', JSON.stringify({ report: finance.report, eps: finance.eps, gross: finance.grossMargin, roe: finance.roe, debt: finance.debtRatio }))
 console.log(
   '新闻条数:',
@@ -102,6 +110,11 @@ const checks = [
   [Number.isFinite(funds.mainNet), 'funds.mainNet'],
   [data.eastmoney && data.eastmoney.available === true, 'eastmoney.available'],
   [Number.isFinite(funds.em?.main5), 'funds.em.main5'],
+  [data.related && Array.isArray(data.related.concepts), 'related.concepts'],
+  [data.related && Array.isArray(data.related.sectors), 'related.sectors'],
+  [data.related.concepts.length > 0 && data.related.concepts[0].stocks.length > 0, 'related concept stocks'],
+  [Number.isFinite(data.related.sectors[0]?.change5d), 'related.sectors[0].change5d'],
+  [Number.isFinite(industry.peers[0]?.change5d), 'industry.peers[0].change5d'],
   [Number.isFinite(advice.score) && typeof advice.rating === 'string', 'advice'],
   [Array.isArray(news), 'news'],
   [Array.isArray(advice.reasons) && advice.reasons.length > 0, 'advice.reasons'],

@@ -458,6 +458,15 @@ async function fetchIndustryDetail(boardCode, timeoutMs) {
   })
 }
 
+/** 行业板块涨跌幅升序页（取末位成分股，避免只取到涨幅榜前 10 造成 5 日均值偏差）。 */
+async function fetchIndustryDetailAsc(boardCode, timeoutMs) {
+  const key = `industry:detail:asc:${boardCode}`
+  return cached(key, 30 * 60_000, async () => {
+    const text = await httpText(`${THS_INDUSTRY}/detail/code/${boardCode}/order/asc/`, { encoding: 'gbk', timeoutMs })
+    return parseIndustryDetail(text)
+  })
+}
+
 async function fetchHotList(timeoutMs) {
   return cached('hot:list', 10 * 60_000, async () => {
     const text = await httpText(THS_HOT, { timeoutMs })
@@ -798,6 +807,7 @@ function fmtNum(value) {
 /* ------------------------------------------------------------------ */
 
 const EM_FFLOW = 'https://push2his.eastmoney.com/api/qt/stock/fflow/daykline/get'
+const EM_KLINE = 'https://push2his.eastmoney.com/api/qt/stock/kline/get'
 const EM_FINANCE = 'https://emweb.securities.eastmoney.com/PC_HSF10/NewFinanceAnalysis/ZYZBAjaxNew'
 const EM_NOTICE = 'https://np-anotice-stock.eastmoney.com/api/security/ann'
 const EM_SEARCH = 'https://search-api-web.eastmoney.com/search/jsonp'
@@ -971,6 +981,152 @@ async function fetchEastmoney(code, market, name, timeoutMs, cfg) {
     available,
     reason: available ? '' : `东方财富接口暂不可用${failures.length ? `（${failures.join('、')}）` : ''}`,
     data: available ? { fundFlow: fundFlow ?? null, finance: finance ?? null, notices, news, failures } : null,
+  }
+}
+
+/** 东方财富 K 线短暂不可用时熔断 5 分钟，避免批量取数反复等待。 */
+let emKlineDownUntil = 0
+
+/** 单只股票：最新收盘、今日涨跌幅、近 5 个交易日涨跌幅（优先东方财富日线，失败回退同花顺）。 */
+async function fetchStockStats(code, timeoutMs) {
+  return cached(`stock:stats:${code}`, 10 * 60_000, async () => {
+    if (Date.now() >= emKlineDownUntil) {
+      try {
+        const secid = eastmoneySecid(code)
+        const url = `${EM_KLINE}?ut=fa5fd1943c7b386f172d6893dbfba10b&secid=${secid}&klt=101&fqt=1&beg=0&end=20500101&lmt=10&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61`
+        const parsed = await fetchEastmoneyJson(url, timeoutMs)
+        const klines = Array.isArray(parsed?.data?.klines) ? parsed.data.klines : []
+        if (klines.length > 0) {
+          const rows = klines.map((line) => {
+            const cells = String(line).split(',')
+            return { date: cells[0] ?? null, close: num(cells[2]), changePct: num(cells[8]) }
+          })
+          const last = rows[rows.length - 1]
+          const base = rows.length >= 6 ? rows[rows.length - 6].close : null
+          return {
+            code,
+            source: 'eastmoney',
+            date: last.date,
+            close: last.close,
+            changePct: last.changePct,
+            change5d: base && base > 0 && Number.isFinite(last.close) ? round(((last.close - base) / base) * 100, 2) : null,
+          }
+        }
+      } catch {
+        emKlineDownUntil = Date.now() + 5 * 60_000
+      }
+    }
+    try {
+      const text = await httpText(`${THS_LINE}/hs_${code}/01/last.js`, { timeoutMs })
+      const parsed = parseThsLine(text)
+      const rows = (parsed.rows ?? []).filter((row) => Number.isFinite(row.close) && row.close > 0)
+      if (rows.length === 0) return null
+      const last = rows[rows.length - 1]
+      const prev = rows.length >= 2 ? rows[rows.length - 2] : null
+      const base = rows.length >= 6 ? rows[rows.length - 6].close : null
+      return {
+        code,
+        source: 'ths',
+        date: last.date,
+        close: last.close,
+        changePct: prev && prev.close > 0 ? round(((last.close - prev.close) / prev.close) * 100, 2) : null,
+        change5d: base && base > 0 ? round(((last.close - base) / base) * 100, 2) : null,
+      }
+    } catch {
+      return null
+    }
+  })
+}
+
+/** 批量取多只股票的今日/5 日涨跌幅，并发 6，失败忽略。 */
+async function fetchStatsMap(codes, timeoutMs) {
+  const unique = [...new Set((Array.isArray(codes) ? codes : []).filter((code) => /^\d{6}$/.test(String(code))))]
+  const map = new Map()
+  let index = 0
+  const worker = async () => {
+    while (index < unique.length) {
+      const current = index
+      index += 1
+      const code = unique[current]
+      const stats = await fetchStockStats(code, timeoutMs)
+      if (stats) map.set(code, stats)
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(10, unique.length) }, () => worker()))
+  return map
+}
+
+/** 同花顺概念板块索引（概念名称 → 板块代码，整页约 360 个概念）。 */
+function parseConceptBoards(html) {
+  const boards = []
+  const seen = new Set()
+  const links = String(html ?? '').matchAll(/gn\/detail\/code\/(\d+)\/?"[^>]*>([^<]{1,24})</g)
+  for (const link of links) {
+    const code = link[1]
+    if (seen.has(code)) continue
+    seen.add(code)
+    boards.push({ code, name: stripEmTags(link[2]), stockCount: null })
+  }
+  return boards
+}
+
+async function fetchConceptBoards(timeoutMs) {
+  return cached('em:concept-boards', 30 * 60_000, async () => {
+    const html = await httpText('https://q.10jqka.com.cn/gn/', { encoding: 'gbk', timeoutMs })
+    return parseConceptBoards(html)
+  })
+}
+
+async function fetchConceptDetail(code, timeoutMs) {
+  return cached(`concept:detail:${code}`, 30 * 60_000, async () => {
+    const base = `https://q.10jqka.com.cn/gn/detail/code/${code}/`
+    const first = await httpText(base, { encoding: 'gbk', timeoutMs })
+    const page = parseIndustryDetail(first)
+    const header = parseBoardHeader(first)
+    // 概念成分股较少时抓全部分页；成分股很多（宽基概念）时取涨幅榜/跌幅榜各一页抽样。
+    const count = header.upCount !== null && header.downCount !== null ? header.upCount + header.downCount : null
+    const pages = count ? Math.ceil(count / 10) : 1
+    const variants = []
+    if (pages > 1 && pages <= 6) {
+      for (let pageNumber = 2; pageNumber <= pages; pageNumber += 1) variants.push(`page/${pageNumber}/`)
+    } else if (pages > 1) {
+      variants.push('order/asc/', 'order/asc/page/2/')
+    }
+    const settled = await Promise.allSettled(
+      variants.map((path) => httpText(`${base}${path}`, { encoding: 'gbk', timeoutMs })),
+    )
+    const sampleComponents = []
+    const seen = new Set((page.components ?? []).map((stock) => stock.code))
+    for (const item of settled) {
+      if (item.status !== 'fulfilled') continue
+      for (const stock of parseIndustryDetail(item.value).components ?? []) {
+        if (!stock.code || seen.has(stock.code)) continue
+        seen.add(stock.code)
+        sampleComponents.push(stock)
+      }
+    }
+    return { header, components: page.components ?? [], sampleComponents, full: variants.length > 0 && variants.length === pages - 1 }
+  })
+}
+
+/** 解析板块详情页头部统计（板块涨幅 / 涨幅排名 / 涨跌家数）。 */
+function parseBoardHeader(html) {
+  const source = String(html ?? '')
+  const pick = (label) => {
+    const match = new RegExp(`<dt>\\s*${label}\\s*</dt>\\s*<dd[^>]*>([\\s\\S]{1,200}?)</dd>`).exec(source)
+    return match ? stripEmTags(match[1]) : null
+  }
+  const changeText = pick('板块涨幅')
+  const rankText = pick('涨幅排名')
+  const upDownText = pick('涨跌家数')
+  const rankMatch = /(\d+)\s*\/\s*(\d+)/.exec(rankText ?? '')
+  const numbers = (upDownText ?? '').match(/\d+/g) ?? []
+  return {
+    changePct: changeText ? num(changeText.replace('%', '')) : null,
+    rank: rankMatch ? Number(rankMatch[1]) : null,
+    total: rankMatch ? Number(rankMatch[2]) : null,
+    upCount: numbers.length >= 1 ? Number(numbers[0]) : null,
+    downCount: numbers.length >= 2 ? Number(numbers[1]) : null,
   }
 }
 
@@ -1456,7 +1612,7 @@ function attachIndustryRank(board, list) {
 /* ------------------------------------------------------------------ */
 
 function formatReport(result, section = 'all') {
-  const { quote, funds, technical, finance, industry, news, hot, advice, meta } = result
+  const { quote, funds, technical, finance, industry, related, news, hot, advice, meta } = result
   const lines = []
   const sections = section === 'all' ? ['summary', 'technical', 'funds', 'industry', 'finance', 'news', 'hot', 'advice'] : [section]
 
@@ -1498,6 +1654,20 @@ function formatReport(result, section = 'all') {
       if (industry.peers.length) lines.push(`同行：${industry.peers.map((item) => `${item.name}(${formatPct(item.changePct)})`).join('、')}`)
       if (industry.hotSectors.length) {
         lines.push(`热门板块：${industry.hotSectors.map((item) => `${item.name} ${formatPct(item.changePct)}`).join('、')}`)
+      }
+      if (related?.concepts?.length) {
+        lines.push(
+          `关联概念股：${related.concepts
+            .map((item) => `${item.name}（今日 ${formatPct(item.changePct)}，5 日 ${formatPct(item.change5d)}，${item.stockCount ?? '—'} 只）`)
+            .join('；')}`,
+        )
+      }
+      if (related?.sectors?.length) {
+        lines.push(
+          `关联板块：${related.sectors
+            .map((item) => `${item.name}[${item.kind === 'concept' ? '概念' : '行业'}] 今日 ${formatPct(item.changePct)} / 5 日 ${formatPct(item.change5d)}`)
+            .join('；')}`,
+        )
       }
     } else if (key === 'finance') {
       lines.push('', '### 基本面')
@@ -1603,12 +1773,15 @@ export function apply(ctx, config) {
       let board = findIndustryBoard(industryList, industryNameRaw)
       board = attachIndustryRank(board, industryList)
       let industryDetail = null
+      let industryBottom = null
       if (board?.code) {
-        try {
-          industryDetail = await fetchIndustryDetail(board.code, timeoutMs)
-        } catch (error) {
-          warnings.push(`行业成分股获取失败：${errorText(error)}`)
-        }
+        const [mainDetail, bottomDetail] = await Promise.allSettled([
+          fetchIndustryDetail(board.code, timeoutMs),
+          fetchIndustryDetailAsc(board.code, timeoutMs),
+        ])
+        if (mainDetail.status === 'fulfilled') industryDetail = mainDetail.value
+        else warnings.push(`行业成分股获取失败：${errorText(mainDetail.reason)}`)
+        if (bottomDetail.status === 'fulfilled') industryBottom = bottomDetail.value
       }
       const industry = buildIndustry(board, industryDetail, industryList, finance.swIndustry, f10?.main?.industryName)
       const components = Array.isArray(industryDetail?.components) ? industryDetail.components : []
@@ -1617,6 +1790,110 @@ export function apply(ctx, config) {
         stockIndex >= 0
           ? { rank: stockIndex + 1, total: components.length, changePct: components[stockIndex].changePct }
           : industry.stockRank ?? null
+
+      // 关联概念股 / 关联板块：取概念热度前两个可匹配的同花顺概念，补齐今日与近 5 日涨跌。
+      const related = { concepts: [], sectors: [] }
+      try {
+        const conceptBoards = await fetchConceptBoards(timeoutMs)
+        const heatNames = (f10?.main?.concepts ?? []).map((item) => item.name).filter(Boolean)
+        const targets = []
+        for (const name of heatNames) {
+          const boardItem = conceptBoards.find((item) => item.name === name)
+          if (boardItem && !targets.some((target) => target.code === boardItem.code)) targets.push(boardItem)
+          if (targets.length >= 2) break
+        }
+        const details = await Promise.allSettled(targets.map((target) => fetchConceptDetail(target.code, timeoutMs)))
+        const matched = targets.map((target, index) => ({
+          target,
+          detail: details[index].status === 'fulfilled' ? details[index].value : null,
+        }))
+        const bottomComponents = Array.isArray(industryBottom?.components) ? industryBottom.components : []
+        const statCodes = [
+          ...components.slice(0, 10).map((item) => item.code),
+          ...bottomComponents.slice(0, 10).map((item) => item.code),
+          ...matched.flatMap((item) => (item.detail?.components ?? []).slice(0, 10).map((stock) => stock.code)),
+          ...matched.flatMap((item) =>
+            (item.detail?.full ? (item.detail?.sampleComponents ?? []).slice(0, 50) : spread(item.detail?.sampleComponents ?? [], 20)).map(
+              (stock) => stock.code,
+            ),
+          ),
+        ]
+        const stats = await fetchStatsMap(statCodes, timeoutMs)
+        const average = (values) => {
+          const list = values.filter((value) => Number.isFinite(value))
+          return list.length ? round(list.reduce((sum, value) => sum + value, 0) / list.length, 2) : null
+        }
+        function spread(list, limit) {
+          if (!Array.isArray(list) || list.length <= limit) return list ?? []
+          const step = list.length / limit
+          return Array.from({ length: limit }, (_, index) => list[Math.floor(index * step)])
+        }
+        const enrich = (stock) => {
+          const stat = stats.get(stock.code)
+          return {
+            code: stock.code,
+            name: stock.name,
+            price: stock.price ?? null,
+            changePct: Number.isFinite(stock.changePct) ? stock.changePct : stat?.changePct ?? null,
+            change5d: stat?.change5d ?? null,
+          }
+        }
+        industry.peers = (industry.peers ?? []).map((peer) => ({
+          ...peer,
+          change5d: stats.get(peer.code)?.change5d ?? null,
+        }))
+        for (const { target, detail } of matched) {
+          const header = detail?.header ?? {}
+          const stocks = (detail?.components ?? []).slice(0, 10).map(enrich)
+          const sampleCodes = [
+            ...(detail?.components ?? []),
+            ...(detail?.full ? (detail?.sampleComponents ?? []).slice(0, 50) : spread(detail?.sampleComponents ?? [], 20)),
+          ].map((stock) => stock.code)
+          const stockCount =
+            header.upCount !== null && header.downCount !== null
+              ? header.upCount + header.downCount
+              : detail?.components?.length ?? target.stockCount ?? null
+          related.concepts.push({
+            name: target.name,
+            code: target.code,
+            stockCount,
+            rank: header.rank ?? null,
+            rankTotal: header.total ?? null,
+            upCount: header.upCount ?? null,
+            downCount: header.downCount ?? null,
+            changePct: header.changePct ?? average(stocks.map((stock) => stock.changePct)),
+            change5d: average(sampleCodes.map((code) => stats.get(code)?.change5d)),
+            stocks,
+          })
+        }
+        const industryCodes = [
+          ...components.slice(0, 10).map((item) => item.code),
+          ...bottomComponents.slice(0, 10).map((item) => item.code),
+        ]
+        const industryChange5d = average(industryCodes.map((code) => stats.get(code)?.change5d))
+        related.sectors.push({
+          name: industry.name ?? normaliseIndustryName(f10?.main?.industryName) ?? null,
+          code: industry.code ?? null,
+          kind: 'industry',
+          changePct: industry.changePct ?? null,
+          change5d: industryChange5d,
+          stockCount: components.length || null,
+          stocks: (industry.peers ?? []).slice(0, 10),
+        })
+        for (const concept of related.concepts) {
+          related.sectors.push({
+            name: concept.name,
+            code: concept.code,
+            kind: 'concept',
+            changePct: concept.changePct,
+            change5d: concept.change5d,
+            stockCount: concept.stockCount,
+            stocks: concept.stocks,
+          })
+        }
+      } catch (error) {
+        warnings.push(`关联概念股/板块获取失败：${errorText(error)}`)
+      }
 
       const hotItem = (hotData?.stocks ?? []).find((item) => item.code === resolved.code) ?? null
       const conceptList = Array.isArray(f10?.concepts) ? f10.concepts : []
@@ -1726,6 +2003,7 @@ export function apply(ctx, config) {
         technical,
         finance,
         industry,
+        related,
         news,
         hot,
         advice,

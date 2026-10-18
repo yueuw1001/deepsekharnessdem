@@ -1,0 +1,1745 @@
+{
+  "ok": true,
+  "error": null,
+  "warnings": [],
+  "meta": {
+    "generatedAt": "2026-10-18T11:59:14.182Z",
+    "tradeDate": "2026-10-16",
+    "quoteAt": "2026-10-16 15:30",
+    "cached": false,
+    "stale": false,
+    "elapsedMs": 768,
+    "sources": [
+      {
+        "id": "ths",
+        "label": "同花顺",
+        "ok": true,
+        "note": "行情/K线/F10/行业/热榜/资讯"
+      },
+      {
+        "id": "eastmoney",
+        "label": "东方财富",
+        "ok": true,
+        "note": "资金流/财务/公告/资讯"
+      }
+    ]
+  },
+  "query": {
+    "raw": "600519",
+    "code": "600519",
+    "name": "贵州茅台",
+    "market": "SH",
+    "board": "主板"
+  },
+  "quote": {
+    "code": "600519",
+    "name": "贵州茅台",
+    "market": "SH",
+    "board": "主板",
+    "price": 1329,
+    "preClose": 1312.97,
+    "open": 1311.57,
+    "high": 1329.88,
+    "low": 1301.68,
+    "avgPrice": 1318.259,
+    "change": 16.03,
+    "changePct": 1.22,
+    "amplitude": 2.148,
+    "amount": 5075528300,
+    "volume": 3850175,
+    "turnoverRate": 0.308,
+    "volumeRatio": 1.102,
+    "peTTM": 18.66,
+    "peDynamic": 18.66,
+    "peStatic": 20.182,
+    "pb": 6.612,
+    "eps": 35.57,
+    "bvps": 201,
+    "totalMv": 1661358400000,
+    "circMv": 1661358400000,
+    "high52": 1444.27,
+    "low52": 1181.67,
+    "limitUp": 1444.27,
+    "limitDown": 1181.67,
+    "outerVol": 1964096,
+    "innerVol": 1304539,
+    "quoteAt": "2026-10-16 15:30",
+    "stockStatus": "闭市",
+    "suspended": false
+  },
+  "funds": {
+    "superNet": 72527700,
+    "largeNet": 231688790,
+    "mediumNet": -220237.63,
+    "smallNet": 195429430,
+    "mainNet": 304216490,
+    "netIn": 499425682.37,
+    "mainNetRatio": 5.99,
+    "netRatio": 9.84,
+    "estimated": false,
+    "outerVol": 1964096,
+    "innerVol": 1304539,
+    "em": {
+      "main5": 1191318400,
+      "main10": 1999731088,
+      "main20": 622887934,
+      "latestDate": "2026-10-16",
+      "latestMain": 468661168,
+      "days": [
+        {
+          "date": "2026-09-28",
+          "mainNet": -198158880,
+          "smallNet": -343470,
+          "mediumNet": 198502352,
+          "largeNet": -83004848,
+          "superNet": -115154032,
+          "mainRatio": -5.68,
+          "close": 1243.88,
+          "changePct": 0.56
+        },
+        {
+          "date": "2026-09-29",
+          "mainNet": 324185776,
+          "smallNet": -362437,
+          "mediumNet": -323823344,
+          "largeNet": 14867712,
+          "superNet": 309318064,
+          "mainRatio": 9.94,
+          "close": 1235.58,
+          "changePct": -0.67
+        },
+        {
+          "date": "2026-09-30",
+          "mainNet": 533565520,
+          "smallNet": -539065,
+          "mediumNet": -533026464,
+          "largeNet": 121427904,
+          "superNet": 412137616,
+          "mainRatio": 11.12,
+          "close": 1258.62,
+          "changePct": 1.86
+        },
+        {
+          "date": "2026-10-08",
+          "mainNet": -126323568,
+          "smallNet": -280648,
+          "mediumNet": 126604240,
+          "largeNet": -102005984,
+          "superNet": -24317584,
+          "mainRatio": -4.02,
+          "close": 1255.79,
+          "changePct": -0.22
+        },
+        {
+          "date": "2026-10-09",
+          "mainNet": 275143840,
+          "smallNet": -465602,
+          "mediumNet": -274678240,
+          "largeNet": 174222464,
+          "superNet": 100921376,
+          "mainRatio": 6.18,
+          "close": 1263,
+          "changePct": 0.57
+        },
+        {
+          "date": "2026-10-12",
+          "mainNet": 92719760,
+          "smallNet": -213006,
+          "mediumNet": -92506736,
+          "largeNet": 279257744,
+          "superNet": -186537984,
+          "mainRatio": 2.29,
+          "close": 1288,
+          "changePct": 1.98
+        },
+        {
+          "date": "2026-10-13",
+          "mainNet": 50401248,
+          "smallNet": -140533,
+          "mediumNet": -50260720,
+          "largeNet": 69189776,
+          "superNet": -18788528,
+          "mainRatio": 1.49,
+          "close": 1274.89,
+          "changePct": -1.02
+        },
+        {
+          "date": "2026-10-14",
+          "mainNet": 27504096,
+          "smallNet": -563997,
+          "mediumNet": -26940080,
+          "largeNet": -1195360,
+          "superNet": 28699456,
+          "mainRatio": 0.9,
+          "close": 1286,
+          "changePct": 0.87
+        },
+        {
+          "date": "2026-10-15",
+          "mainNet": 552032128,
+          "smallNet": -487901,
+          "mediumNet": -551544208,
+          "largeNet": 427641424,
+          "superNet": 124390704,
+          "mainRatio": 7.32,
+          "close": 1312.97,
+          "changePct": 2.1
+        },
+        {
+          "date": "2026-10-16",
+          "mainNet": 468661168,
+          "smallNet": -454626,
+          "mediumNet": -468206560,
+          "largeNet": 425044128,
+          "superNet": 43617040,
+          "mainRatio": 9.23,
+          "close": 1329,
+          "changePct": 1.22
+        }
+      ]
+    }
+  },
+  "technical": {
+    "bars": {
+      "count": 673,
+      "from": "2024-01-02",
+      "to": "2026-10-16"
+    },
+    "ma": {
+      "ma5": 1298.17,
+      "ma10": 1274.77,
+      "ma20": 1267.52,
+      "ma60": 1296.91,
+      "ma120": 1282.23,
+      "ma250": 1341.73
+    },
+    "macd": {
+      "dif": 3.432,
+      "dea": -5.667,
+      "hist": 18.198,
+      "signal": "多头"
+    },
+    "kdj": {
+      "k": 89.22,
+      "d": 76.32,
+      "j": 115.02,
+      "signal": "超买"
+    },
+    "rsi": {
+      "rsi6": 80.78,
+      "rsi12": 68.05,
+      "rsi24": 58.36,
+      "signal": "超买"
+    },
+    "boll": {
+      "upper": 1314.48,
+      "mid": 1267.52,
+      "lower": 1220.55,
+      "width": 7.41,
+      "position": "上轨之上"
+    },
+    "atr": {
+      "value": 22.27,
+      "pct": 1.68
+    },
+    "bias": {
+      "bias6": 2.37,
+      "bias12": 4.25,
+      "bias24": 4.85
+    },
+    "volume": {
+      "avg5": 3561610,
+      "avg20": 2884495,
+      "ratio": 1.23,
+      "signal": "温和放量"
+    },
+    "support": 1228.1,
+    "resistance": 1329.88,
+    "stopLoss": 1203.54,
+    "trend": {
+      "label": "多头排列",
+      "score": 64,
+      "text": "股价位于 20 日均线上方；均线多头排列；MACD 多头，红柱延续"
+    },
+    "items": [
+      {
+        "key": "ma",
+        "label": "均线系统",
+        "value": "MA5 1298.17 / MA10 1274.77 / MA20 1267.52 / MA60 1296.91",
+        "status": "bull",
+        "note": "多头排列"
+      },
+      {
+        "key": "macd",
+        "label": "MACD",
+        "value": "DIF 3.43 / DEA -5.67 / 柱 18.20",
+        "status": "bull",
+        "note": "多头"
+      },
+      {
+        "key": "kdj",
+        "label": "KDJ",
+        "value": "K 89.22 / D 76.32 / J 115.02",
+        "status": "bull",
+        "note": "超买"
+      },
+      {
+        "key": "rsi",
+        "label": "RSI",
+        "value": "RSI6 80.78 / RSI12 68.05 / RSI24 58.36",
+        "status": "bear",
+        "note": "超买"
+      },
+      {
+        "key": "boll",
+        "label": "布林带",
+        "value": "上 1314.48 / 中 1267.52 / 下 1220.55",
+        "status": "bull",
+        "note": "上轨之上，带宽 7.41%"
+      },
+      {
+        "key": "volume",
+        "label": "量能",
+        "value": "5 日均量为 20 日均量的 1.23 倍",
+        "status": "bull",
+        "note": "温和放量"
+      },
+      {
+        "key": "bias",
+        "label": "乖离率",
+        "value": "BIAS6 2.37% / BIAS12 4.25% / BIAS24 4.85%",
+        "status": "neutral",
+        "note": "正值表示价格在均线上方"
+      },
+      {
+        "key": "atr",
+        "label": "波动率 ATR",
+        "value": "22.27 元（1.68%）",
+        "status": "neutral",
+        "note": "波动正常"
+      },
+      {
+        "key": "support",
+        "label": "支撑 / 压力",
+        "value": "1228.10 / 1329.88",
+        "status": "neutral",
+        "note": "近 20 个交易日区间"
+      }
+    ],
+    "score": 64
+  },
+  "finance": {
+    "report": "2026年中报",
+    "eps": 35.57,
+    "epsTTM": 65.14,
+    "netProfit": 44517000000,
+    "netProfitYoY": -1.95,
+    "revenue": 92278072083.21,
+    "revenueYoY": 1.47,
+    "grossMargin": 89.56,
+    "netMargin": 50.75,
+    "roe": 16.75,
+    "debtRatio": 15.19,
+    "profitYoY": -1.95,
+    "cashRatio": 77.94,
+    "cashPerShare": 56.55,
+    "totalShares": 1250000000,
+    "floatShares": 1250000000,
+    "holderConcentration": 67.63,
+    "pledgeRatio": 0.06,
+    "peDynamic": 18.66,
+    "peStatic": 20.18,
+    "business": "茅台酒及系列酒的生产与销售。",
+    "swIndustry": "食品饮料 — 白酒Ⅱ",
+    "area": "贵州省",
+    "listedAt": "2001-08-27",
+    "profile": "贵州茅台酒股份有限公司的主营业务是茅台酒及系列酒的生产与销售。公司的主要产品是茅台酒及系列酒。",
+    "financeTags": [
+      "权重股",
+      "一线蓝筹",
+      "绩优股"
+    ],
+    "ranks": [
+      {
+        "item": "毛利率",
+        "rank": "1/20",
+        "text": "1.本期毛利率89.56%,去年同期为91.30%,主营获利能力保持稳定"
+      },
+      {
+        "item": "净利率",
+        "rank": "1/20",
+        "text": "2.本期净利率50.75%,去年同期为52.56%,企业经营效益下降"
+      },
+      {
+        "item": "总资产净利率",
+        "rank": "1/20",
+        "text": "3.本期总资产净利率15.02%,去年同期为15.90%,总资产收益能力略有下降"
+      },
+      {
+        "item": "净资产收益率",
+        "rank": "1/20",
+        "text": "4.本期净资产收益率16.75%,去年同期为17.89%,回报股东能力变弱"
+      },
+      {
+        "item": "扣非后净资产收益率",
+        "rank": "1/20",
+        "text": "5.中报扣非后净资产收益率16.74%,去年同期为17.88%,主营业务利润贡献明显下降"
+      },
+      {
+        "item": "营业收入增长率",
+        "rank": "5/20",
+        "text": "1.本期营业收入增长率1.47%,去年同期为9.10%,营业收入增速大幅减缓"
+      },
+      {
+        "item": "营业利润增长率",
+        "rank": "5/20",
+        "text": "2.本期营业利润增长率-2.16%,去年同期为9.07%,经营业绩承受明显压力"
+      },
+      {
+        "item": "净利润增长率",
+        "rank": "5/20",
+        "text": "3.本期净利润增长率-1.95%,去年同期为8.89%,企业成长潜力停止扩张转入收缩"
+      }
+    ],
+    "diagnosis": [
+      "1.本期毛利率89.56%,去年同期为91.30%,主营获利能力保持稳定",
+      "2.本期净利率50.75%,去年同期为52.56%,企业经营效益下降",
+      "3.本期总资产净利率15.02%,去年同期为15.90%,总资产收益能力略有下降",
+      "4.本期净资产收益率16.75%,去年同期为17.89%,回报股东能力变弱",
+      "5.中报扣非后净资产收益率16.74%,去年同期为17.88%,主营业务利润贡献明显下降",
+      "1.本期营业收入增长率1.47%,去年同期为9.10%,营业收入增速大幅减缓",
+      "2.本期营业利润增长率-2.16%,去年同期为9.07%,经营业绩承受明显压力",
+      "3.本期净利润增长率-1.95%,去年同期为8.89%,企业成长潜力停止扩张转入收缩"
+    ],
+    "bps": 200.989754763617,
+    "emReports": [
+      {
+        "report": "2026中报",
+        "eps": 35.57,
+        "roe": 16.75,
+        "revenueYoY": 1.300099475569,
+        "netProfitYoY": -1.951594855028
+      },
+      {
+        "report": "2026一季报",
+        "eps": 21.76,
+        "roe": 10.57,
+        "revenueYoY": 6.336009277123,
+        "netProfitYoY": 1.471418294983
+      },
+      {
+        "report": "2025年报",
+        "eps": 65.66,
+        "roe": 32.53,
+        "revenueYoY": -1.200097176919,
+        "netProfitYoY": -4.532254817158
+      },
+      {
+        "report": "2025三季报",
+        "eps": 51.53,
+        "roe": 24.64,
+        "revenueYoY": 6.320001880648,
+        "netProfitYoY": 6.245844952412
+      },
+      {
+        "report": "2025中报",
+        "eps": 36.18,
+        "roe": 17.89,
+        "revenueYoY": 9.158168061298,
+        "netProfitYoY": 8.891466577162
+      },
+      {
+        "report": "2025一季报",
+        "eps": 21.38,
+        "roe": 10.92,
+        "revenueYoY": 10.66739891106,
+        "netProfitYoY": 11.561111702645
+      }
+    ]
+  },
+  "industry": {
+    "name": "白酒",
+    "swName": "食品饮料 — 白酒Ⅱ",
+    "code": "881273",
+    "changePct": 1.95,
+    "rank": 6,
+    "total": 90,
+    "netIn": 9.67,
+    "upCount": 19,
+    "downCount": 0,
+    "leader": {
+      "name": "皇台酒业",
+      "code": "000995",
+      "changePct": null
+    },
+    "peers": [
+      {
+        "code": "000995",
+        "name": "皇台酒业",
+        "price": 14.28,
+        "changePct": 6.81,
+        "change5d": 24.72
+      },
+      {
+        "code": "600199",
+        "name": "金种子酒",
+        "price": 8.12,
+        "changePct": 4.77,
+        "change5d": 15.01
+      },
+      {
+        "code": "603198",
+        "name": "迎驾贡酒",
+        "price": 40,
+        "changePct": 3.63,
+        "change5d": 2.91
+      },
+      {
+        "code": "002646",
+        "name": "天佑德酒",
+        "price": 7.16,
+        "changePct": 2.58,
+        "change5d": -0.69
+      },
+      {
+        "code": "603919",
+        "name": "金徽酒",
+        "price": 17.25,
+        "changePct": 2.56,
+        "change5d": -0.29
+      },
+      {
+        "code": "603589",
+        "name": "口子窖",
+        "price": 18.07,
+        "changePct": 1.98,
+        "change5d": -0.44
+      },
+      {
+        "code": "002304",
+        "name": "洋河股份",
+        "price": 37.95,
+        "changePct": 1.91,
+        "change5d": 1.8
+      },
+      {
+        "code": "603369",
+        "name": "今世缘",
+        "price": 29.64,
+        "changePct": 1.86,
+        "change5d": 7.31
+      },
+      {
+        "code": "000799",
+        "name": "酒鬼酒",
+        "price": 36.79,
+        "changePct": 1.63,
+        "change5d": 0.35
+      },
+      {
+        "code": "000596",
+        "name": "古井贡酒",
+        "price": 85.07,
+        "changePct": 1.44,
+        "change5d": -8.18
+      }
+    ],
+    "stockRank": {
+      "rank": 12,
+      "total": 19,
+      "changePct": 1.22
+    },
+    "hotSectors": [
+      {
+        "name": "军工装备",
+        "changePct": 5.61,
+        "netIn": 21.88,
+        "leader": "晟楠科技"
+      },
+      {
+        "name": "军工电子",
+        "changePct": 2.87,
+        "netIn": 5.22,
+        "leader": "华力创通"
+      },
+      {
+        "name": "汽车零部件",
+        "changePct": 2.37,
+        "netIn": -0.93,
+        "leader": "捷众科技"
+      },
+      {
+        "name": "化学纤维",
+        "changePct": 2.26,
+        "netIn": -0.89,
+        "leader": "中复神鹰"
+      },
+      {
+        "name": "汽车整车",
+        "changePct": 1.98,
+        "netIn": -2.66,
+        "leader": "江淮汽车"
+      }
+    ]
+  },
+  "related": {
+    "concepts": [
+      {
+        "name": "超级品牌",
+        "code": "306750",
+        "stockCount": 46,
+        "rank": 193,
+        "rankTotal": 390,
+        "upCount": 27,
+        "downCount": 19,
+        "changePct": 0.3,
+        "change5d": -1.69,
+        "stocks": [
+          {
+            "code": "920726",
+            "name": "朱老六",
+            "price": 16.6,
+            "changePct": 3.69,
+            "change5d": 7.03
+          },
+          {
+            "code": "000869",
+            "name": "张裕A",
+            "price": 18.18,
+            "changePct": 3.53,
+            "change5d": -6.19
+          },
+          {
+            "code": "603156",
+            "name": "养元饮品",
+            "price": 41.51,
+            "changePct": 3.41,
+            "change5d": -2.01
+          },
+          {
+            "code": "600623",
+            "name": "华谊集团",
+            "price": 8.46,
+            "changePct": 2.3,
+            "change5d": -2.98
+          },
+          {
+            "code": "001328",
+            "name": "登康口腔",
+            "price": 30.3,
+            "changePct": 2.3,
+            "change5d": -1.46
+          },
+          {
+            "code": "000100",
+            "name": "TCL科技",
+            "price": 4.54,
+            "changePct": 2.02,
+            "change5d": -2.16
+          },
+          {
+            "code": "002304",
+            "name": "洋河股份",
+            "price": 37.95,
+            "changePct": 1.91,
+            "change5d": 1.8
+          },
+          {
+            "code": "300999",
+            "name": "金龙鱼",
+            "price": 25.6,
+            "changePct": 1.79,
+            "change5d": 1.23
+          },
+          {
+            "code": "000002",
+            "name": "万科A",
+            "price": 3.66,
+            "changePct": 1.67,
+            "change5d": -9.85
+          },
+          {
+            "code": "000599",
+            "name": "青岛双星",
+            "price": 4.29,
+            "changePct": 1.66,
+            "change5d": -4.24
+          }
+        ]
+      },
+      {
+        "name": "白酒概念",
+        "code": "301496",
+        "stockCount": 45,
+        "rank": 131,
+        "rankTotal": 390,
+        "upCount": 30,
+        "downCount": 15,
+        "changePct": 0.68,
+        "change5d": -2.76,
+        "stocks": [
+          {
+            "code": "000995",
+            "name": "皇台酒业",
+            "price": 14.28,
+            "changePct": 6.81,
+            "change5d": 24.72
+          },
+          {
+            "code": "002342",
+            "name": "巨力索具",
+            "price": 7.06,
+            "changePct": 6.01,
+            "change5d": -10.86
+          },
+          {
+            "code": "600199",
+            "name": "金种子酒",
+            "price": 8.12,
+            "changePct": 4.77,
+            "change5d": 15.01
+          },
+          {
+            "code": "603198",
+            "name": "迎驾贡酒",
+            "price": 40,
+            "changePct": 3.63,
+            "change5d": 2.91
+          },
+          {
+            "code": "600153",
+            "name": "建发股份",
+            "price": 8.84,
+            "changePct": 2.67,
+            "change5d": -1.89
+          },
+          {
+            "code": "002646",
+            "name": "天佑德酒",
+            "price": 7.16,
+            "changePct": 2.58,
+            "change5d": -0.69
+          },
+          {
+            "code": "603919",
+            "name": "金徽酒",
+            "price": 17.25,
+            "changePct": 2.56,
+            "change5d": -0.29
+          },
+          {
+            "code": "002183",
+            "name": "怡亚通",
+            "price": 4.09,
+            "changePct": 2,
+            "change5d": -6.62
+          },
+          {
+            "code": "603589",
+            "name": "口子窖",
+            "price": 18.07,
+            "changePct": 1.98,
+            "change5d": -0.44
+          },
+          {
+            "code": "002304",
+            "name": "洋河股份",
+            "price": 37.95,
+            "changePct": 1.91,
+            "change5d": 1.8
+          }
+        ]
+      }
+    ],
+    "sectors": [
+      {
+        "name": "白酒",
+        "code": "881273",
+        "kind": "industry",
+        "changePct": 1.95,
+        "change5d": 1.99,
+        "stockCount": 19,
+        "stocks": [
+          {
+            "code": "000995",
+            "name": "皇台酒业",
+            "price": 14.28,
+            "changePct": 6.81,
+            "change5d": 24.72
+          },
+          {
+            "code": "600199",
+            "name": "金种子酒",
+            "price": 8.12,
+            "changePct": 4.77,
+            "change5d": 15.01
+          },
+          {
+            "code": "603198",
+            "name": "迎驾贡酒",
+            "price": 40,
+            "changePct": 3.63,
+            "change5d": 2.91
+          },
+          {
+            "code": "002646",
+            "name": "天佑德酒",
+            "price": 7.16,
+            "changePct": 2.58,
+            "change5d": -0.69
+          },
+          {
+            "code": "603919",
+            "name": "金徽酒",
+            "price": 17.25,
+            "changePct": 2.56,
+            "change5d": -0.29
+          },
+          {
+            "code": "603589",
+            "name": "口子窖",
+            "price": 18.07,
+            "changePct": 1.98,
+            "change5d": -0.44
+          },
+          {
+            "code": "002304",
+            "name": "洋河股份",
+            "price": 37.95,
+            "changePct": 1.91,
+            "change5d": 1.8
+          },
+          {
+            "code": "603369",
+            "name": "今世缘",
+            "price": 29.64,
+            "changePct": 1.86,
+            "change5d": 7.31
+          },
+          {
+            "code": "000799",
+            "name": "酒鬼酒",
+            "price": 36.79,
+            "changePct": 1.63,
+            "change5d": 0.35
+          },
+          {
+            "code": "000596",
+            "name": "古井贡酒",
+            "price": 85.07,
+            "changePct": 1.44,
+            "change5d": -8.18
+          }
+        ]
+      },
+      {
+        "name": "超级品牌",
+        "code": "306750",
+        "kind": "concept",
+        "changePct": 0.3,
+        "change5d": -1.69,
+        "stockCount": 46,
+        "stocks": [
+          {
+            "code": "920726",
+            "name": "朱老六",
+            "price": 16.6,
+            "changePct": 3.69,
+            "change5d": 7.03
+          },
+          {
+            "code": "000869",
+            "name": "张裕A",
+            "price": 18.18,
+            "changePct": 3.53,
+            "change5d": -6.19
+          },
+          {
+            "code": "603156",
+            "name": "养元饮品",
+            "price": 41.51,
+            "changePct": 3.41,
+            "change5d": -2.01
+          },
+          {
+            "code": "600623",
+            "name": "华谊集团",
+            "price": 8.46,
+            "changePct": 2.3,
+            "change5d": -2.98
+          },
+          {
+            "code": "001328",
+            "name": "登康口腔",
+            "price": 30.3,
+            "changePct": 2.3,
+            "change5d": -1.46
+          },
+          {
+            "code": "000100",
+            "name": "TCL科技",
+            "price": 4.54,
+            "changePct": 2.02,
+            "change5d": -2.16
+          },
+          {
+            "code": "002304",
+            "name": "洋河股份",
+            "price": 37.95,
+            "changePct": 1.91,
+            "change5d": 1.8
+          },
+          {
+            "code": "300999",
+            "name": "金龙鱼",
+            "price": 25.6,
+            "changePct": 1.79,
+            "change5d": 1.23
+          },
+          {
+            "code": "000002",
+            "name": "万科A",
+            "price": 3.66,
+            "changePct": 1.67,
+            "change5d": -9.85
+          },
+          {
+            "code": "000599",
+            "name": "青岛双星",
+            "price": 4.29,
+            "changePct": 1.66,
+            "change5d": -4.24
+          }
+        ]
+      },
+      {
+        "name": "白酒概念",
+        "code": "301496",
+        "kind": "concept",
+        "changePct": 0.68,
+        "change5d": -2.76,
+        "stockCount": 45,
+        "stocks": [
+          {
+            "code": "000995",
+            "name": "皇台酒业",
+            "price": 14.28,
+            "changePct": 6.81,
+            "change5d": 24.72
+          },
+          {
+            "code": "002342",
+            "name": "巨力索具",
+            "price": 7.06,
+            "changePct": 6.01,
+            "change5d": -10.86
+          },
+          {
+            "code": "600199",
+            "name": "金种子酒",
+            "price": 8.12,
+            "changePct": 4.77,
+            "change5d": 15.01
+          },
+          {
+            "code": "603198",
+            "name": "迎驾贡酒",
+            "price": 40,
+            "changePct": 3.63,
+            "change5d": 2.91
+          },
+          {
+            "code": "600153",
+            "name": "建发股份",
+            "price": 8.84,
+            "changePct": 2.67,
+            "change5d": -1.89
+          },
+          {
+            "code": "002646",
+            "name": "天佑德酒",
+            "price": 7.16,
+            "changePct": 2.58,
+            "change5d": -0.69
+          },
+          {
+            "code": "603919",
+            "name": "金徽酒",
+            "price": 17.25,
+            "changePct": 2.56,
+            "change5d": -0.29
+          },
+          {
+            "code": "002183",
+            "name": "怡亚通",
+            "price": 4.09,
+            "changePct": 2,
+            "change5d": -6.62
+          },
+          {
+            "code": "603589",
+            "name": "口子窖",
+            "price": 18.07,
+            "changePct": 1.98,
+            "change5d": -0.44
+          },
+          {
+            "code": "002304",
+            "name": "洋河股份",
+            "price": 37.95,
+            "changePct": 1.91,
+            "change5d": 1.8
+          }
+        ]
+      }
+    ]
+  },
+  "news": [
+    {
+      "title": "贵州茅台:贵州茅台关于召开2026年半年度业绩说明会的公告",
+      "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994407.html",
+      "time": "2026-08-15",
+      "kind": "notice",
+      "source": "东方财富"
+    },
+    {
+      "title": "贵州茅台:贵州茅台关于贵州茅台集团财务有限公司的风险评估报告",
+      "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994404.html",
+      "time": "2026-08-15",
+      "kind": "notice",
+      "source": "东方财富"
+    },
+    {
+      "title": "贵州茅台:贵州茅台2026年半年度报告摘要",
+      "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994403.html",
+      "time": "2026-08-15",
+      "kind": "notice",
+      "source": "东方财富"
+    },
+    {
+      "title": "贵州茅台:贵州茅台关于会计政策变更的公告",
+      "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994406.html",
+      "time": "2026-08-15",
+      "kind": "notice",
+      "source": "东方财富"
+    },
+    {
+      "title": "贵州茅台：贵州茅台2026年半年度报告摘要",
+      "url": "http://news.10jqka.com.cn/field/sn/20260815/59278685.shtml",
+      "time": null,
+      "kind": "notice",
+      "source": "同花顺 F10"
+    },
+    {
+      "title": "贵州茅台：贵州茅台2026年半年度报告",
+      "url": "http://news.10jqka.com.cn/field/sn/20260815/59278657.shtml",
+      "time": null,
+      "kind": "notice",
+      "source": "同花顺 F10"
+    },
+    {
+      "title": "贵州茅台：贵州茅台第五届董事会2026年度第三次会议决议公告",
+      "url": "http://news.10jqka.com.cn/field/sn/20260815/59278665.shtml",
+      "time": null,
+      "kind": "notice",
+      "source": "同花顺 F10"
+    },
+    {
+      "title": "贵州茅台：贵州茅台关于会计政策变更的公告",
+      "url": "http://news.10jqka.com.cn/field/sn/20260815/59278667.shtml",
+      "time": null,
+      "kind": "notice",
+      "source": "同花顺 F10"
+    },
+    {
+      "title": "贵州茅台 重阳下沙 传统酿造里的时间与传承",
+      "url": "http://finance.eastmoney.com/a/202610183899091934.html",
+      "time": "2026-10-18 05:30:46",
+      "kind": "news",
+      "source": "人民日报"
+    },
+    {
+      "title": "白酒归来！贵州茅台重回1300元",
+      "url": "http://finance.eastmoney.com/a/202610153897189730.html",
+      "time": "2026-10-15 17:42:00",
+      "kind": "news",
+      "source": "上海证券报"
+    }
+  ],
+  "hot": {
+    "rank": 61,
+    "rate": 28807,
+    "reason": null,
+    "concepts": [
+      {
+        "name": "超级品牌",
+        "desc": "公司主导产品贵州茅台酒是中国一张飘香世界的名片，是中国民族工"
+      },
+      {
+        "name": "白酒概念",
+        "desc": "全国两大高端白酒龙头之一(行业第一)，酱香型白酒代表，拥有八"
+      },
+      {
+        "name": "同花顺漂亮100",
+        "desc": "在注册制全面推行的大背景下，市场成熟度逐步提高，各行业头部公"
+      },
+      {
+        "name": "国企改革",
+        "desc": "公司属于国有企业。公司的最终控制人为贵州省人民政府国有资产监"
+      },
+      {
+        "name": "西部大开发",
+        "desc": "公司注册地址为贵州省遵义市仁怀市茅台镇"
+      },
+      {
+        "name": "乡村振兴",
+        "desc": "根据2026年4月17日公告：公司以产业发展为抓手，依托主业"
+      },
+      {
+        "name": "老字号",
+        "desc": "茅台酒历史悠久，源远流长，是酱香型白酒的典型代表，享有\"国酒\"的美称，是世界三大蒸馏名酒之"
+      }
+    ],
+    "conceptHeat": [
+      {
+        "name": "超级品牌",
+        "rank": 1
+      },
+      {
+        "name": "白酒概念",
+        "rank": 2
+      },
+      {
+        "name": "同花顺漂亮100",
+        "rank": 3
+      },
+      {
+        "name": "国企改革",
+        "rank": 4
+      },
+      {
+        "name": "沪股通",
+        "rank": 5
+      },
+      {
+        "name": "融资融券",
+        "rank": 6
+      },
+      {
+        "name": "西部大开发",
+        "rank": 7
+      },
+      {
+        "name": "乡村振兴",
+        "rank": 8
+      }
+    ],
+    "marketNews": [
+      {
+        "title": "乌称无人机袭击圣彼得堡数据中心及两处石油设施",
+        "url": "https://news.10jqka.com.cn/20261018/c680806902.shtml",
+        "time": "2026-10-18 19:54"
+      },
+      {
+        "title": "伊朗：已针对可能的新“冒险行径”制定应对方案",
+        "url": "https://news.10jqka.com.cn/20261018/c680806885.shtml",
+        "time": "2026-10-18 19:45"
+      },
+      {
+        "title": "伊朗外长说“七日内重开霍尔木兹海峡”提议依然有效",
+        "url": "https://news.10jqka.com.cn/20261018/c680806870.shtml",
+        "time": "2026-10-18 19:38"
+      },
+      {
+        "title": "今年上海劳力士大师赛总收入5亿元，观众人数24.8万",
+        "url": "https://news.10jqka.com.cn/20261018/c680806867.shtml",
+        "time": "2026-10-18 19:36"
+      },
+      {
+        "title": "泽连斯基：俄军袭击乌克兰多地变电站，数万家庭断电",
+        "url": "https://news.10jqka.com.cn/20261018/c680806831.shtml",
+        "time": "2026-10-18 19:29"
+      },
+      {
+        "title": "中信证券：银行业绩稳定性有望进一步夯实稳定回报属性",
+        "url": "https://news.10jqka.com.cn/20261018/c680806738.shtml",
+        "time": "2026-10-18 18:57"
+      }
+    ]
+  },
+  "advice": {
+    "score": 69,
+    "rating": "看多",
+    "action": "回调至支撑区间分批布局，突破压力位可考虑加仓；跌破 1203.54 减仓。",
+    "horizon": "1-3 个月",
+    "confidence": "中高",
+    "position": "3-5 成",
+    "reasons": [
+      "均线系统：多头排列",
+      "MACD：多头",
+      "布林带：上轨之上，带宽 7.41%",
+      "量能：温和放量",
+      "主力资金净流入 3.04 亿，占成交额 5.99%",
+      "ROE 16.75%，盈利能力较好"
+    ],
+    "risks": [
+      "净利润同比 -1.95%，业绩承压",
+      "股价接近 52 周高点，注意回撤风险",
+      "RSI6 达 80.78，短期超买，注意回调"
+    ],
+    "levels": {
+      "support": 1228.1,
+      "resistance": 1329.88,
+      "stopLoss": 1203.54,
+      "target": 1396.37,
+      "buyZone": "1215.82 - 1267.52"
+    },
+    "scores": {
+      "technical": 64,
+      "funds": 86,
+      "valuation": 77,
+      "finance": 84,
+      "industry": 82,
+      "sentiment": 56
+    },
+    "disclaimer": "本分析由同花顺与东方财富公开数据结合规则模型自动生成，仅供参考，不构成投资建议。股市有风险，投资需谨慎。"
+  },
+  "eastmoney": {
+    "available": true,
+    "reason": "",
+    "data": {
+      "fundFlow": {
+        "days": [
+          {
+            "date": "2026-08-28",
+            "mainNet": -72035232,
+            "smallNet": -99562,
+            "mediumNet": 72134784,
+            "largeNet": 34827232,
+            "superNet": -106862464,
+            "mainRatio": -3.45,
+            "close": 1297.4,
+            "changePct": 0.39
+          },
+          {
+            "date": "2026-08-31",
+            "mainNet": -38633360,
+            "smallNet": -119883,
+            "mediumNet": 38753232,
+            "largeNet": -15361168,
+            "superNet": -23272192,
+            "mainRatio": -1.29,
+            "close": 1299.52,
+            "changePct": 0.16
+          },
+          {
+            "date": "2026-09-01",
+            "mainNet": 220531760,
+            "smallNet": -97733,
+            "mediumNet": -220434016,
+            "largeNet": 52482800,
+            "superNet": 168048960,
+            "mainRatio": 5.2,
+            "close": 1299.56,
+            "changePct": 0
+          },
+          {
+            "date": "2026-09-02",
+            "mainNet": -31931024,
+            "smallNet": -72740,
+            "mediumNet": 32003744,
+            "largeNet": -138364880,
+            "superNet": 106433856,
+            "mainRatio": -1.21,
+            "close": 1297.5,
+            "changePct": -0.16
+          },
+          {
+            "date": "2026-09-03",
+            "mainNet": 89441136,
+            "smallNet": -84342,
+            "mediumNet": -89356784,
+            "largeNet": 82762704,
+            "superNet": 6678432,
+            "mainRatio": 3.88,
+            "close": 1298.88,
+            "changePct": 0.11
+          },
+          {
+            "date": "2026-09-04",
+            "mainNet": 368044528,
+            "smallNet": -935646,
+            "mediumNet": -367108896,
+            "largeNet": 232564224,
+            "superNet": 135480304,
+            "mainRatio": 6.11,
+            "close": 1330,
+            "changePct": 2.4
+          },
+          {
+            "date": "2026-09-07",
+            "mainNet": -186685648,
+            "smallNet": -213796,
+            "mediumNet": 186899440,
+            "largeNet": -29889072,
+            "superNet": -156796576,
+            "mainRatio": -5.6,
+            "close": 1316.01,
+            "changePct": -1.05
+          },
+          {
+            "date": "2026-09-08",
+            "mainNet": -132647664,
+            "smallNet": 0,
+            "mediumNet": 132647664,
+            "largeNet": -102072928,
+            "superNet": -30574736,
+            "mainRatio": -5.76,
+            "close": 1309.3,
+            "changePct": -0.51
+          },
+          {
+            "date": "2026-09-09",
+            "mainNet": -277123472,
+            "smallNet": -68489,
+            "mediumNet": 277191968,
+            "largeNet": -138407152,
+            "superNet": -138716320,
+            "mainRatio": -6.65,
+            "close": 1290.88,
+            "changePct": -1.41
+          },
+          {
+            "date": "2026-09-10",
+            "mainNet": -374051552,
+            "smallNet": -75805,
+            "mediumNet": 374127360,
+            "largeNet": -149640400,
+            "superNet": -224411152,
+            "mainRatio": -15.4,
+            "close": 1285.13,
+            "changePct": -0.45
+          },
+          {
+            "date": "2026-09-11",
+            "mainNet": -188044816,
+            "smallNet": -208537,
+            "mediumNet": 188253344,
+            "largeNet": -25435488,
+            "superNet": -162609328,
+            "mainRatio": -4.24,
+            "close": 1275.16,
+            "changePct": -0.78
+          },
+          {
+            "date": "2026-09-14",
+            "mainNet": -104084690,
+            "smallNet": -124979,
+            "mediumNet": 104209680,
+            "largeNet": -17231232,
+            "superNet": -86853458,
+            "mainRatio": -4.92,
+            "close": 1277.96,
+            "changePct": 0.22
+          },
+          {
+            "date": "2026-09-15",
+            "mainNet": -62055328,
+            "smallNet": -25459,
+            "mediumNet": 62080784,
+            "largeNet": -91890944,
+            "superNet": 29835616,
+            "mainRatio": -3.53,
+            "close": 1272.75,
+            "changePct": -0.41
+          },
+          {
+            "date": "2026-09-16",
+            "mainNet": -116319232,
+            "smallNet": -188694,
+            "mediumNet": 116507936,
+            "largeNet": 17404288,
+            "superNet": -133723520,
+            "mainRatio": -3.52,
+            "close": 1258,
+            "changePct": -1.16
+          },
+          {
+            "date": "2026-09-17",
+            "mainNet": -168151744,
+            "smallNet": -329800,
+            "mediumNet": 168481520,
+            "largeNet": -118931184,
+            "superNet": -49220560,
+            "mainRatio": -7.58,
+            "close": 1266.98,
+            "changePct": 0.71
+          },
+          {
+            "date": "2026-09-18",
+            "mainNet": -34339472,
+            "smallNet": -164947,
+            "mediumNet": 34504416,
+            "largeNet": -127635872,
+            "superNet": 93296400,
+            "mainRatio": -1.1,
+            "close": 1257.12,
+            "changePct": -0.78
+          },
+          {
+            "date": "2026-09-21",
+            "mainNet": -32275440,
+            "smallNet": -181981,
+            "mediumNet": 32457408,
+            "largeNet": -43506368,
+            "superNet": 11230928,
+            "mainRatio": -1.03,
+            "close": 1252.57,
+            "changePct": -0.36
+          },
+          {
+            "date": "2026-09-22",
+            "mainNet": -70101392,
+            "smallNet": -248775,
+            "mediumNet": 70350176,
+            "largeNet": -39033184,
+            "superNet": -31068208,
+            "mainRatio": -2.27,
+            "close": 1253.8,
+            "changePct": 0.1
+          },
+          {
+            "date": "2026-09-23",
+            "mainNet": -73933552,
+            "smallNet": -264404,
+            "mediumNet": 74197936,
+            "largeNet": -181413392,
+            "superNet": 107479840,
+            "mainRatio": -1.9,
+            "close": 1251.24,
+            "changePct": -0.2
+          },
+          {
+            "date": "2026-09-24",
+            "mainNet": -527537488,
+            "smallNet": -373227,
+            "mediumNet": 527910720,
+            "largeNet": -264456240,
+            "superNet": -263081248,
+            "mainRatio": -13.64,
+            "close": 1237,
+            "changePct": -1.14
+          },
+          {
+            "date": "2026-09-28",
+            "mainNet": -198158880,
+            "smallNet": -343470,
+            "mediumNet": 198502352,
+            "largeNet": -83004848,
+            "superNet": -115154032,
+            "mainRatio": -5.68,
+            "close": 1243.88,
+            "changePct": 0.56
+          },
+          {
+            "date": "2026-09-29",
+            "mainNet": 324185776,
+            "smallNet": -362437,
+            "mediumNet": -323823344,
+            "largeNet": 14867712,
+            "superNet": 309318064,
+            "mainRatio": 9.94,
+            "close": 1235.58,
+            "changePct": -0.67
+          },
+          {
+            "date": "2026-09-30",
+            "mainNet": 533565520,
+            "smallNet": -539065,
+            "mediumNet": -533026464,
+            "largeNet": 121427904,
+            "superNet": 412137616,
+            "mainRatio": 11.12,
+            "close": 1258.62,
+            "changePct": 1.86
+          },
+          {
+            "date": "2026-10-08",
+            "mainNet": -126323568,
+            "smallNet": -280648,
+            "mediumNet": 126604240,
+            "largeNet": -102005984,
+            "superNet": -24317584,
+            "mainRatio": -4.02,
+            "close": 1255.79,
+            "changePct": -0.22
+          },
+          {
+            "date": "2026-10-09",
+            "mainNet": 275143840,
+            "smallNet": -465602,
+            "mediumNet": -274678240,
+            "largeNet": 174222464,
+            "superNet": 100921376,
+            "mainRatio": 6.18,
+            "close": 1263,
+            "changePct": 0.57
+          },
+          {
+            "date": "2026-10-12",
+            "mainNet": 92719760,
+            "smallNet": -213006,
+            "mediumNet": -92506736,
+            "largeNet": 279257744,
+            "superNet": -186537984,
+            "mainRatio": 2.29,
+            "close": 1288,
+            "changePct": 1.98
+          },
+          {
+            "date": "2026-10-13",
+            "mainNet": 50401248,
+            "smallNet": -140533,
+            "mediumNet": -50260720,
+            "largeNet": 69189776,
+            "superNet": -18788528,
+            "mainRatio": 1.49,
+            "close": 1274.89,
+            "changePct": -1.02
+          },
+          {
+            "date": "2026-10-14",
+            "mainNet": 27504096,
+            "smallNet": -563997,
+            "mediumNet": -26940080,
+            "largeNet": -1195360,
+            "superNet": 28699456,
+            "mainRatio": 0.9,
+            "close": 1286,
+            "changePct": 0.87
+          },
+          {
+            "date": "2026-10-15",
+            "mainNet": 552032128,
+            "smallNet": -487901,
+            "mediumNet": -551544208,
+            "largeNet": 427641424,
+            "superNet": 124390704,
+            "mainRatio": 7.32,
+            "close": 1312.97,
+            "changePct": 2.1
+          },
+          {
+            "date": "2026-10-16",
+            "mainNet": 468661168,
+            "smallNet": -454626,
+            "mediumNet": -468206560,
+            "largeNet": 425044128,
+            "superNet": 43617040,
+            "mainRatio": 9.23,
+            "close": 1329,
+            "changePct": 1.22
+          }
+        ],
+        "main5": 1191318400,
+        "main10": 1999731088,
+        "main20": 622887934,
+        "latestDate": "2026-10-16",
+        "latestMain": 468661168
+      },
+      "finance": {
+        "report": "2026中报",
+        "eps": 35.57,
+        "bps": 200.989754763617,
+        "revenue": 92278072083.21,
+        "grossProfit": 81229498398.6,
+        "netProfit": 44516880421.86,
+        "revenueYoY": 1.300099475569,
+        "netProfitYoY": -1.951594855028,
+        "roe": 16.75,
+        "roeDiluted": 16.74,
+        "grossMargin": 89.5552128279,
+        "netMargin": 50.7515717487,
+        "debtRatio": 15.1931121807,
+        "cashPerShare": 56.54890853726,
+        "roic": 16.352849610344,
+        "reports": [
+          {
+            "report": "2026中报",
+            "eps": 35.57,
+            "roe": 16.75,
+            "revenueYoY": 1.300099475569,
+            "netProfitYoY": -1.951594855028
+          },
+          {
+            "report": "2026一季报",
+            "eps": 21.76,
+            "roe": 10.57,
+            "revenueYoY": 6.336009277123,
+            "netProfitYoY": 1.471418294983
+          },
+          {
+            "report": "2025年报",
+            "eps": 65.66,
+            "roe": 32.53,
+            "revenueYoY": -1.200097176919,
+            "netProfitYoY": -4.532254817158
+          },
+          {
+            "report": "2025三季报",
+            "eps": 51.53,
+            "roe": 24.64,
+            "revenueYoY": 6.320001880648,
+            "netProfitYoY": 6.245844952412
+          },
+          {
+            "report": "2025中报",
+            "eps": 36.18,
+            "roe": 17.89,
+            "revenueYoY": 9.158168061298,
+            "netProfitYoY": 8.891466577162
+          },
+          {
+            "report": "2025一季报",
+            "eps": 21.38,
+            "roe": 10.92,
+            "revenueYoY": 10.66739891106,
+            "netProfitYoY": 11.561111702645
+          }
+        ]
+      },
+      "notices": [
+        {
+          "title": "贵州茅台:贵州茅台关于召开2026年半年度业绩说明会的公告",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994407.html",
+          "time": "2026-08-15",
+          "kind": "notice",
+          "source": "东方财富"
+        },
+        {
+          "title": "贵州茅台:贵州茅台关于贵州茅台集团财务有限公司的风险评估报告",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994404.html",
+          "time": "2026-08-15",
+          "kind": "notice",
+          "source": "东方财富"
+        },
+        {
+          "title": "贵州茅台:贵州茅台2026年半年度报告摘要",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994403.html",
+          "time": "2026-08-15",
+          "kind": "notice",
+          "source": "东方财富"
+        },
+        {
+          "title": "贵州茅台:贵州茅台关于会计政策变更的公告",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994406.html",
+          "time": "2026-08-15",
+          "kind": "notice",
+          "source": "东方财富"
+        },
+        {
+          "title": "贵州茅台:贵州茅台第五届董事会2026年度第三次会议决议公告",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994405.html",
+          "time": "2026-08-15",
+          "kind": "notice",
+          "source": "东方财富"
+        },
+        {
+          "title": "贵州茅台:贵州茅台2026年半年度报告",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202608141827994408.html",
+          "time": "2026-08-15",
+          "kind": "notice",
+          "source": "东方财富"
+        },
+        {
+          "title": "贵州茅台:贵州茅台重大事项公告",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202607171827064564.html",
+          "time": "2026-07-18",
+          "kind": "notice",
+          "source": "东方财富"
+        },
+        {
+          "title": "贵州茅台:贵州茅台2025年年度权益分派实施公告",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202606211823708334.html",
+          "time": "2026-06-22",
+          "kind": "notice",
+          "source": "东方财富"
+        },
+        {
+          "title": "贵州茅台:贵州茅台关于聘任董事会秘书的公告",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202606111823465368.html",
+          "time": "2026-06-12",
+          "kind": "notice",
+          "source": "东方财富"
+        },
+        {
+          "title": "贵州茅台:北京市金杜律师事务所关于贵州茅台酒股份有限公司2025年度股东会之法律意见书",
+          "url": "https://data.eastmoney.com/notices/detail/600519/AN202606111823465367.html",
+          "time": "2026-06-12",
+          "kind": "notice",
+          "source": "东方财富"
+        }
+      ],
+      "news": [
+        {
+          "title": "贵州茅台 重阳下沙 传统酿造里的时间与传承",
+          "url": "http://finance.eastmoney.com/a/202610183899091934.html",
+          "time": "2026-10-18 05:30:46",
+          "kind": "news",
+          "source": "人民日报"
+        },
+        {
+          "title": "白酒归来！贵州茅台重回1300元",
+          "url": "http://finance.eastmoney.com/a/202610153897189730.html",
+          "time": "2026-10-15 17:42:00",
+          "kind": "news",
+          "source": "上海证券报"
+        },
+        {
+          "title": "白酒归来！贵州茅台重回1300元 高盛重申买入茅台",
+          "url": "http://finance.eastmoney.com/a/202610153897007769.html",
+          "time": "2026-10-15 17:49:38",
+          "kind": "news",
+          "source": "上海证券报"
+        },
+        {
+          "title": "大宗交易：贵州茅台成交407.02万元（10-15）",
+          "url": "http://stock.eastmoney.com/a/202610153896988833.html",
+          "time": "2026-10-15 17:22:40",
+          "kind": "news",
+          "source": "东方财富Choice数据"
+        },
+        {
+          "title": "秋糖遇冷，白酒股却逆市“防寒”： 皇台酒业周涨近25%，贵州茅台重夺“股王”宝座丨酒市周报",
+          "url": "http://finance.eastmoney.com/a/202610183899142129.html",
+          "time": "2026-10-18 16:15:49",
+          "kind": "news",
+          "source": "每日经济新闻"
+        },
+        {
+          "title": "贵州茅台10月15日大宗交易成交407.02万元",
+          "url": "http://finance.eastmoney.com/a/202610153897226572.html",
+          "time": "2026-10-15 22:08:00",
+          "kind": "news",
+          "source": "证券时报网"
+        },
+        {
+          "title": "贵州茅台为A股唯一飘红千元股，工商银行重夺市值“一哥”",
+          "url": "http://finance.eastmoney.com/a/202610153896994566.html",
+          "time": "2026-10-15 15:39:16",
+          "kind": "news",
+          "source": "财闻"
+        },
+        {
+          "title": "大宗交易：贵州茅台成交385.80万元（10-14）",
+          "url": "http://stock.eastmoney.com/a/202610143895533574.html",
+          "time": "2026-10-14 17:22:49",
+          "kind": "news",
+          "source": "东方财富Choice数据"
+        }
+      ],
+      "failures": []
+    }
+  },
+  "serverTime": "2026-10-18T11:59:14.182Z"
+}

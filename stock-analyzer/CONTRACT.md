@@ -92,9 +92,24 @@
     "changePct": 0.85, "rank": 12, "total": 51, "netIn": 12.3,
     "upCount": 12, "downCount": 8,
     "leader": { "name": "贵州茅台", "code": "600519", "changePct": 1.22 },
-    "peers": [ { "code": "600519", "name": "贵州茅台", "price": 1329, "changePct": 1.22 } ],
+    "peers": [ { "code": "600519", "name": "贵州茅台", "price": 1329, "changePct": 1.22, "change5d": 3.21 } ],
     "stockRank": { "rank": 2, "total": 20, "changePct": 1.22 },
     "hotSectors": [ { "name": "半导体", "changePct": 3.2, "netIn": 25.1, "leader": "中芯国际" } ]
+  },
+
+  "related": {
+    "concepts": [
+      {
+        "name": "白酒概念", "code": "301496", "stockCount": 45, "rank": 131, "rankTotal": 390,
+        "upCount": 30, "downCount": 15, "changePct": 0.68, "change5d": -2.76,
+        "stocks": [ { "code": "000995", "name": "皇台酒业", "price": 14.28, "changePct": 6.81, "change5d": 24.72 } ]
+      }
+    ],
+    "sectors": [
+      { "name": "白酒", "code": "881273", "kind": "industry", "changePct": 1.95, "change5d": 1.99, "stockCount": 19,
+        "stocks": [ { "code": "000995", "name": "皇台酒业", "price": 14.28, "changePct": 6.81, "change5d": 24.72 } ] },
+      { "name": "白酒概念", "code": "301496", "kind": "concept", "changePct": 0.68, "change5d": -2.76, "stockCount": 45, "stocks": [] }
+    ]
   },
 
   "news": [
@@ -165,7 +180,7 @@
   4. 概览卡：名称、代码、板块、现价、涨跌幅、涨跌额、成交额、换手、量比、振幅、PE/PB/市值、52 周区间。
   5. 技术面卡：`technical.trend` 徽标 + 指标网格（`technical.items`）+ 支撑/压力/止损。
   6. 资金面卡：四档净额条（特大/大/中/小）、主力净额与占比、外盘/内盘。
-  7. 行业卡：行业名/申万行业/板块涨跌/行业排名/净流入/领涨股/涨停家数；同行 `peers` 表；`hotSectors` 前 5。
+  7. 行业卡：行业名/申万行业/板块涨跌/行业排名/净流入/领涨股/涨停家数；同行 `peers` 表（含今日与 5 日涨跌，行可点击加载该公司完整分析）；`hotSectors` 前 5；「关联概念股」按概念分组展示成分股（名称/代码/现价/今日/5日，行可点击）；「关联板块」展示行业与概念板块的今日/5日涨跌，点击板块行可展开成分股，成分股行可点击加载分析。
   8. 基本面卡：报告期、EPS、净利润与同比、毛利率、净利率、ROE、资产负债率、营收增速、股东集中度、质押比例；`diagnosis` 列表。
   9. 消息面卡：`news` 列表（标题可点开新窗口）+ `hot.marketNews`。
   10. 热点卡：`hot.rank`/`hot.reason`、概念 chips（`hot.concepts`）、`hot.conceptHeat`。
@@ -182,7 +197,13 @@
 - 资金流口径差异：同花顺四档为逐笔成交金额（四档合计为净流入），东方财富主力 = 超大单 + 大单、四档合计恒为 0；两者分别展示、不互相覆盖，`funds.em` 为东方财富口径的 5/10/20 日主力净流入。
 - 同花顺 F10 页面反爬较弱但有频率限制：页面结果缓存 6 小时，行情缓存 5 分钟。
 
-## 实现补充（v1.1.0 实际返回的额外字段）
+## 实现补充（v1.2.0 实际返回的额外字段）
+
+- `related`：关联概念股与关联板块。
+  - `related.concepts[]`：取该股「概念行情贴合度」排名前两个、且能在同花顺概念板块索引（`q.10jqka.com.cn/gn/`，约 360 个概念）中匹配到的概念。`changePct`/`rank`/`upCount`/`downCount` 来自概念板块详情页头部统计（精确值）；`change5d` 为成分股近 5 个交易日涨跌幅均值（概念成分股 ≤ 6 页时抓取全部分页计算；宽基概念取涨幅榜/跌幅榜抽样 20 只计算）；`stocks` 为该概念涨幅榜前 10 只。
+  - `related.sectors[]`：行业板块（`kind: "industry"`）+ 上述概念板块（`kind: "concept"`），用于「关联板块」展示；行业板块的 5 日涨跌幅为行业成分股（涨幅榜 + 跌幅榜各 10 只）均值。
+  - `peers[].change5d`、`stocks[].change5d` 数据来自东方财富日线（前复权），不可用时回退同花顺日线；两者都失败时为 `null`。
+- 概念板块详情头部字段：`rank`/`rankTotal` 为板块涨幅排名与板块总数，`upCount`/`downCount` 为上涨/下跌家数。
 
 在契约之上，Host 实际还会返回以下字段，客户端可选用：
 

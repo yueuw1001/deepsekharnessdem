@@ -98,6 +98,15 @@ window.__ModuleLoader__.load({
         peerName: '名称',
         peerPrice: '现价',
         peerChange: '涨跌幅',
+        peerChange5d: '5日涨跌',
+        relatedConcepts: '关联概念股',
+        relatedSectors: '关联板块',
+        sectorKindIndustry: '行业',
+        sectorKindConcept: '概念',
+        sectorToday: '今日',
+        sector5d: '5日',
+        conceptStocks: '成分股',
+        clickStockHint: '点击任意股票行可查看该公司的完整分析',
         hotSectors: '热门板块',
         finance: '基本面',
         report: '报告期',
@@ -211,6 +220,15 @@ window.__ModuleLoader__.load({
         peerName: 'Name',
         peerPrice: 'Price',
         peerChange: 'Change',
+        peerChange5d: '5d change',
+        relatedConcepts: 'Related concept stocks',
+        relatedSectors: 'Related sectors',
+        sectorKindIndustry: 'Industry',
+        sectorKindConcept: 'Concept',
+        sectorToday: 'Today',
+        sector5d: '5d',
+        conceptStocks: 'constituents',
+        clickStockHint: 'Click any stock row to open its full analysis',
         hotSectors: 'Hot sectors',
         finance: 'Fundamentals',
         report: 'Report period',
@@ -574,6 +592,23 @@ window.__ModuleLoader__.load({
       const rows = listOf(props.rows).slice(0, props.limit === undefined ? 10 : props.limit)
       if (rows.length === 0) return h(Empty, { text: translate('empty') })
       const t = translate
+      const onSelect = typeof props.onSelect === 'function' ? props.onSelect : null
+      const rowProps = (row) => {
+        if (!onSelect || !row || !row.code) return {}
+        return {
+          className: 'sa-clickable',
+          role: 'button',
+          tabIndex: 0,
+          title: t('clickStockHint'),
+          onClick: () => onSelect(row.code),
+          onKeyDown: (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              onSelect(row.code)
+            }
+          },
+        }
+      }
       return h(
         'table',
         { className: 'sa-table' },
@@ -587,6 +622,7 @@ window.__ModuleLoader__.load({
             h('th', null, t('peerName')),
             h('th', { className: 'sa-num' }, t('peerPrice')),
             h('th', { className: 'sa-num' }, t('peerChange')),
+            h('th', { className: 'sa-num' }, t('peerChange5d')),
           ),
         ),
         h(
@@ -595,11 +631,12 @@ window.__ModuleLoader__.load({
           rows.map((row, index) =>
             h(
               'tr',
-              { key: `${row.code === undefined ? index : row.code}-${index}` },
+              { key: `${row.code === undefined ? index : row.code}-${index}`, ...rowProps(row) },
               h('td', { className: 'sa-mono' }, textOf(row.code)),
               h('td', null, textOf(row.name)),
               h('td', { className: 'sa-num' }, fixed(row.price, 2)),
               h('td', { className: `sa-num ${toneOf(row.changePct)}` }, pct(row.changePct)),
+              h('td', { className: `sa-num ${toneOf(row.change5d)}` }, pct(row.change5d)),
             ),
           ),
         ),
@@ -809,7 +846,14 @@ window.__ModuleLoader__.load({
       const t = translate
       const data = props.data ? props.data : {}
       const industry = data.industry ? data.industry : {}
-      if (Object.keys(industry).length === 0) {
+      const related = data.related ? data.related : {}
+      const conceptGroups = listOf(related.concepts)
+      const sectors = listOf(related.sectors)
+      const [openSector, setOpenSector] = React.useState(null)
+      const onSelect = typeof props.onSelect === 'function' ? props.onSelect : null
+      const industryEmpty = Object.keys(industry).length === 0
+      // 行业缺失但关联概念/板块有数据时仍要展示（数据源局部降级场景）
+      if (industryEmpty && conceptGroups.length === 0 && sectors.length === 0) {
         return h(Card, { title: t('industry') }, h(Empty, { text: t('empty') }))
       }
       const peers = listOf(industry.peers)
@@ -840,15 +884,20 @@ window.__ModuleLoader__.load({
               : '—',
         },
       ]
+      const sectorKey = (sector, index) =>
+        `${sector && sector.kind ? sector.kind : 'sector'}-${sector && sector.code ? sector.code : index}-${index}`
+      const toggleSector = (key) => {
+        setOpenSector((current) => (current === key ? null : key))
+      }
       return h(
         Card,
         { title: t('industry'), note: textOf(industry.code) === '—' ? null : textOf(industry.code) },
-        h(Fields, { items: fields }),
+        industryEmpty ? h(Empty, { text: t('empty') }) : h(Fields, { items: fields }),
         h(
           'div',
           { className: 'sa-sub-block' },
           h('div', { className: 'sa-mini-title' }, t('peers')),
-          h(PeersTable, { rows: peers, limit: 10 }),
+          h(PeersTable, { rows: peers, limit: 10, onSelect }),
         ),
         hotSectors.length > 0
           ? h(
@@ -872,6 +921,95 @@ window.__ModuleLoader__.load({
                   ),
                 ),
               ),
+            )
+          : null,
+        conceptGroups.length > 0
+          ? h(
+              'div',
+              { className: 'sa-sub-block' },
+              h('div', { className: 'sa-mini-title' }, t('relatedConcepts')),
+              h('div', { className: 'sa-hint' }, t('clickStockHint')),
+              conceptGroups.map((group, index) =>
+                h(
+                  'div',
+                  { className: 'sa-concept-group', key: `${group.code === undefined ? index : group.code}-${index}` },
+                  h(
+                    'div',
+                    { className: 'sa-concept-head' },
+                    h('span', { className: 'sa-concept-name' }, textOf(group.name)),
+                    h('span', { className: 'sa-concept-count' }, `${textOf(group.stockCount)} ${t('conceptStocks')}`),
+                    h(
+                      'span',
+                      { className: `sa-concept-pct ${toneOf(group.changePct)}` },
+                      `${t('sectorToday')} ${pct(group.changePct)}`,
+                    ),
+                    h(
+                      'span',
+                      { className: `sa-concept-pct ${toneOf(group.change5d)}` },
+                      `${t('sector5d')} ${pct(group.change5d)}`,
+                    ),
+                  ),
+                  h(PeersTable, { rows: group.stocks, limit: 10, onSelect }),
+                ),
+              ),
+            )
+          : null,
+        sectors.length > 0
+          ? h(
+              'div',
+              { className: 'sa-sub-block' },
+              h('div', { className: 'sa-mini-title' }, t('relatedSectors')),
+              h(
+                'div',
+                { className: 'sa-sector-head' },
+                h('span', { className: 'sa-sector-col sa-sector-name' }, t('peerName')),
+                h('span', { className: 'sa-sector-col sa-sector-pct' }, t('sectorToday')),
+                h('span', { className: 'sa-sector-col sa-sector-pct' }, t('sector5d')),
+                h('span', { className: 'sa-sector-caret' }),
+              ),
+              sectors.map((sector, index) => {
+                const key = sectorKey(sector, index)
+                const open = openSector === key
+                return h(
+                  'div',
+                  { key, className: 'sa-sector' },
+                  h(
+                    'div',
+                    {
+                      className: 'sa-sector-row sa-clickable',
+                      role: 'button',
+                      tabIndex: 0,
+                      onClick: () => toggleSector(key),
+                      onKeyDown: (event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault()
+                          toggleSector(key)
+                        }
+                      },
+                    },
+                    h(
+                      'span',
+                      { className: 'sa-sector-name' },
+                      textOf(sector.name),
+                      h(
+                        'span',
+                        { className: 'sa-kind' },
+                        sector.kind === 'concept' ? t('sectorKindConcept') : t('sectorKindIndustry'),
+                      ),
+                    ),
+                    h('span', { className: `sa-sector-pct ${toneOf(sector.changePct)}` }, pct(sector.changePct)),
+                    h('span', { className: `sa-sector-pct ${toneOf(sector.change5d)}` }, pct(sector.change5d)),
+                    h('span', { className: 'sa-sector-caret' }, open ? '▾' : '▸'),
+                  ),
+                  open
+                    ? h(
+                        'div',
+                        { className: 'sa-sector-stocks' },
+                        h(PeersTable, { rows: sector.stocks, limit: 10, onSelect }),
+                      )
+                    : null,
+                )
+              }),
             )
           : null,
       )
@@ -1373,7 +1511,7 @@ window.__ModuleLoader__.load({
             : null,
           h(OverviewCard, { data }),
           h('div', { className: 'sa-grid2' }, h(TechnicalCard, { data }), h(FundsCard, { data })),
-          h(IndustryCard, { data }),
+          h(IndustryCard, { data, onSelect: (code) => submit(code, false) }),
           h(FinanceCard, { data }),
           h('div', { className: 'sa-grid2' }, h(NewsCard, { data }), h(HotCard, { data })),
           h(AdviceCard, { data }),
@@ -1540,6 +1678,23 @@ window.__ModuleLoader__.load({
 .sa-sublist-meta{flex:1;min-width:0;font-size:11px;color:var(--dsw-alias-label-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .sa-sublist-pct{flex:none;font-variant-numeric:tabular-nums;}
 .sa-sublist-val{flex:none;font-variant-numeric:tabular-nums;text-align:right;}
+.sa-clickable{cursor:pointer;}
+.sa-table tr.sa-clickable:hover td{background:var(--dsw-alias-bg-layer-2);}
+.sa-hint{font-size:11px;color:var(--dsw-alias-label-secondary);margin:0 2px 8px;}
+.sa-concept-group{margin-top:10px;}
+.sa-concept-head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;padding:6px 2px;border-bottom:1px solid var(--dsw-alias-border-l2);}
+.sa-concept-name{font-weight:600;font-size:12.5px;}
+.sa-concept-count{font-size:11px;color:var(--dsw-alias-label-secondary);}
+.sa-concept-pct{font-size:11.5px;font-variant-numeric:tabular-nums;}
+.sa-sector-head{display:flex;gap:10px;font-size:11px;color:var(--dsw-alias-label-secondary);padding:2px 2px 5px;}
+.sa-sector-head .sa-sector-col:first-child{flex:1;}
+.sa-sector-row{display:flex;gap:10px;align-items:baseline;padding:6px 2px;border-bottom:1px solid var(--dsw-alias-border-l1);font-size:12.5px;}
+.sa-sector-row:hover{background:var(--dsw-alias-bg-layer-2);}
+.sa-sector-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sa-kind{font-size:10px;margin-left:6px;padding:1px 5px;border-radius:4px;background:var(--dsw-alias-bg-layer-2);color:var(--dsw-alias-label-secondary);}
+.sa-sector-pct{flex:none;min-width:58px;text-align:right;font-variant-numeric:tabular-nums;}
+.sa-sector-caret{flex:none;width:12px;color:var(--dsw-alias-label-secondary);}
+.sa-sector-stocks{padding:2px 0 4px 8px;border-left:2px solid var(--dsw-alias-border-l1);margin:2px 0 6px 2px;}
 .sa-news{display:flex;flex-direction:column;}
 .sa-news-row{display:flex;align-items:baseline;gap:8px;padding:5px 2px;border-bottom:1px solid var(--dsw-alias-border-l1);min-width:0;}
 .sa-news-row:last-child{border-bottom:none;}
